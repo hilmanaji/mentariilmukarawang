@@ -5,7 +5,7 @@
                             <!-- <p class="text-muted m-b-30">Master Data Sekolah</p> -->
                             <h3 class="box-title m-b-0">Master Data Sekolah</h3>
                             <br>
-                            <p style="text-align:right"><button data-toggle="modal" data-target="#myModal" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus m-l-5"></i> Tambah Data Sekolah</button></p>
+                            <p style="text-align:right"><button data-toggle="modal" data-target="#myModalAdd" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus m-l-5"></i> Tambah Data Sekolah</button></p>
                             <div class="table-responsive">
                                 <table id="myTable" class="table table-striped display">
                                     <thead>
@@ -39,7 +39,7 @@
                                             <td><?php echo $_sekolah->email; ?></td>
                                             <td>
                                                 <center>                                                
-                                                    <button class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button>
+                                                    <button  data-toggle="modal" data-target="#myModalEdit" class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button>
                                                     <a href="<?php echo base_url() ?>Sekolah/delete/<?php echo $_sekolah->id_sekolah; ?>" onclick="javascript: return confirm('Yakin ingin menghapus data ini?')"><button class="btn btn-danger waves-effect waves-light" ><i class="fa fa-trash m-l-5"></i></button></a>
                                                 </center>
                                             </td>
@@ -60,8 +60,8 @@
                     </div>
                 </div>
 
-                <!-- MODAL -->
-                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <!-- MODAL ADD -->
+                <div id="myModalAdd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -98,4 +98,45 @@
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
-                <!-- MODAL END -->
+                <!-- MODAL ADD END -->
+
+                <!-- MODAL EDIT -->
+                <div id="myModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">Edit Data Sekolah</h4> </div>
+                            <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12">
+                                    <form method="post" action="<?php echo base_url() ?>Sekolah/add">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="id_sekolah"> 
+                                            <label for="exampleInputEmail1">Nama Sekolah</label>
+                                            <input type="text" class="form-control" name="nama" oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" required> 
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Alamat</label>
+                                            <textarea class="form-control" name="alamat" required oninvalid="this.setCustomValidity('Alamat tidak boleh kosong')"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Kontak</label>
+                                            <input type="number" maxlength="13" onkeypress='return isNumberKey(event)' name="kontak" class="form-control" > 
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Email</label>
+                                            <input type="text" class="form-control" name="email" > 
+                                        </div>
+                                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Edit</button>
+                                        <button type="reset" class="btn btn-inverse waves-effect waves-light">Batal</button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- MODAL EDIT END -->
