@@ -97,6 +97,7 @@
     <!--Style Switcher -->
     <script src="<?php echo base_url() ?>assets/plugins/components/styleswitcher/jQuery.style.switcher.js"></script>
 
+<!-- Validasi Only Number -->
 <script type="application/javascript">
       function isNumberKey(evt)
       {
