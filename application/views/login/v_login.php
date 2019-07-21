@@ -37,7 +37,7 @@
     </div>
     <section id="wrapper" class="login-register">
         <div class="login-box" data-sal="slide-right"
-            data-sal-duration="300" data-sal-delay="100" data-sal-easing="ease-out-bounce">
+            data-sal-duration="300" data-sal-delay="100" data-sal-easing="ease-out-bounce" style="margin: 6% auto 0;">
 <?php echo $this->session->flashdata('msg'); ?>
             <div class="white-box">
                 <form class="form-horizontal form-material" id="loginform" method="post" action="<?php echo base_url() ?>Login/data_get">
@@ -66,24 +66,6 @@
                         </div>
                     </div> -->
                 </form>
-                <form class="form-horizontal" id="recoverform" action="index.html">
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <h3>Recover Password</h3>
-                            <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
-                        </div>
-                    </div>
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group text-center m-t-20">
-                        <div class="col-xs-12">
-                            <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
@@ -100,7 +82,7 @@
     <!-- Custom Theme JavaScript -->
      <script src="<?php echo base_url() ?>assets/default/js/custom.js"></script>
     <!--Style Switcher -->
-    <script src="<?php echo base_url() ?>asset/plugins/components/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/components/styleswitcher/jQuery.style.switcher.js"></script>
 
 
 

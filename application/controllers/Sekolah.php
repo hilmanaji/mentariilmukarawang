@@ -12,28 +12,29 @@ class Sekolah extends CI_Controller {
             $id_user = $this->session->userdata('id_user');
         }
     }
-    
+
 	public function index()
 	{
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");		
         $this->template->back_end('back_end/v_data_sekolah', $data);
-	}
+    }
 
-	public function add()
-	{
-		$nama = $this->input->post('nama');
-		$alamat = $this->input->post('alamat');
-		$kontak = $this->input->post('kontak');
-		$email = $this->input->post('email');        
+    public function add()
+    {
+        $id_user = $this->session->userdata('id_user');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $kontak = $this->input->post('kontak');
+        $email = $this->input->post('email');        
 
-		// DATA INPUT SEKOLAH
+        // DATA INPUT SEKOLAH
         $input_data = array(
             'id_sekolah' => '',
             'nama' => $nama,
             'alamat' => $alamat,
             'kontak' => $kontak,
             'email' => $email,
-            'created_by' => '1'
+            'created_by' => $id_user
          );
         $this->DataHandle->insert('tbl_sekolah', $input_data);
         $this->session->set_flashdata('msg', '
@@ -44,12 +45,14 @@ class Sekolah extends CI_Controller {
         </div>');  
 
         redirect('Sekolah');     
-	}
+    }
 
-	public function delete($id_sekolah)
-	{
+    public function delete($id_sekolah)
+    {
+        $id_user = $this->session->userdata('id_user');
         $data = array(
-            'status' => '0'
+            'status' => '0',
+            'updated_by' => $id_user
          );
         $where = array(
             'id_sekolah' => $id_sekolah
@@ -64,5 +67,44 @@ class Sekolah extends CI_Controller {
         </div>');  
 
         redirect('Sekolah');     
-	}
+    }
+
+    public function get_data($id_sekolah){
+        $where = array(
+            'id_sekolah' => $id_sekolah
+         );
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', $where);
+        $this->template->back_end('back_end/v_edit_sekolah', $data);
+    }
+
+    public function edit()
+    {
+        $id_user = $this->session->userdata('id_user');
+        $id_sekolah = $this->input->post('id_sekolah');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $kontak = $this->input->post('kontak');
+        $email = $this->input->post('email');        
+
+        $edit_data = array(
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'kontak' => $kontak,
+            'email' => $email,
+            'updated_by' => $id_user
+         );
+        $where = array(
+            'id_sekolah' => $id_sekolah
+         );
+        $this->DataHandle->edit('tbl_sekolah', $edit_data, $where);
+
+        $this->session->set_flashdata('msg', '
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+            &times;</button>
+            <i class="fa fa-check m-l-5"></i> Data Berhasil Diperbaharui ... 
+        </div>');  
+
+        redirect('Sekolah');     
+    }
 }

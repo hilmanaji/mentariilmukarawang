@@ -18,15 +18,6 @@
                                             <th style="text-align:center">Aksi</th>
                                         </tr>
                                     </thead>
-                                   <!--  <tfoot>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Nama Sekolah</th>
-                                            <th>Alamat</th>
-                                            <th>Kontak</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </tfoot> -->
                                     <tbody>
                                     <?php
                                     $no=1;
@@ -39,7 +30,7 @@
                                             <td><?php echo $_sekolah->email; ?></td>
                                             <td>
                                                 <center>                                                
-                                                    <button  data-toggle="modal" data-target="#myModalEdit" class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button>
+                                                    <a href="<?php echo base_url() ?>Sekolah/get_data/<?php echo $_sekolah->id_sekolah; ?>"><button class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button></a>
                                                     <a href="<?php echo base_url() ?>Sekolah/delete/<?php echo $_sekolah->id_sekolah; ?>" onclick="javascript: return confirm('Yakin ingin menghapus data ini?')"><button class="btn btn-danger waves-effect waves-light" ><i class="fa fa-trash m-l-5"></i></button></a>
                                                 </center>
                                             </td>
