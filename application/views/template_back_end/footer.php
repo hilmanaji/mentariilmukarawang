@@ -1,4 +1,4 @@
 
             <footer class="footer t-a-c">
-                © 2017 Cubic Admin
+                © 2019 TitikKoma.Dev - Yayasan Mentari Ilmu Karawang
             </footer>
