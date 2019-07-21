@@ -20,6 +20,6 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-        $this->template->back_end('template_back_end/v_dashboard');
+		$this->template->front_end('templates_front_end/v_content');
 	}
 }
