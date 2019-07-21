@@ -27,8 +27,9 @@
                         <li>
                             <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-globe fa-fw"></i> <span class="hide-menu"> Data Master</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li> <a href="<?php echo base_url() ?>Sekolah"><i class="icon-layers fa-fw"></i> Data Sekolah</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Sekolah"><i class="icon-layers fa-fw"></i>Data Sekolah</a> </li>
                                 <li> <a href="<?php echo base_url() ?>User"><i class="icon-user fa-fw"></i>Data User</a> </li>
+                                <li> <a href="<?php echo base_url() ?>FAQ"><i class="icon-question fa-fw"></i>Data FAQ</a> </li>
                             </ul>
                         </li>
                         <!-- <li> <a href="<?php echo base_url() ?>Login/logout"><i class="icon-logout fa-fw"></i><span class="hide-menu"> Logout</span></a> </li> -->

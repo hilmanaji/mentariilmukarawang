@@ -1,9 +1,9 @@
 <?php 
-    foreach ($data_kegiatan->result() as $_kegiatan) {
-        $id_kegiatan = $_kegiatan->id_kegiatan;
-        $nama_kegiatan = $_kegiatan->nama_kegiatan;
-        $deskripsi_kegiatan = $_kegiatan->deskripsi_kegiatan;
-        $id_sekolah = $_kegiatan->id_sekolah;
+    foreach ($data_faq->result() as $_faq) {
+        $id_faq = $_faq->id_faq;
+        $pertanyaan = $_faq->pertanyaan;
+        $jawaban = $_faq->jawaban;
+        $id_sekolah = $_faq->id_sekolah;
     }
 ?>
 
@@ -12,16 +12,20 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <a href="<?php echo base_url() ?>Kegiatan"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
-                                <h4 class="modal-title" id="myModalLabel">Edit Data Kegiatan</h4> </div>
+                                <a href="<?php echo base_url() ?>FAQ"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
+                                <h4 class="modal-title" id="myModalLabel">Edit Data FAQ</h4> </div>
                             <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-12 col-xs-12">
-                                    <form method="post" action="<?php echo base_url() ?>Kegiatan/edit">
+                                    <form method="post" action="<?php echo base_url() ?>FAQ/edit">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Nama Kegiatan</label>
-                                            <input type="hidden" class="form-control" name="id_kegiatan" value="<?php echo $id_kegiatan ?>" required> 
-                                            <input type="text" class="form-control" name="nama_kegiatan" value="<?php echo $nama_kegiatan ?>" required> 
+                                            <label for="exampleInputEmail1">Pertanyaan</label>
+                                            <input type="hidden" class="form-control" name="id_faq" value="<?php echo $id_faq ?>" required> 
+                                            <input type="text" class="form-control" name="pertanyaan" value="<?php echo $pertanyaan ?>" required> 
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Jawaban</label>
+                                            <input type="text" class="form-control" name="jawaban" value="<?php echo $jawaban ?>" required> 
                                         </div>
                                         <div class="form-group">                                            
                                             <label for="exampleInputEmail1">Sekolah</label>
@@ -34,11 +38,7 @@
                                     ?> 
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi_kegiatan" rows="7" required><?php echo $deskripsi_kegiatan ?></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
+                                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Edit</button>
                                     </form>
                                 </div>
                             </div>

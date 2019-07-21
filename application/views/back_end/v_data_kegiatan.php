@@ -5,7 +5,7 @@
                             <!-- <p class="text-muted m-b-30">Master Data Sekolah</p> -->
                             <h3 class="box-title m-b-0">Master Data Kegiatan</h3>
                             <br>
-                            <p style="text-align:right"><button data-toggle="modal" data-target="#myModalAdd" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus m-l-5"></i> Tambah Data Kegiatan</button></p>
+                            <p style="text-align:right"><button data-toggle="modal" data-target="#myModalAdd" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus m-l-5"></i> Data Kegiatan</button></p>
                             <div class="table-responsive">
                                 <table id="myTable" class="table table-striped display">
                                     <thead>
