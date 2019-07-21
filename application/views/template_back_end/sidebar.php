@@ -16,7 +16,7 @@
                                 <li role="separator" class="divider"></li>
                                 <li><a href="javascript:void(0);"><i class="fa fa-cog"></i> Account Settings</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href=""><i class="fa fa-power-off"></i> Logout</a></li>
+                                <li><a href="<?php echo base_url() ?>Login/logout"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </div>
                         <p class="profile-text m-t-15 font-16"><a href="javascript:void(0);"> Super Admin</a></p>
@@ -31,7 +31,7 @@
                                 <li> <a href="<?php echo base_url() ?>User">Data User</a> </li>
                             </ul>
                         </li>
-                        <li> <a href="<?php echo base_url() ?>User"><i class="icon-logout fa-fw"></i><span class="hide-menu"> Logout</span></a> </li>
+                        <li> <a href="<?php echo base_url() ?>Login/logout"><i class="icon-logout fa-fw"></i><span class="hide-menu"> Logout</span></a> </li>
                     </ul>
                 </nav>
             </div>
