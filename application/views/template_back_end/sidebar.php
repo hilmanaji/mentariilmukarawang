@@ -19,19 +19,26 @@
                                 <li><a href="<?php echo base_url() ?>Login/logout"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </div>
-                        <p class="profile-text m-t-15 font-16"><a href="javascript:void(0);"> Super Admin</a></p>
+                        <p class="profile-text m-t-15 font-16"><a href="javascript:void(0);"> <?php echo $this->session->userdata('nama'); ?></a></p>
                     </div>
                 </div>
                 <nav class="sidebar-nav">
                     <ul id="side-menu">
                         <li>
-                            <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-globe fa-fw"></i> <span class="hide-menu"> Master</span></a>
+                            <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-globe fa-fw"></i> <span class="hide-menu"> Data Master</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li> <a href="<?php echo base_url() ?>Sekolah">Data Sekolah</a> </li>
-                                <li> <a href="<?php echo base_url() ?>User">Data User</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Sekolah"><i class="icon-layers fa-fw"></i> Data Sekolah</a> </li>
+                                <li> <a href="<?php echo base_url() ?>User"><i class="icon-user fa-fw"></i>Data User</a> </li>
                             </ul>
                         </li>
-                        <li> <a href="<?php echo base_url() ?>Login/logout"><i class="icon-logout fa-fw"></i><span class="hide-menu"> Logout</span></a> </li>
+                        <!-- <li> <a href="<?php echo base_url() ?>Login/logout"><i class="icon-logout fa-fw"></i><span class="hide-menu"> Logout</span></a> </li> -->
+                        <li>
+                            <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-social-dropbox fa-fw"></i> <span class="hide-menu"> Kelola Konten</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li> <a href="<?php echo base_url() ?>Fasilitas"><i class="icon-notebook fa-fw"></i>Fasilitas</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Kegiatan"><i class="icon-notebook fa-fw"></i>Kegiatan</a> </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
