@@ -1,10 +1,10 @@
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-light fixed-top" id="nav" style="background-color: #1b9e56;">
     <div class="container" id="logo">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?= base_url(); ?>home/">
             <img src="<?php echo base_url() ?>assets/plugins/images/logomentariilmu.png" width="50" height="50" class="d-inline-block align-top" alt="">
         </a>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?= base_url(); ?>home/">
         Yayasan Mentari Ilmu
         </a>
 
@@ -20,7 +20,7 @@
                 <a class="nav-link" href="#">About Us</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="<?= base_url(); ?>home/sekolah" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Sekolah
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
@@ -31,20 +31,12 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-                </div>
-            </li>
+            
         </ul>
       </div>
     </div>
