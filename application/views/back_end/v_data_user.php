@@ -17,7 +17,7 @@
                                             <th style="text-align:center">Kelamin</th>
                                             <th style="text-align:center">Kontak</th>
                                             <th style="text-align:center">Email</th>
-                                            <th style="text-align:center">Tipe User</th>
+                                            <th style="text-align:center">Tipe User (Sekolah)</th>
                                             <th style="text-align:center"></th>
                                         </tr>
                                     </thead>
@@ -38,7 +38,7 @@
 
                                         // Kondisi Role User
                                         if ($_user->role_user == '2') {
-                                            $role_user = "Admin Sekolah";
+                                            $role_user = "Admin";
                                         }
                                         else{
                                             $role_user = '';
@@ -52,7 +52,7 @@
                                             <td><?php echo $kelamin; ?></td>
                                             <td><?php echo $_user->kontak; ?></td>
                                             <td><?php echo $_user->email; ?></td>
-                                            <td><?php echo $role_user; ?></td>
+                                            <td><?php echo $role_user; ?> (<?php echo $_user->nama_sekolah; ?>)</td>
                                             <td>
                                                 <center>                                                
                                                     <a href="<?php echo base_url() ?>User/get_data/<?php echo $_user->id_user; ?>"><button class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button></a>

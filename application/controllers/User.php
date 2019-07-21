@@ -15,8 +15,8 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");	
-        $data['data_user'] = $this->DataHandle->getAllWhere('tbl_user', '*', "status = '1' AND id_sekolah != '0'");		
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");	        
+        $data['data_user'] = $this->DataHandle->get_two('tbl_user', 'tbl_sekolah', '`tbl_user`.*,`tbl_sekolah`.nama as nama_sekolah', 'tbl_user.id_sekolah = tbl_sekolah.id_sekolah', "tbl_user.status = '1' AND tbl_user.id_sekolah != '0'");
         $this->template->back_end('back_end/v_data_user', $data);
     }
 
@@ -122,23 +122,29 @@ class User extends CI_Controller {
     public function edit()
     {
         $id_user = $this->session->userdata('id_user');
+        $id = $this->input->post('id_user');
+        $username = $this->input->post('username');
         $id_sekolah = $this->input->post('id_sekolah');
         $nama = $this->input->post('nama');
+        $jk = $this->input->post('jk');
         $alamat = $this->input->post('alamat');
         $kontak = $this->input->post('kontak');
-        $email = $this->input->post('email');        
+        $email = $this->input->post('email');     
 
         $edit_data = array(
-            'nama' => $nama,
-            'alamat' => $alamat,
-            'kontak' => $kontak,
-            'email' => $email,
-            'updated_by' => $id_user
+	        'username' => $username,
+	        'id_sekolah' => $id_sekolah,
+	        'nama' => $nama,
+	        'jk' => $jk,
+	        'alamat' => $alamat,
+	        'kontak' => $kontak,
+	        'email' => $email,
+	        'updated_by' => $id_user
          );
         $where = array(
-            'id_sekolah' => $id_sekolah
+            'id_user' => $id
          );
-        $this->DataHandle->edit('tbl_sekolah', $edit_data, $where);
+        $this->DataHandle->edit('tbl_user', $edit_data, $where);
 
         $this->session->set_flashdata('msg', '
         <div class="alert alert-success alert-dismissable">
