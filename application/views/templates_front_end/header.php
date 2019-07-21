@@ -9,8 +9,9 @@
 
   <!-- Bootstrap core CSS -->
   <link href="<?= base_url(); ?>assets/front_end/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  
   <!-- Custom styles for this template -->
   <link href="<?= base_url(); ?>assets/front_end/css/modern-business.css" rel="stylesheet">
-
+  <link href="<?= base_url(); ?>assets/front_end/css/style.css" rel="stylesheet">
+  
 </head>

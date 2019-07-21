@@ -1,0 +1,35 @@
+#nav {
+    height: 110px;
+    background: black;
+    display: block;
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+    transition: all ease .5s;
+  }
+  
+  #logo {
+    color: #ffffff;
+    padding: 20px;
+    font-size: 18px;
+    transition: all ease .5s;
+  }
+  
+  #hero {
+    height: 500px;
+    width: 100%;
+    background: url('http://community.lovenature.com/wp-content/uploads/sites/4/2016/08/jimi-hendrix.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  #nav.shrink {
+    height: 80px;
+    transition: all ease .5s;
+  }
+  
+  #nav.shrink #logo {
+    padding: 5px;
+    transition: all ease .5s;
+  }

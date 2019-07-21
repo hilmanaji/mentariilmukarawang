@@ -19,8 +19,20 @@
         <!-- Footer - End-->
 
      <!-- Bootstrap core JavaScript -->
-  <script src="<?= base_url(); ?>assets/front_end/vendor/jquery/jquery.min.js"></script>
-  <script src="<?= base_url(); ?>assets/front_end/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url(); ?>assets/front_end/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url(); ?>assets/front_end/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+	    $(window).scroll(function() {
+        if($(document).scrollTop() > 100) {
+                $('#nav').addClass('shrink');
+        }
+        else {
+            $('#nav').removeClass('shrink');
+        }
+        });
+        });
+    </script>
 
 </body>
 
