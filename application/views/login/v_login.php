@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/images/pendukung/logo_.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url(); ?>assets/images/pendukung/logo_.png"> -->
     <title>Yayasan Mentari Ilmu</title>
     <!-- ===== Bootstrap CSS ===== -->
     <link href="<?php echo base_url() ?>assets/default/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

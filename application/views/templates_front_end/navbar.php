@@ -1,177 +1,59 @@
-<nav class="navbar navbar-default navbar-static-top m-b-0">
-            <div class="navbar-header">
-                <a class="navbar-toggle font-20 hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="fa fa-bars"></i>
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="<?php echo base_url() ?>assets/plugins/images/logomentariilmu.png" width="50" height="50" class="d-inline-block align-top" alt="">
+            Start Bootstrap
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Portfolio
                 </a>
-                <div class="top-left-part">
-                    <a class="logo" href="index.html">
-                        <b>
-                            <img src="<?php echo base_url() ?>assets/plugins/images/logo.png" alt="home" />
-                        </b>
-                        <span>
-                            <img src="<?php echo base_url() ?>assets/plugins/images/logo-text.png" alt="homepage" class="dark-logo" />
-                        </span>
-                    </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
+                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
+                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
+                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
+                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
                 </div>
-                <ul class="nav navbar-top-links navbar-left hidden-xs">
-                    <li>
-                        <a href="javascript:void(0)" class="sidebartoggler font-20 waves-effect waves-light"><i class="icon-arrow-left-circle"></i></a>
-                    </li>
-                    <li>
-                        <form role="search" class="app-search hidden-xs">
-                            <i class="icon-magnifier"></i>
-                            <input type="text" placeholder="Search..." class="form-control">
-                        </form>
-                    </li>
-                </ul>
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
-                            <i class="icon-speech"></i>
-                            <span class="badge badge-xs badge-danger">6</span>
-                        </a>
-                        <ul class="dropdown-menu mailbox animated bounceInDown">
-                            <li>
-                                <div class="drop-title">You have 4 new messages</div>
-                            </li>
-                            <li>
-                                <div class="message-center">
-                                    <a href="javascript:void(0);">
-                                        <div class="user-img">
-                                            <img src="<?php echo base_url() ?>assets/plugins/images/users/1.jpg" alt="user" class="img-circle">
-                                            <span class="profile-status online pull-right"></span>
-                                        </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5>
-                                            <span class="mail-desc">Just see the my admin!</span>
-                                            <span class="time">9:30 AM</span>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="user-img">
-                                            <img src="<?php echo base_url() ?>assets/plugins/images/users/2.jpg" alt="user" class="img-circle">
-                                            <span class="profile-status busy pull-right"></span>
-                                        </div>
-                                        <div class="mail-contnet">
-                                            <h5>Sonu Nigam</h5>
-                                            <span class="mail-desc">I've sung a song! See you at</span>
-                                            <span class="time">9:10 AM</span>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="user-img">
-                                            <img src="<?php echo base_url() ?>assets/plugins/images/users/3.jpg" alt="user" class="img-circle"><span class="profile-status away pull-right"></span>
-                                        </div>
-                                        <div class="mail-contnet">
-                                            <h5>Arijit Sinh</h5>
-                                            <span class="mail-desc">I am a singer!</span>
-                                            <span class="time">9:08 AM</span>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="user-img">
-                                            <img src="<?php echo base_url() ?>assets/plugins/images/users/4.jpg" alt="user" class="img-circle">
-                                            <span class="profile-status offline pull-right"></span>
-                                        </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5>
-                                            <span class="mail-desc">Just see the my admin!</span>
-                                            <span class="time">9:02 AM</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="text-center" href="javascript:void(0);">
-                                    <strong>See all notifications</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
-                            <i class="icon-calender"></i>
-                            <span class="badge badge-xs badge-danger">3</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-tasks animated slideInUp">
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div>
-                                        <p>
-                                            <strong>Task 1</strong>
-                                            <span class="pull-right text-muted">40% Complete</span>
-                                        </p>
-                                        <div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                <span class="sr-only">40% Complete (success)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div>
-                                        <p>
-                                            <strong>Task 2</strong>
-                                            <span class="pull-right text-muted">20% Complete</span>
-                                        </p>
-                                        <div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                                <span class="sr-only">20% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div>
-                                        <p>
-                                            <strong>Task 3</strong>
-                                            <span class="pull-right text-muted">60% Complete</span>
-                                        </p>
-                                        <div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                                <span class="sr-only">60% Complete (warning)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div>
-                                        <p>
-                                            <strong>Task 4</strong>
-                                            <span class="pull-right text-muted">80% Complete</span>
-                                        </p>
-                                        <div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                                <span class="sr-only">80% Complete (danger)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="javascript:void(0);">
-                                    <strong>See All Tasks</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="right-side-toggle">
-                        <a class="right-side-toggler waves-effect waves-light b-r-0 font-20" href="javascript:void(0)">
-                            <i class="icon-settings"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Blog
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
+                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
+                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Other Pages
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
+                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
+                <a class="dropdown-item" href="faq.html">FAQ</a>
+                <a class="dropdown-item" href="404.html">404</a>
+                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
+                </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
