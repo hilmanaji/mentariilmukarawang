@@ -16,7 +16,7 @@ class Sekolah extends CI_Controller {
 	public function index()
 	{
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");		
-        $this->template->back_end('template_back_end/v_data_sekolah', $data);
+        $this->template->back_end('back_end/v_data_sekolah', $data);
 	}
 
 	public function add()

@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 	{
         // $data['permohonan'] = $this->DataHandle->get_order('ms_permohonan', 'status = 1','id');		
         // $this->template->back_end('v_data_user');
-        $this->load->view('v_login');
+        $this->load->view('login/v_login');
 	}
 
 	public function data_get()

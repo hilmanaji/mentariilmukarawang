@@ -16,6 +16,6 @@ class User extends CI_Controller {
 	public function index()
 	{
         // $data['permohonan'] = $this->DataHandle->get_order('ms_permohonan', 'status = 1','id');		
-        $this->template->back_end('template_back_end/v_data_user');
+        $this->template->back_end('back_end/v_data_user');
 	}
 }

@@ -100,7 +100,7 @@
     <!-- Custom Theme JavaScript -->
      <script src="<?php echo base_url() ?>assets/default/js/custom.js"></script>
     <!--Style Switcher -->
-    <script src="<?php echo base_url() ?>assets/plugins/components/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="<?php echo base_url() ?>asset/plugins/components/styleswitcher/jQuery.style.switcher.js"></script>
 
 
 
