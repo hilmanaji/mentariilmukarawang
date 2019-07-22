@@ -51,10 +51,20 @@
         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
         <div class="card-body">
             <h4 class="card-title">
-            <a href="#">Project One</a>
+            <?php
+            
+            foreach ($data_sekolah->result() as $_sekolah) { ?>
+            <a href="#"><?php echo $_sekolah->nama; ?></a>
             </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-        </div>
+            <p class="card-text">
+            <?php echo $_sekolah->alamat; ?>
+            <?php echo $_sekolah->kontak; ?>
+            <?php echo $_sekolah->email; ?>
+            </div>
+            <?php 
+            
+            }
+            ?>
         </div>
     </div>
     <div class="col-lg-4 col-sm-6 portfolio-item">

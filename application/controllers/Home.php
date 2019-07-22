@@ -5,7 +5,8 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->front_end('front_end/v_home');
+		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
+		$this->template->front_end('front_end/v_home', $data);
 	}
 
 	public function welcome()
