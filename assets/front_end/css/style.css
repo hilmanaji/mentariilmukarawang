@@ -1,6 +1,6 @@
 #nav {
     height: 110px;
-    background: black;
+    background: #ffffff;
     display: block;
     position: fixed;
     width: 100%;
@@ -24,4 +24,12 @@
   #nav.shrink #logo {
     padding: 5px;
     transition: all ease .5s;
+  }
+
+  .navbar-brand {
+    color: #ffffff;
+  }
+
+  .nav-link {
+    color: #ffffff;
   }

@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light fixed-top" id="nav" style="background-color: #1b9e56;">
+<nav class="navbar fixed-top navbar-expand-lg" id="nav" style="background-color: #1b9e56;">
     <div class="container" id="logo">
         <a class="navbar-brand" href="<?= base_url(); ?>home/">
             <img src="<?php echo base_url() ?>assets/plugins/images/logomentariilmu.png" width="50" height="50" class="d-inline-block align-top" alt="">
