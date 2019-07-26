@@ -5,7 +5,7 @@
                             <!-- <p class="text-muted m-b-30">Master Data Sekolah</p> -->
                             <h3 class="box-title m-b-0">Master Data Fasilitas</h3>
                             <br>
-                            <p style="text-align:right"><button data-toggle="modal" data-target="#myModalAdd" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus m-l-5"></i> Data Fasilitas</button></p>
+                            <p style="text-align:right"><a href="<?php echo base_url() ?>Fasilitas/form_add"><button class="btn btn-success waves-effect waves-light"><i class="fa fa-plus m-l-5"></i> Data Fasilitas</button></a></p>
                             <div class="table-responsive">
                                 <table id="myTable" class="table table-striped display">
                                     <thead>
@@ -13,17 +13,26 @@
                                             <th style="text-align:center">No.</th>
                                             <th style="text-align:center">Nama Sekolah</th>
                                             <th style="text-align:center">Nama Fasilitas</th>
+                                            <th style="text-align:center">Gambar</th>
                                             <th style="text-align:center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                     $no=1;
-                                    foreach ($data_fasilitas->result() as $_fasilitas) { ?>
+                                    foreach ($data_fasilitas->result() as $_fasilitas) { 
+                                        if ($_fasilitas->value == "") {
+                                            $gambar = '--Tidak Ada Gambar--';
+                                        }
+                                        else{
+                                            $gambar = "<img src='".base_url()."assets/plugins/images/image/".$_fasilitas->value."' style='max-width:70%;max-height:70%;'>";
+                                        }
+                                        ?>
                                         <tr>
                                             <td style="text-align:center"><?php echo $no; ?></td>
                                             <td><?php echo $_fasilitas->nama_sekolah; ?></td>
                                             <td><?php echo $_fasilitas->nama_fasilitas; ?></td>
+                                            <td style="text-align:center"><?php echo $gambar ?></td>
                                             <td>
                                                 <center>                                                
                                                     <a href="<?php echo base_url() ?>Fasilitas/get_data/<?php echo $_fasilitas->id_fasilitas; ?>"><button class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button></a>
@@ -46,42 +55,3 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- MODAL ADD -->
-                <div id="myModalAdd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" id="myModalLabel">Tambah Data Fasilitas</h4> </div>
-                            <div class="modal-body">
-                            <div class="row">
-                                <div class="col-sm-12 col-xs-12">
-                                    <form method="post" action="<?php echo base_url() ?>Fasilitas/add">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Nama Fasilitas</label>
-                                            <input type="text" class="form-control" name="nama_fasilitas" required> 
-                                        </div>
-                                        <div class="form-group">                                            
-                                            <label for="exampleInputEmail1">Sekolah</label>
-                                            <select class="form-control" name="id_sekolah">
-                                    <?php                                     
-                                    foreach ($data_sekolah->result() as $_sekolah) { ?>
-                                                <option value="<?php echo $_sekolah->id_sekolah ?>"><?php echo $_sekolah->nama ?></option>
-                                    <?php 
-                                    } 
-                                    ?> 
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Tambah</button>
-                                        <button type="reset" class="btn btn-inverse waves-effect waves-light">Batal</button>
-                                    </form>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- MODAL ADD END -->
