@@ -12,7 +12,7 @@
                                         <tr>
                                             <th style="text-align:center">No.</th>
                                             <th style="text-align:center">Nama Sekolah</th>
-                                            <th style="text-align:center">Nama Kegiatan</th>
+                                            <th style="text-align:center">Nama Fasilitas</th>
                                             <th style="text-align:center">Aksi</th>
                                         </tr>
                                     </thead>
