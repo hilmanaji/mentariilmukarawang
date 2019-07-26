@@ -12,6 +12,8 @@
     <!-- ===== Plugin CSS ===== -->
     <link href="<?php echo base_url() ?>assets/plugins/components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/components/html5-editor/bootstrap-wysihtml5.css" />
+    <link href=".<?php echo base_url() ?>assets/plugins/components/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <!-- ===== Animation CSS ===== -->
     <link href="<?php echo base_url() ?>assets/default/css/animate.css" rel="stylesheet">
     <!-- ===== Custom CSS ===== -->

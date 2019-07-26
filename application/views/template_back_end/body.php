@@ -108,6 +108,16 @@
          return true;
       }
 </script>
+<!-- PLUGIN WYSI -->
+    <script src="<?php echo base_url() ?>assets/plugins/components/html5-editor/wysihtml5-0.3.0.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/components/html5-editor/bootstrap-wysihtml5.js"></script>
+    <script src="<?php echo base_url() ?>assets/plugins/components/dropzone-master/dist/dropzone.js"></script>
+    <script>
+    $(function() {
+        $('.textarea_editor').wysihtml5();
+    });
+    </script>
+<!-- PLUGIN WYSI END -->
 </body>
 
 </html>
