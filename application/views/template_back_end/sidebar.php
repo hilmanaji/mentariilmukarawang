@@ -38,6 +38,7 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li> <a href="<?php echo base_url() ?>Fasilitas"><i class="icon-notebook fa-fw"></i>Fasilitas</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Kegiatan"><i class="icon-notebook fa-fw"></i>Kegiatan</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Artikel"><i class="icon-notebook fa-fw"></i>Artikel</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Profile"><i class="icon-notebook fa-fw"></i>Profile Sekolah</a> </li>
                             </ul>
                         </li>
