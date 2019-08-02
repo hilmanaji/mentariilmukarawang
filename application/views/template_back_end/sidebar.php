@@ -12,7 +12,7 @@
                             </a>
                             <ul class="dropdown-menu animated flipInY">
                                 <li><a href="<?php echo base_url() ?>Profil"><i class="fa fa-user"></i> Profil</a></li>
-                                <li><a href="javascript:void(0);"><i class="fa fa-inbox"></i> Buku Tamu</a></li>
+                                <li><a href="<?php echo base_url() ?>Tamu"><i class="fa fa-inbox"></i> Buku Tamu</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="<?php echo base_url() ?>Login/logout"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
