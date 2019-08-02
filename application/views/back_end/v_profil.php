@@ -71,11 +71,11 @@
                                             </div> 
                                             <div class="form-group" id="f_new_password" >
                                                 <label for="exampleInputEmail1">Password Baru</label>
-                                                <input type="text" id="password" placeholder="kosongkan bila tidak ingin diubah..." class="form-control" name="password"> 
+                                                <input type="password" id="password" placeholder="kosongkan bila tidak ingin diubah..." class="form-control" name="password"> 
                                             </div>
                                             <div class="form-group" id="f_re_password" s>
                                                 <label for="exampleInputEmail1">Re-Type Password</label>
-                                                <input type="text" id="retypepassword" placeholder="kosongkan bila tidak ingin diubah..." class="form-control" name="retypepassword" > 
+                                                <input type="password" id="retypepassword" placeholder="kosongkan bila tidak ingin diubah..." class="form-control" name="retypepassword" > 
                                             </div>
                                             <div class="form-group">
                                                 <p>
