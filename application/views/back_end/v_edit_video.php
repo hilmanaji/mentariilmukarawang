@@ -7,7 +7,6 @@
         $id_sekolah = $_video->id_sekolah;
     }
 ?>
-
         <div class="row">
             <div class="col-sm-12">
                     <div class="modal-dialog">
