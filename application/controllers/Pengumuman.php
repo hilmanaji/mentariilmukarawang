@@ -15,7 +15,7 @@ class Pengumuman extends CI_Controller {
 
     public function index()
     {
-        $data['data_pengumuman'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.created_at, tbl_pengumuman.updated_at, tbl_pengumuman.created_by, tbl_pengumuman.updated_by, tbl_pengumuman.`status` FROM tbl_pengumuman LEFT OUTER JOIN tbl_galeri ON tbl_pengumuman.id_pengumuman = tbl_galeri.id_ref WHERE tbl_pengumuman.`status` = '1'   ORDER BY tbl_pengumuman.id_pengumuman DESC");      
+        $data['data_pengumuman'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.value FROM  tbl_pengumuman WHERE tbl_pengumuman.`status` = '1' ORDER BY tbl_pengumuman.id_pengumuman DESC");      
         $this->template->back_end('back_end/v_data_pengumuman', $data);
     }
 
@@ -130,7 +130,7 @@ class Pengumuman extends CI_Controller {
         $where = array(
             'id_pengumuman' => $id_pengumuman
          );
-        $data['data_pengumuman'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.`status`, tbl_galeri.ket, tbl_galeri.`value` FROM tbl_pengumuman LEFT OUTER JOIN tbl_galeri ON tbl_pengumuman.id_pengumuman= tbl_galeri.id_ref  WHERE tbl_pengumuman.`status` = '1' AND tbl_pengumuman.`id_pengumuman` = '".$id_pengumuman."'");
+        $data['data_pengumuman'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.value FROM  tbl_pengumuman WHERE tbl_pengumuman.`status` = '1' AND tbl_pengumuman.`id_pengumuman` = '".$id_pengumuman."'");
         $this->template->back_end('back_end/v_edit_pengumuman', $data);
     }
 
@@ -154,43 +154,35 @@ class Pengumuman extends CI_Controller {
 
             $this->upload->initialize($this->set_upload_options());
             if ($this->upload->do_upload()) {
-                $dataInfo = $this->upload->data();         
-                // DATA EDIT ARTIKEL
-                $edit_data = array(
-                    'isi_pengumuman' => $isi_pengumuman,
-                    'judul' => $judul,
-                    'updated_by' => $id_user
-                 );
-                $where = array(
-                    'id_pengumuman' => $id_pengumuman
-                 );
-                $this->DataHandle->edit('tbl_pengumuman', $edit_data, $where);    
+                $dataInfo = $this->upload->data(); 
 
                 // JIKA GAMBAR TIDAK ADA
-                if ($gambar_lama == "") {
-                    // DATA INPUT GALERI
-                    $input_galeri = array(
-                        'id_sekolah' => '',
+                if ($gambar_lama == "") {   
+                    // DATA EDIT PENGUMUMAN
+                    $edit_data = array(
+                        'isi_pengumuman' => $isi_pengumuman,
+                        'judul' => $judul,
                         'value' => $dataInfo['file_name'],
-                        'id_ref' => $id_pengumuman,
-                        'ket' => 'Pengumuman',
-                        'status' => 1,
-                        'created_by' => $id_user
-                     );    
-                    $this->DataHandle->insert('tbl_galeri', $input_galeri); 
+                        'updated_by' => $id_user
+                     );
+                    $where = array(
+                        'id_pengumuman' => $id_pengumuman
+                     );
+                    $this->DataHandle->edit('tbl_pengumuman', $edit_data, $where);   
                 }
                 // JIKA GAMBAR ADA
                 else{
                     // DATA EDIT GALERI
-                    $edit_galeri = array(
+                    $edit_data = array(
+                        'isi_pengumuman' => $isi_pengumuman,
+                        'judul' => $judul,
                         'value' => $dataInfo['file_name'],
                         'updated_by' => $id_user
-                     );    
-                    $where2 = array(
-                        'id_ref' => $id_pengumuman,
-                        'ket' => 'Pengumuman'
                      );
-                    $this->DataHandle->edit('tbl_galeri', $edit_galeri, $where2); 
+                    $where = array(
+                        'id_pengumuman' => $id_pengumuman
+                     );
+                    $this->DataHandle->edit('tbl_pengumuman', $edit_data, $where);   
                     unlink('./assets/plugins/images/image/'.$gambar_lama);
                 }   
                 // HAPUS GAMBAR LAMA   

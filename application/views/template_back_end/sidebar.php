@@ -35,10 +35,11 @@
                             <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-social-dropbox fa-fw"></i> <span class="hide-menu"> Kelola Konten</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li> <a href="<?php echo base_url() ?>Profile"><i class="icon-notebook fa-fw"></i>Profile Sekolah</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Fasilitas"><i class="icon-notebook fa-fw"></i>Fasilitas</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Kegiatan"><i class="icon-notebook fa-fw"></i>Kegiatan</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Artikel"><i class="icon-notebook fa-fw"></i>Artikel</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Pengumuman"><i class="icon-notebook fa-fw"></i>Pengumuman</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Fasilitas"><i class="icon-briefcase fa-fw"></i>Fasilitas</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Kegiatan"><i class="icon-bubbles fa-fw"></i>Kegiatan</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Artikel"><i class="icon-note fa-fw"></i>Artikel</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Pengumuman"><i class="icon-speech fa-fw"></i>Pengumuman</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Video"><i class="icon-social-youtube fa-fw"></i>Video</a> </li>
                             </ul>
                         </li>
                     </ul>
