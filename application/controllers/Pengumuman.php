@@ -15,24 +15,21 @@ class Pengumuman extends CI_Controller {
 
     public function index()
     {
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
-        $data['data_artikel'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_artikel.id_artikel, tbl_artikel.judul_artikel, tbl_artikel.isi, tbl_artikel.`status`, tbl_galeri.ket, tbl_galeri.`value` FROM tbl_artikel LEFT OUTER JOIN tbl_galeri ON tbl_artikel.id_artikel = tbl_galeri.id_ref INNER JOIN tbl_sekolah ON tbl_artikel.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_artikel.`status` = '1'");      
-        $this->template->back_end('back_end/v_data_artikel', $data);
+        $data['data_pengumuman'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.created_at, tbl_pengumuman.updated_at, tbl_pengumuman.created_by, tbl_pengumuman.updated_by, tbl_pengumuman.`status` FROM tbl_pengumuman LEFT OUTER JOIN tbl_galeri ON tbl_pengumuman.id_pengumuman = tbl_galeri.id_ref WHERE tbl_pengumuman.`status` = '1'   ORDER BY tbl_pengumuman.id_pengumuman DESC");      
+        $this->template->back_end('back_end/v_data_pengumuman', $data);
     }
 
     public function form_add()
     {
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
-        $this->template->back_end('back_end/v_add_artikel', $data);
+        $this->template->back_end('back_end/v_add_pengumuman');
     }
 
     public function add()
     {
         $this->load->library('upload'); //pemanggilan library upload
         $id_user = $this->session->userdata('id_user');
-        $id_sekolah = $this->input->post('id_sekolah');
-        $isi = $this->input->post('isi');
-        $judul_artikel = $this->input->post('judul_artikel');
+        $isi_pengumuman = $this->input->post('isi_pengumuman');
+        $judul = $this->input->post('judul');
 
         // KONDISI GAMBAR ADA
         if ($_FILES['userfile']['name'] != NULL) {
@@ -48,22 +45,20 @@ class Pengumuman extends CI_Controller {
             if ($this->upload->do_upload()) {
                 $dataInfo = $this->upload->data();         
                 // DATA INPUT ARTIKEL
-                $input_artikel = array(
-                    'id_sekolah' => $id_sekolah,
-                    'isi' => $isi,
-                    'judul_artikel' => $judul_artikel,
+                $input_pengumuman = array(
+                    'isi_pengumuman' => $isi_pengumuman,
+                    'judul' => $judul,
                     'status' => 1,
                     'created_by' => $id_user
                  );
-                $this->DataHandle->insert('tbl_artikel', $input_artikel);    
-                $get_id_artikel = $this->DataHandle->get_last_id();        
+                $this->DataHandle->insert('tbl_pengumuman', $input_pengumuman);    
+                $get_id_pengumuman = $this->DataHandle->get_last_id();        
 
                 // DATA INPUT GALERI
                 $input_galeri = array(
-                    'id_sekolah' => $id_sekolah,
                     'value' => $dataInfo['file_name'],
-                    'id_ref' => $get_id_artikel,
-                    'ket' => 'Artikel',
+                    'id_ref' => $get_id_pengumuman,
+                    'ket' => 'Pengumuman',
                     'status' => 1,
                     'created_by' => $id_user
                  );    
@@ -72,9 +67,9 @@ class Pengumuman extends CI_Controller {
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                     &times;</button>
-                    <i class="fa fa-check m-l-5"></i> Data Berhasil Ditambahkan ... 
+                    <i class="fa fa-check m-l-5"></i> Data Pengumuman Berhasil Ditambahkan ... 
                 </div>');  
-                redirect('Artikel');   
+                redirect('Pengumuman');   
 
             }
             else{
@@ -82,35 +77,34 @@ class Pengumuman extends CI_Controller {
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                     &times;</button>
-                    <i class="fa fa-check m-l-5"></i> Gambar Bermasalah !!!!
+                    <i class="fa fa-check m-l-5"></i> Gambar / File Bermasalah !!!!
                 </div>');  
 
-                redirect('Artikel');
+                redirect('Pengumuman');
             }
             
         }
         // KONDISI GAMBAR KOSONG
         else{
             // DATA INPUT ARTIKEL
-            $input_artikel = array(
-                'id_sekolah' => $id_sekolah,
-                'isi' => $isi,
-                'judul_artikel' => $judul_artikel,
+            $input_pengumuman = array(
+                'isi_pengumuman' => $isi_pengumuman,
+                'judul' => $judul,
                 'status' => 1,
                 'created_by' => $id_user
              );
-            $this->DataHandle->insert('tbl_artikel', $input_artikel);  
+            $this->DataHandle->insert('tbl_pengumuman', $input_pengumuman);  
             $this->session->set_flashdata('msg', '
             <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                 &times;</button>
-                <i class="fa fa-check m-l-5"></i> Data Berhasil Ditambahkan ... 
+                <i class="fa fa-check m-l-5"></i> Data Pengumuman Berhasil Ditambahkan ... 
             </div>');  
-            redirect('Artikel');   
+            redirect('Pengumuman');   
         }    
     }
 
-    public function delete($id_artikel)
+    public function delete($id_pengumuman)
     {
         $id_user = $this->session->userdata('id_user');
         $data = array(
@@ -118,36 +112,34 @@ class Pengumuman extends CI_Controller {
             'updated_by' => $id_user
          );
         $where = array(
-            'id_artikel' => $id_artikel
+            'id_pengumuman' => $id_pengumuman
          );
-        $this->DataHandle->edit('tbl_artikel', $data, $where);
+        $this->DataHandle->edit('tbl_pengumuman', $data, $where);
 
         $this->session->set_flashdata('msg', '
         <div class="alert alert-warning alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
             &times;</button>
-            <i class="fa fa-check m-l-5"></i> Data Berhasil Dihapus ... 
+            <i class="fa fa-check m-l-5"></i> Data Pengumuman Berhasil Dihapus ... 
         </div>');  
 
-        redirect('Artikel');     
+        redirect('Pengumuman');     
     }
 
-    public function get_data($id_artikel){
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'"); 
+    public function get_data($id_pengumuman){
         $where = array(
-            'id_artikel' => $id_artikel
+            'id_pengumuman' => $id_pengumuman
          );
-        $data['data_artikel'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_artikel.id_sekolah, tbl_artikel.id_artikel, tbl_artikel.judul_artikel, tbl_artikel.isi, tbl_artikel.`status`, tbl_galeri.ket, tbl_galeri.`value` FROM tbl_artikel LEFT OUTER JOIN tbl_galeri ON tbl_artikel.id_artikel = tbl_galeri.id_ref INNER JOIN tbl_sekolah ON tbl_artikel.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_artikel.`status` = '1' AND tbl_artikel.`id_artikel` = '".$id_artikel."'");
-        $this->template->back_end('back_end/v_edit_artikel', $data);
+        $data['data_pengumuman'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.`status`, tbl_galeri.ket, tbl_galeri.`value` FROM tbl_pengumuman LEFT OUTER JOIN tbl_galeri ON tbl_pengumuman.id_pengumuman= tbl_galeri.id_ref  WHERE tbl_pengumuman.`status` = '1' AND tbl_pengumuman.`id_pengumuman` = '".$id_pengumuman."'");
+        $this->template->back_end('back_end/v_edit_pengumuman', $data);
     }
 
     public function edit(){
         $this->load->library('upload'); //pemanggilan library upload
         $id_user = $this->session->userdata('id_user');
-        $id_sekolah = $this->input->post('id_sekolah');
-        $id_artikel = $this->input->post('id_artikel'); 
-        $isi = $this->input->post('isi');
-        $judul_artikel = $this->input->post('judul_artikel');
+        $id_pengumuman = $this->input->post('id_pengumuman'); 
+        $isi_pengumuman = $this->input->post('isi_pengumuman');
+        $judul = $this->input->post('judul');
 
         // KONDISI GAMBAR ADA
         if ($_FILES['userfile']['name'] != NULL) {
@@ -165,24 +157,23 @@ class Pengumuman extends CI_Controller {
                 $dataInfo = $this->upload->data();         
                 // DATA EDIT ARTIKEL
                 $edit_data = array(
-                    'id_sekolah' => $id_sekolah,
-                    'isi' => $isi,
-                    'judul_artikel' => $judul_artikel,
+                    'isi_pengumuman' => $isi_pengumuman,
+                    'judul' => $judul,
                     'updated_by' => $id_user
                  );
                 $where = array(
-                    'id_artikel' => $id_artikel
+                    'id_pengumuman' => $id_pengumuman
                  );
-                $this->DataHandle->edit('tbl_artikel', $edit_data, $where);    
+                $this->DataHandle->edit('tbl_pengumuman', $edit_data, $where);    
 
                 // JIKA GAMBAR TIDAK ADA
                 if ($gambar_lama == "") {
                     // DATA INPUT GALERI
                     $input_galeri = array(
-                        'id_sekolah' => $id_sekolah,
+                        'id_sekolah' => '',
                         'value' => $dataInfo['file_name'],
-                        'id_ref' => $id_artikel,
-                        'ket' => 'Artikel',
+                        'id_ref' => $id_pengumuman,
+                        'ket' => 'Pengumuman',
                         'status' => 1,
                         'created_by' => $id_user
                      );    
@@ -196,8 +187,8 @@ class Pengumuman extends CI_Controller {
                         'updated_by' => $id_user
                      );    
                     $where2 = array(
-                        'id_ref' => $id_artikel,
-                        'ket' => 'Artikel'
+                        'id_ref' => $id_pengumuman,
+                        'ket' => 'Pengumuman'
                      );
                     $this->DataHandle->edit('tbl_galeri', $edit_galeri, $where2); 
                     unlink('./assets/plugins/images/image/'.$gambar_lama);
@@ -209,7 +200,7 @@ class Pengumuman extends CI_Controller {
                     &times;</button>
                 <i class="fa fa-check m-l-5"></i> Data Berhasil Perbaharui ... 
                 </div>');  
-                redirect('Artikel');   
+                redirect('Pengumuman');   
 
             }
             else{
@@ -220,7 +211,7 @@ class Pengumuman extends CI_Controller {
                     <i class="fa fa-check m-l-5"></i> Gambar Bermasalah !!!!
                 </div>');  
 
-                redirect('Artikel');
+                redirect('Pengumuman');
             }
             
         }
@@ -228,22 +219,21 @@ class Pengumuman extends CI_Controller {
         else{
             // DATA EDIT ARTIKEL
             $edit_data = array(
-                'id_sekolah' => $id_sekolah,
-                'isi' => $isi,
-                'judul_artikel' => $judul_artikel,
+                'isi_pengumuman' => $isi_pengumuman,
+                'judul' => $judul,
                 'updated_by' => $id_user
              );
             $where = array(
-                'id_artikel' => $id_artikel
+                'id_pengumuman' => $id_pengumuman
              );
-            $this->DataHandle->edit('tbl_artikel', $edit_data, $where);
+            $this->DataHandle->edit('tbl_pengumuman', $edit_data, $where);
             $this->session->set_flashdata('msg', '
             <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                 &times;</button>
                 <i class="fa fa-check m-l-5"></i> Data Berhasil Perbaharui ... 
             </div>');  
-            redirect('Artikel');   
+            redirect('Pengumuman');   
         }   
     }
 

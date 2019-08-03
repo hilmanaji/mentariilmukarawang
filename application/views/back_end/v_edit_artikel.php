@@ -13,12 +13,14 @@
                 <div class="row">
                     <!-- Left sidebar -->
                     <div class="col-md-12">
+                                    <a href="<?php echo base_url() ?>Artikel"><button class="btn btn-default"><i class="fa fa-times"></i> Batal</button></a>
+                                    <br>
+                                    <br>
                         <div class="white-box">
                             <div class="row">
                                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
-                                    <a href="<?php echo base_url() ?>Artikel"><button class="btn btn-default"><i class="fa fa-times"></i> Batal</button></a>
                                     <form enctype="multipart/form-data" action="<?php echo base_url() ?>Artikel/edit" method="post" class="form-horizontal row-fluid">
-                                        <h3 class="box-title">Tambah Artikel</h3>
+                                        <h3 class="box-title">Edit Artikel</h3>
                                         <div class="form-group">                                            
                                             <label for="exampleInputEmail1">Sekolah</label>
                                             <select class="form-control" name="id_sekolah">

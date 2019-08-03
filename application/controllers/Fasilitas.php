@@ -16,7 +16,7 @@ class Fasilitas extends CI_Controller {
 	public function index()
 	{
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");          
-        $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_fasilitas.id_fasilitas, tbl_fasilitas.nama_fasilitas,  tbl_fasilitas.`status`, tbl_galeri.ket, tbl_galeri.`value` FROM tbl_fasilitas LEFT OUTER JOIN tbl_galeri ON tbl_fasilitas.id_fasilitas = tbl_galeri.id_ref INNER JOIN tbl_sekolah ON tbl_fasilitas.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1'");		
+        $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_fasilitas.id_fasilitas, tbl_sekolah.id_sekolah, tbl_fasilitas.nama_fasilitas,  tbl_fasilitas.`status`, tbl_fasilitas.`value` FROM tbl_fasilitas INNER JOIN tbl_sekolah ON tbl_fasilitas.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1'");		
         $this->template->back_end('back_end/v_data_fasilitas', $data);
     }
 
@@ -50,21 +50,11 @@ class Fasilitas extends CI_Controller {
                     'id_sekolah' => $id_sekolah,
                     'nama_fasilitas' => $nama_fasilitas,
                     'status' => 1,
-                    'created_by' => $id_user
+                    'created_by' => $id_user,
+                    'value' => $dataInfo['file_name']
                  );
                 $this->DataHandle->insert('tbl_fasilitas', $input_data);    
-                $get_id = $this->DataHandle->get_last_id();        
-
-                // DATA INPUT GALERI
-                $input_galeri = array(
-                    'id_sekolah' => $id_sekolah,
-                    'value' => $dataInfo['file_name'],
-                    'id_ref' => $get_id,
-                    'ket' => 'Fasilitas',
-                    'status' => 1,
-                    'created_by' => $id_user
-                 );    
-                $this->DataHandle->insert('tbl_galeri', $input_galeri);  
+  
                 $this->session->set_flashdata('msg', '
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
@@ -133,7 +123,7 @@ class Fasilitas extends CI_Controller {
         $where = array(
             'id_fasilitas' => $id_fasilitas
          );
-        $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.id_sekolah, tbl_fasilitas.id_fasilitas, tbl_fasilitas.nama_fasilitas,  tbl_fasilitas.`status`, tbl_galeri.ket, tbl_galeri.`value` FROM tbl_fasilitas LEFT OUTER JOIN tbl_galeri ON tbl_fasilitas.id_fasilitas = tbl_galeri.id_ref INNER JOIN tbl_sekolah ON tbl_fasilitas.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1' AND tbl_fasilitas.id_fasilitas ='".$id_fasilitas."'");
+        $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_fasilitas.id_fasilitas, tbl_sekolah.id_sekolah, tbl_fasilitas.nama_fasilitas,  tbl_fasilitas.`status`, tbl_fasilitas.`value` FROM tbl_fasilitas INNER JOIN tbl_sekolah ON tbl_fasilitas.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1' AND tbl_fasilitas.id_fasilitas ='".$id_fasilitas."'");
         $this->template->back_end('back_end/v_edit_fasilitas', $data);
     }
 
@@ -157,44 +147,35 @@ class Fasilitas extends CI_Controller {
 
             $this->upload->initialize($this->set_upload_options());
             if ($this->upload->do_upload()) {
-                $dataInfo = $this->upload->data();         
-                // DATA EDIT ARTIKEL
-                $edit_data = array(
-                    'id_sekolah' => $id_sekolah,
-                    'nama_fasilitas' => $nama_fasilitas,
-                    'updated_by' => $id_user
-                 );
-                $where = array(
-                    'id_fasilitas' => $id_fasilitas
-                 );
-                $this->DataHandle->edit('tbl_fasilitas', $edit_data, $where);
+                $dataInfo = $this->upload->data(); 
 
                 // JIKA GAMBAR TIDAK ADA
-                if ($gambar_lama == "") {
-                    // DATA INPUT GALERI
-                    $input_galeri = array(
+                if ($gambar_lama == "") {      
+                    // DATA EDIT FASILITAS
+                    $edit_data = array(
                         'id_sekolah' => $id_sekolah,
                         'value' => $dataInfo['file_name'],
-                        'id_ref' => $id_fasilitas,
-                        'ket' => 'Fasilitas',
-                        'status' => 1,
-                        'created_by' => $id_user
-                     );    
-                    $this->DataHandle->insert('tbl_galeri', $input_galeri); 
+                        'nama_fasilitas' => $nama_fasilitas,
+                        'updated_by' => $id_user
+                     );
+                    $where = array(
+                        'id_fasilitas' => $id_fasilitas
+                     );
+                    $this->DataHandle->edit('tbl_fasilitas', $edit_data, $where);
                 }
                 // JIKA GAMBAR ADA
                 else{
-                    // DATA EDIT GALERI
-                    $edit_galeri = array(
+                    // DATA EDIT FASILITAS
+                    $edit_data = array(
+                        'id_sekolah' => $id_sekolah,
                         'value' => $dataInfo['file_name'],
+                        'nama_fasilitas' => $nama_fasilitas,
                         'updated_by' => $id_user
-                     );    
-                    $where2 = array(
-                        'id_ref' => $id_fasilitas,
-                        'ket' => 'Fasilitas'
                      );
-                    $this->DataHandle->edit('tbl_galeri', $edit_galeri, $where2); 
-                    unlink('./assets/plugins/images/image/'.$gambar_lama);
+                    $where = array(
+                        'id_fasilitas' => $id_fasilitas
+                     );
+                    $this->DataHandle->edit('tbl_fasilitas', $edit_data, $where);
                 }   
                 // HAPUS GAMBAR LAMA   
                 $this->session->set_flashdata('msg', '
@@ -220,7 +201,7 @@ class Fasilitas extends CI_Controller {
         }
         // KONDISI GAMBAR KOSONG
         else{
-            // DATA EDIT ARTIKEL
+            // DATA EDIT Fasilitas
         $edit_data = array(
             'id_sekolah' => $id_sekolah,
             'nama_fasilitas' => $nama_fasilitas,

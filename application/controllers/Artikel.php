@@ -16,7 +16,7 @@ class Artikel extends CI_Controller {
     public function index()
     {
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
-        $data['data_artikel'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_artikel.id_artikel, tbl_artikel.judul_artikel, tbl_artikel.isi, tbl_artikel.`status`, tbl_galeri.ket, tbl_galeri.`value` FROM tbl_artikel LEFT OUTER JOIN tbl_galeri ON tbl_artikel.id_artikel = tbl_galeri.id_ref INNER JOIN tbl_sekolah ON tbl_artikel.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_artikel.`status` = '1'");      
+        $data['data_artikel'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_sekolah.id_sekolah, tbl_artikel.id_artikel, tbl_artikel.judul_artikel, tbl_artikel.isi, tbl_artikel.`status`, tbl_artikel.`value` FROM tbl_artikel INNER JOIN tbl_sekolah ON tbl_artikel.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_artikel.`status` = '1'");      
         $this->template->back_end('back_end/v_data_artikel', $data);
     }
 
@@ -51,23 +51,12 @@ class Artikel extends CI_Controller {
                 $input_artikel = array(
                     'id_sekolah' => $id_sekolah,
                     'isi' => $isi,
+                    'value' => $dataInfo['file_name'],
                     'judul_artikel' => $judul_artikel,
                     'status' => 1,
                     'created_by' => $id_user
                  );
                 $this->DataHandle->insert('tbl_artikel', $input_artikel);    
-                $get_id_artikel = $this->DataHandle->get_last_id();        
-
-                // DATA INPUT GALERI
-                $input_galeri = array(
-                    'id_sekolah' => $id_sekolah,
-                    'value' => $dataInfo['file_name'],
-                    'id_ref' => $get_id_artikel,
-                    'ket' => 'Artikel',
-                    'status' => 1,
-                    'created_by' => $id_user
-                 );    
-                $this->DataHandle->insert('tbl_galeri', $input_galeri);  
                 $this->session->set_flashdata('msg', '
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
@@ -137,7 +126,7 @@ class Artikel extends CI_Controller {
         $where = array(
             'id_artikel' => $id_artikel
          );
-        $data['data_artikel'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_artikel.id_sekolah, tbl_artikel.id_artikel, tbl_artikel.judul_artikel, tbl_artikel.isi, tbl_artikel.`status`, tbl_galeri.ket, tbl_galeri.`value` FROM tbl_artikel LEFT OUTER JOIN tbl_galeri ON tbl_artikel.id_artikel = tbl_galeri.id_ref INNER JOIN tbl_sekolah ON tbl_artikel.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_artikel.`status` = '1' AND tbl_artikel.`id_artikel` = '".$id_artikel."'");
+        $data['data_artikel'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_sekolah.id_sekolah, tbl_artikel.id_artikel, tbl_artikel.judul_artikel, tbl_artikel.isi, tbl_artikel.`status`, tbl_artikel.`value` FROM tbl_artikel INNER JOIN tbl_sekolah ON tbl_artikel.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_artikel.`status` = '1' AND tbl_artikel.`id_artikel` = '".$id_artikel."'");
         $this->template->back_end('back_end/v_edit_artikel', $data);
     }
 
@@ -177,29 +166,32 @@ class Artikel extends CI_Controller {
 
                 // JIKA GAMBAR TIDAK ADA
                 if ($gambar_lama == "") {
-                    // DATA INPUT GALERI
-                    $input_galeri = array(
+                    // DATA EDIT ARTIKEL
+                    $edit_data = array(
                         'id_sekolah' => $id_sekolah,
+                        'isi' => $isi,
                         'value' => $dataInfo['file_name'],
-                        'id_ref' => $id_artikel,
-                        'ket' => 'Artikel',
-                        'status' => 1,
-                        'created_by' => $id_user
-                     );    
-                    $this->DataHandle->insert('tbl_galeri', $input_galeri); 
+                        'judul_artikel' => $judul_artikel,
+                        'updated_by' => $id_user
+                     );
+                    $where = array(
+                        'id_artikel' => $id_artikel
+                     );
+                    $this->DataHandle->edit('tbl_artikel', $edit_data, $where);
                 }
                 // JIKA GAMBAR ADA
-                else{
-                    // DATA EDIT GALERI
-                    $edit_galeri = array(
+                else{            // DATA EDIT ARTIKEL
+                    $edit_data = array(
+                        'id_sekolah' => $id_sekolah,
+                        'isi' => $isi,
+                        'judul_artikel' => $judul_artikel,
                         'value' => $dataInfo['file_name'],
                         'updated_by' => $id_user
-                     );    
-                    $where2 = array(
-                        'id_ref' => $id_artikel,
-                        'ket' => 'Artikel'
                      );
-                    $this->DataHandle->edit('tbl_galeri', $edit_galeri, $where2); 
+                    $where = array(
+                        'id_artikel' => $id_artikel
+                     );
+                    $this->DataHandle->edit('tbl_artikel', $edit_data, $where);
                     unlink('./assets/plugins/images/image/'.$gambar_lama);
                 }   
                 // HAPUS GAMBAR LAMA   

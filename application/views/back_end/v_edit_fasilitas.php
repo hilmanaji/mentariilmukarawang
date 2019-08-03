@@ -32,8 +32,8 @@
                                         <div class="form-group">                     
                                             <label for="exampleInputEmail1">Gambar</label>
                                             <div class="fallback">
-                                                <input class="form-control" value="<?php echo $id_fasilitas ?>" type="text" name="id_fasilitas" >
-                                                <input class="form-control" value="<?php echo $gambar_lama ?>" type="text" name="gambar_lama" >
+                                                <input class="form-control" value="<?php echo $id_fasilitas ?>" type="hidden" name="id_fasilitas" >
+                                                <input class="form-control" value="<?php echo $gambar_lama ?>" type="hidden" name="gambar_lama" >
                                                 <input name="userfile" type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"/> 
                                             </div>
                                         </div>
