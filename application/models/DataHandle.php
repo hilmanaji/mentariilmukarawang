@@ -27,6 +27,7 @@ class DataHandle extends CI_Model {
 		$this->db->select($field);
 		$this->db->from($tabel1);
 		$this->db->join($tabel2, $where);
+		$this->db->where($where2);
 		$this->db->order_by($order, 'desc');
 		$this->db->limit('9');
 		return $this->db->get();
