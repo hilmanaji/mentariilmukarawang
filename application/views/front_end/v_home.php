@@ -42,86 +42,58 @@
 <div class="container">
     <!-- Artikel Section -->
     <center>
-        <h2 class="my-4">Selamat datang di Yayasan Mentari Ilmu Karawang</h1>
-        <h3>Artikel Terbaru</h2>
+        <h2 class="my-4">Selamat datang di Yayasan Mentari Ilmu Karawang</h2>
+        <h3 class="mb-5">Artikel Terbaru</h2>
     </center>
     <div class="row">
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-            <h4 class="card-title">
-            <?php
-            
-            foreach ($data_sekolah->result() as $_sekolah) { ?>
-            <a href="#"><?php echo $_sekolah->nama; ?></a>
-            </h4>
-            <p class="card-text">
-            <?php echo $_sekolah->alamat; ?>
-            <?php echo $_sekolah->kontak; ?>
-            <?php echo $_sekolah->email; ?>
-            </div>
+        <div class="col-lg-12">
             <?php 
-            
+             function limit_words($string, $word_limit){
+                $words = explode(" ",$string);
+                return implode(" ",array_splice($words,0,$word_limit));
+            }
+            $no = 1;
+            foreach($data_artikel->result() as $row) :
+            $limited_string = limit_words($row->isi, 20).' ...';
+            if ($row->value == "") {
+                $gambar = '<img class="card-img-top" style="display:block" src="http://placehold.it/700x400" alt="">';
+            }
+            else{
+                $gambar = "<img class='card-img-top' style='display:block' src='".base_url()."assets/plugins/images/image/".$row->value."' style='max-width:60%;max-height:60%;'>";
+            } 
+            if($no == 1){ ?>
+            <div class="row">
+            <?php } 
+            else{
+
             }
             ?>
+                <div class="col-lg-4 col-sm-12 portfolio-item">
+                    <div class="card h-100">
+                    <a href="#"><?= $gambar ?></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        <a href="#"><?= $row->judul_artikel ?></a>
+                        </h4>
+                        <h7 class="card-subtitle mb-2 text-muted"><?= date('d F Y', strtotime($row->created_at)).' by '.$row->username ?></h7>
+                        <p class="card-text text-justify"><?= $limited_string ?></p>
+                    </div>
+                    </div>
+                </div>    
+            
+            <?php if($no == 3){ 
+                $no = 0;?>
+            </div>
+            <?php 
+            } 
+
+            ?>
+
+            <?php 
+            $no++;
+            endforeach;  
+            ?>
         </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-            <h4 class="card-title">
-            <a href="#">Project Two</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-            <h4 class="card-title">
-            <a href="#">Project Three</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-        </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-            <h4 class="card-title">
-            <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-            <h4 class="card-title">
-            <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-            <h4 class="card-title">
-            <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-        </div>
-        </div>
-    </div>
     </div>
     <!-- /.row -->
 
