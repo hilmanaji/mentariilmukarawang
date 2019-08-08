@@ -32,7 +32,7 @@
                                             <td style="text-align:center"><?php echo $no; ?></td>
                                             <td><?php echo $_fasilitas->nama_sekolah; ?></td>
                                             <td><?php echo $_fasilitas->nama_fasilitas; ?></td>
-                                            <td style="text-align:center"><?php echo $gambar ?></td>
+                                            <td style="text-align:center"><a data-toggle="modal" data-target="#ModalGam-<?php echo $no ?>"><i class="fa fa-search m-l-5"></i></a></td>
                                             <td>
                                                 <center>                                                
                                                     <a href="<?php echo base_url() ?>Fasilitas/get_data/<?php echo $_fasilitas->id_fasilitas; ?>"><button class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button></a>
@@ -49,9 +49,49 @@
                                 <hr>
                                 Ket : <br>
                                 <i class="fa fa-plus m-l-5"></i> : Tambah<br>
+                                <i class="fa fa-search m-l-5"></i> : Lihat<br>
                                 <i class="fa fa-pencil m-l-5"></i> : Edit<br>
                                 <i class="fa fa-trash m-l-5"></i> : Hapus<br>
                             </div>
                         </div>
                     </div>
                 </div>
+
+            <?php
+            $no=1;
+            // LOOPING MODAL ================================================
+            foreach ($data_fasilitas->result() as $_fasilitas) { 
+                if ($_fasilitas->value == "") {
+                    $gambar = '--Tidak Ada Gambar--';
+                }
+                else{
+                    $gambar = "<img src='".base_url()."assets/plugins/images/image/".$_fasilitas->value."' style='max-width:70%;max-height:70%;'>";
+                }
+                ?>
+
+                <!-- MODAL ADD -->
+                <div id="ModalGam-<?php echo $no ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">Gambar Fasilitas</h4> </div>
+                            <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12 text-center">
+                                    <?php echo $gambar; ?>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- MODAL ADD END -->
+
+            <?php 
+            // LOOPING MODAL ================================================
+             $no++;
+            }
+            ?>
