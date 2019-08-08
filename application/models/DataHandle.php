@@ -23,13 +23,13 @@ class DataHandle extends CI_Model {
 		return $this->db->get();
 	}
     
-    function get2lim2($tabel1, $tabel2, $field, $where, $where2, $order){
+    function get2lim6($tabel1, $tabel2, $field, $where, $where2, $order){
 		$this->db->select($field);
 		$this->db->from($tabel1);
 		$this->db->join($tabel2, $where);
 		$this->db->where($where2);
 		$this->db->order_by($order, 'desc');
-		$this->db->limit('9');
+		$this->db->limit('6');
 		return $this->db->get();
 	}
     
