@@ -6,7 +6,7 @@
                 <div class="top-left-part">
                     <a class="logo" href="index.html">
                         <b>
-                            <img src="<?php echo base_url() ?>assets/plugins/images/logo.png" alt="home" />
+                            <img src="<?php echo base_url() ?>assets/plugins/images/logo_s.png" alt="home" />
                         </b>
                         <span>
                             <img src="<?php echo base_url() ?>assets/plugins/images/logo-text.png" alt="homepage" class="dark-logo" />
