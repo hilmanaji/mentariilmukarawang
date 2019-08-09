@@ -1,6 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+        <img src="<?php echo base_url() ?>assets/plugins/images/logomentariilmu.png" width="100" height="100" class="d-inline-block align-center" alt="">
+    </div>
+    <div class="col-sm">
+        <h4>Yayasan Mentari Ilmu Karawang</h4>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="margin-top: 0px; margin-bottom: 0px;">
+    <div class="row">
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-8">
+            
+        </div>
+    </div>
+</div>
+
+
 <!-- Navigation -->
-<nav class="navbar fixed-top navbar-expand-lg" id="nav" style="background-color: #1b9e56;">
-    <div class="container" id="logo">
+<nav class="navbar navbar-light navbar-expand-lg sticky-top" style="background-color: #1eb35c; color: #FFFFFF;">
         <a class="navbar-brand" href="<?= base_url(); ?>home/">
             <img src="<?php echo base_url() ?>assets/plugins/images/logomentariilmu.png" width="50" height="50" class="d-inline-block align-top" alt="">
         </a>
@@ -8,7 +30,7 @@
         Yayasan Mentari Ilmu
         </a>
 
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -37,7 +59,6 @@
                 <a class="nav-link" href="#">Contact</a>
             </li>
             
-        </ul>
-      </div>
-    </div>
+            </ul>
+        </div>
   </nav>

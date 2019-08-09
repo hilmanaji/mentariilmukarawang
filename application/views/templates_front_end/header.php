@@ -7,6 +7,10 @@
 
   <title>YAYASAN MENTARI ILMU</title>
 
+  <!-- Bootstrap core JavaScript -->
+  <script src="<?= base_url(); ?>assets/front_end/vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url(); ?>assets/front_end/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   <!-- Bootstrap core CSS -->
   <link href="<?= base_url(); ?>assets/front_end/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   

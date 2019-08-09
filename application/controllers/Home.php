@@ -23,4 +23,9 @@ class Home extends CI_Controller {
 	{
 		$this->template->front_end('front_end/v_sekolah');
 	}
+
+	public function about()
+	{
+		$this->template->front_end('front_end/v_about');
+	}
 }
