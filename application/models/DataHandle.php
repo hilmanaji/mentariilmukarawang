@@ -13,6 +13,26 @@ class DataHandle extends CI_Model {
 		return $this->db->get();
 	}
     
+    function getAllWhereLim10($tabel1, $field, $where, $order){
+		$this->db->select($field);
+		$this->db->from($tabel1);
+		$this->db->join($tabel2, $where);
+		$this->db->where($where2);
+		$this->db->order_by($order, 'desc');
+		$this->db->limit('10');
+		return $this->db->get();
+	}
+    
+    function get2lim6($tabel1, $tabel2, $field, $where, $where2, $order){
+		$this->db->select($field);
+		$this->db->from($tabel1);
+		$this->db->join($tabel2, $where);
+		$this->db->where($where2);
+		$this->db->order_by($order, 'desc');
+		$this->db->limit('6');
+		return $this->db->get();
+	}
+    
     function getAllWhereNotIn($tabel1, $field, $where){
 		$this->db->select($field);
 		$this->db->from($tabel1);

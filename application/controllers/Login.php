@@ -59,7 +59,7 @@ class Login extends CI_Controller {
 		            &times;</button>
 		            Selamat Datang '.$nama.'... 
 		        </div>');  
-			redirect('User');
+			redirect('Sekolah');
 		}
 		else{
 		        $this->session->set_flashdata('msg', '
