@@ -15,6 +15,16 @@
                                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
                                     <form enctype="multipart/form-data" action="<?php echo base_url() ?>Fasilitas/edit" method="post" class="form-horizontal row-fluid">
                                         <h3 class="box-title">Edit Fasilitas</h3>
+                                     <?php 
+                                     // Kondisi Admin Sekolah
+                                     if($id_sekolah_sess != '0'){ ?>   
+                                        <div class="form-group">
+                                            <input class="form-control" name="id_sekolah" type="hidden" value="<?php echo $id_sekolah ?>"> 
+                                        </div> 
+                                     <?php 
+                                     }
+                                     // Kondisi Super Admin
+                                     else{ ?>     
                                         <div class="form-group">                                            
                                             <label for="exampleInputEmail1">Sekolah</label>
                                             <select class="form-control" name="id_sekolah">
@@ -26,6 +36,10 @@
                                     ?> 
                                             </select>
                                         </div>
+
+                                     <?php 
+                                     } 
+                                     ?>   
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Fasilitas</label>
                                             <input class="form-control" name="nama_fasilitas" value="<?php echo $nama_fasilitas ?>" required oninvalid="this.setCustomValidity('Judul tidak boleh kosong')" oninput="setCustomValidity('')"> 

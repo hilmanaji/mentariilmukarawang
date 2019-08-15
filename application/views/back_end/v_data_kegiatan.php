@@ -64,17 +64,31 @@
                                             <label for="exampleInputEmail1">Nama Kegiatan</label>
                                             <input type="text" class="form-control" name="nama_kegiatan" required> 
                                         </div>
-                                        <div class="form-group">                                            
-                                            <label for="exampleInputEmail1">Sekolah</label>
-                                            <select class="form-control" name="id_sekolah">
-                                    <?php                                     
-                                    foreach ($data_sekolah->result() as $_sekolah) { ?>
-                                                <option value="<?php echo $_sekolah->id_sekolah ?>"><?php echo $_sekolah->nama ?></option>
-                                    <?php 
-                                    } 
-                                    ?> 
-                                            </select>
+                                     <?php 
+                                     // Kondisi Admin Sekolah
+                                     if($id_sekolah != '0'){ ?>   
+                                        <div class="form-group">
+                                            <input class="form-control" name="id_sekolah" type="hidden" value="<?php echo $id_sekolah ?>"> 
+                                        </div> 
+                                     <?php 
+                                     }
+                                     // Kondisi Super Admin
+                                     else{ ?>            
+                                        <div class="form-group">                                 
+                                                <label for="exampleInputEmail1">Sekolah</label>
+                                                <select class="form-control" name="id_sekolah">
+                                        <?php                                     
+                                        foreach ($data_sekolah->result() as $_sekolah) { ?>
+                                                    <option value="<?php echo $_sekolah->id_sekolah ?>"><?php echo $_sekolah->nama ?></option>
+                                        <?php 
+                                        } 
+                                        ?> 
+                                                </select>   
                                         </div>
+
+                                     <?php 
+                                     } 
+                                     ?> 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Deskripsi</label>
                                             <textarea class="form-control" name="deskripsi_kegiatan" rows="7" required></textarea>

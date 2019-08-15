@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Fasilitas extends CI_Controller {
 
+    private $role_user, $id_sekolah, $kondisi;
+    private $nama_tabel = 'tbl_fasilitas';
+
     function __construct() {
         parent::__construct();
         if (!$this->session->has_userdata('id_user')) {
@@ -10,18 +13,28 @@ class Fasilitas extends CI_Controller {
         }
         else{            
             $id_user = $this->session->userdata('id_user');
+            $this->role_user = $this->session->userdata('role_user');
+            $this->id_sekolah = $this->session->userdata('id_sekolah');
+        }        
+        if ($this->role_user === '2') { 
+            $kondisi = "AND ".$this->nama_tabel.".id_sekolah = '".$this->id_sekolah."'";
+            $this->kondisi = $kondisi;
+        }
+        else{
+            $this->kondisi = '';
         }
     }
 
 	public function index()
 	{
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");          
-        $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_fasilitas.id_fasilitas, tbl_sekolah.id_sekolah, tbl_fasilitas.nama_fasilitas,  tbl_fasilitas.`status`, tbl_fasilitas.`value` FROM tbl_fasilitas INNER JOIN tbl_sekolah ON tbl_fasilitas.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1'");		
+        $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1' ".$this->kondisi." ");		
         $this->template->back_end('back_end/v_data_fasilitas', $data);
     }
 
     public function form_add()
     {
+        $data['id_sekolah'] = $this->id_sekolah;
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
         $this->template->back_end('back_end/v_add_fasilitas', $data);
     }
@@ -119,6 +132,7 @@ class Fasilitas extends CI_Controller {
     }
 
     public function get_data($id_fasilitas){
+        $data['id_sekolah_sess'] = $this->id_sekolah;
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'"); 
         $where = array(
             'id_fasilitas' => $id_fasilitas

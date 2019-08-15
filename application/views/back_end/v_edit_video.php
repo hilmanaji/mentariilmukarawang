@@ -18,6 +18,16 @@
                             <div class="row">
                                 <div class="col-sm-12 col-xs-12">
                                     <form method="post" action="<?php echo base_url() ?>Video/edit">
+                                     <?php 
+                                     // Kondisi Admin Sekolah
+                                     if($id_sekolah_sess != '0'){ ?>   
+                                        <div class="form-group">
+                                            <input class="form-control" name="id_sekolah" type="hidden" value="<?php echo $id_sekolah ?>"> 
+                                        </div> 
+                                     <?php 
+                                     }
+                                     // Kondisi Super Admin
+                                     else{ ?>     
                                         <div class="form-group">                                            
                                             <label for="exampleInputEmail1">Sekolah</label>
                                             <select class="form-control" name="id_sekolah">
@@ -29,6 +39,10 @@
                                     ?> 
                                             </select>
                                         </div>
+
+                                     <?php 
+                                     } 
+                                     ?>  
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Judul</label>
                                             <input type="hidden" class="form-control" name="id_video" value="<?php echo $id_video ?>" required> 

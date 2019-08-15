@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Profile extends CI_Controller {
 
+    private $role_user, $id_sekolah, $kondisi;
+    private $nama_tabel = 'tbl_profil';
+
     function __construct() {
         parent::__construct();
         if (!$this->session->has_userdata('id_user')) {
@@ -10,13 +13,23 @@ class Profile extends CI_Controller {
         }
         else{            
             $id_user = $this->session->userdata('id_user');
+            $this->role_user = $this->session->userdata('role_user');
+            $this->id_sekolah = $this->session->userdata('id_sekolah');
+        }        
+        if ($this->role_user === '2') { 
+            $kondisi = "AND ".$this->nama_tabel.".id_sekolah = '".$this->id_sekolah."'";
+            $this->kondisi = $kondisi;
+        }
+        else{
+            $this->kondisi = '';
         }
     }
 
 	public function index()
 	{
+        $data['id_sekolah'] = $this->id_sekolah;
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
-        $data['data_profile'] = $this->DataHandle->get_two('tbl_profil', 'tbl_sekolah','tbl_profil.*, tbl_sekolah.nama as nama_sekolah', 'tbl_sekolah.id_sekolah = tbl_profil.id_sekolah', "tbl_profil.status = '1'");		
+        $data['data_profile'] = $this->DataHandle->get_two($this->nama_tabel, 'tbl_sekolah',''.$this->nama_tabel.'.*, tbl_sekolah.nama as nama_sekolah', 'tbl_sekolah.id_sekolah = '.$this->nama_tabel.'.id_sekolah', "".$this->nama_tabel.".status = '1' ".$this->kondisi."");		
         $this->template->back_end('back_end/v_data_profile', $data);
     }
 
@@ -73,6 +86,7 @@ class Profile extends CI_Controller {
     }
 
     public function get_data($id_profil){
+        $data['id_sekolah_sess'] = $this->id_sekolah;
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'"); 
         $where = array(
             'id_profil' => $id_profil
