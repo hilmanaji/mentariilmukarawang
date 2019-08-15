@@ -45,12 +45,14 @@ class Login extends CI_Controller {
 					$id_user = $row->id_user;
 					$nama = $row->nama;
 					$role_user = $row->role_user;				
+					$id_sekolah = $row->id_sekolah;				
 				}
 			}
 			$data_session = array(
 				'id_user' => $id_user,
 				'nama' => $nama,
-				'role_user' => $role_user
+				'role_user' => $role_user,
+				'id_sekolah' => $id_sekolah
 			);
             $this->session->set_userdata($data_session);
 		        $this->session->set_flashdata('msg', '
@@ -59,7 +61,7 @@ class Login extends CI_Controller {
 		            &times;</button>
 		            Selamat Datang '.$nama.'... 
 		        </div>');  
-			redirect('Sekolah');
+			redirect('Tamu');
 		}
 		else{
 		        $this->session->set_flashdata('msg', '

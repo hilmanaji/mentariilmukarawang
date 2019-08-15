@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tata_tertib extends CI_Controller {
 
+    private $role_user, $id_sekolah, $kondisi;
+    private $nama_tabel = 'tbl_tata_tertib';
+
     function __construct() {
         parent::__construct();
         if (!$this->session->has_userdata('id_user')) {
@@ -10,18 +13,28 @@ class Tata_tertib extends CI_Controller {
         }
         else{            
             $id_user = $this->session->userdata('id_user');
+            $this->role_user = $this->session->userdata('role_user');
+            $this->id_sekolah = $this->session->userdata('id_sekolah');
+        }        
+        if ($this->role_user === '2') { 
+            $kondisi = "AND ".$this->nama_tabel.".id_sekolah = '".$this->id_sekolah."'";
+            $this->kondisi = $kondisi;
+        }
+        else{
+            $this->kondisi = '';
         }
     }
 
     public function index()
-    {
+    {   
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
-        $data['data_tata_tertib'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_sekolah.id_sekolah, tbl_tata_tertib.id_tata_tertib, tbl_tata_tertib.isi_tata_tertib,  tbl_tata_tertib.`status` FROM tbl_tata_tertib INNER JOIN tbl_sekolah ON tbl_tata_tertib.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_tata_tertib.`status` = '1'");      
+        $data['data_tata_tertib'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_sekolah.id_sekolah, ".$this->nama_tabel.".* FROM tbl_tata_tertib INNER JOIN tbl_sekolah ON tbl_tata_tertib.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_tata_tertib.`status` = '1' ".$this->kondisi."");      
         $this->template->back_end('back_end/v_data_tatatertib', $data);
     }
 
     public function form_add()
     {
+        $data['id_sekolah'] = $this->id_sekolah;
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
         $this->template->back_end('back_end/v_add_tatatertib', $data);
     }
@@ -75,7 +88,7 @@ class Tata_tertib extends CI_Controller {
         $where = array(
             'id_tata_tertib' => $id_tata_tertib
          );
-        $data['data_tata_tertib'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_sekolah.id_sekolah, tbl_tata_tertib.id_tata_tertib, tbl_tata_tertib.isi_tata_tertib,  tbl_tata_tertib.`status` FROM tbl_tata_tertib INNER JOIN tbl_sekolah ON tbl_tata_tertib.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_tata_tertib.`status` = '1' AND tbl_tata_tertib.`id_tata_tertib` = '".$id_tata_tertib."'");
+        $data['data_tata_tertib'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_sekolah.id_sekolah, ".$this->nama_tabel.".* FROM tbl_tata_tertib INNER JOIN tbl_sekolah ON tbl_tata_tertib.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_tata_tertib.`status` = '1' ".$this->kondisi." AND tbl_tata_tertib.`id_tata_tertib` = '".$id_tata_tertib."'");
         $this->template->back_end('back_end/v_edit_tatatertib', $data);
     }
 
