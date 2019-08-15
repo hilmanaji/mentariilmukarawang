@@ -6,18 +6,16 @@
         $id_sekolah = $_kegiatan->id_sekolah;
     }
 ?>
-
-        <div class="row">
-            <div class="col-sm-12">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <a href="<?php echo base_url() ?>Kegiatan"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
-                                <h4 class="modal-title" id="myModalLabel">Edit Data Kegiatan</h4> </div>
-                            <div class="modal-body">
+            
+                <div class="row">
+                    <!-- Left sidebar -->
+                    <div class="col-md-12">
+                        <div class="white-box">
+                                <a href="<?php echo base_url() ?>Artikel"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
                             <div class="row">
-                                <div class="col-sm-12 col-xs-12">
-                                    <form method="post" action="<?php echo base_url() ?>Kegiatan/edit">
+                                <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
+                                    <form enctype="multipart/form-data" action="<?php echo base_url() ?>Kegiatan/edit" method="post" class="form-horizontal row-fluid">
+                                        <h3 class="box-title">Edit Kegiatan</h3>
                                      <?php 
                                      // Kondisi Admin Sekolah
                                      if($id_sekolah_sess != '0'){ ?>   
@@ -45,21 +43,21 @@
                                      ?>  
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Kegiatan</label>
-                                            <input type="hidden" class="form-control" name="id_kegiatan" value="<?php echo $id_kegiatan ?>" required> 
-                                            <input type="text" class="form-control" name="nama_kegiatan" value="<?php echo $nama_kegiatan ?>" required> 
+                                            <input class="form-control" name="id_kegiatan" type="hidden" value="<?php echo $id_kegiatan ?>"> 
+                                            <input class="form-control" name="nama_kegiatan"  value="<?php echo $nama_kegiatan ?>"> 
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi_kegiatan" rows="7" required><?php echo $deskripsi_kegiatan ?></textarea>
+                                            <label for="exampleInputEmail1">Isi</label>
+                                            <textarea class="textarea_editor form-control" name="deskripsi_kegiatan" rows="10"  placeholder="Isi Artikel Disini ..."><?php echo $deskripsi_kegiatan ?></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-info"><i class="fa fa-pencil"></i> Edit</button>
+                                            
+                                        </div>                                        
                                     </form>
+                                    <hr>
                                 </div>
                             </div>
-                            </div>
                         </div>
-                        <!-- /.modal-content -->
                     </div>
-                    <!-- /.modal-dialog -->
                 </div>
-            </div>

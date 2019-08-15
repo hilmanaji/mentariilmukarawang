@@ -19,6 +19,7 @@
         <div class="page-wrapper">
             <div class="container-fluid">
             <?php echo $_content; ?>            
+            <?= "Logged In As : Admin ".$this->session->userdata('nama_sekolah') ?>
             </div>
             <!-- /.container-fluid -->
         <?php echo $_footer; ?>

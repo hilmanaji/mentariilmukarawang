@@ -30,6 +30,7 @@ class Login extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = md5($this->input->post('password'));
 		
+		// GET DATA USER
 		$where = array(
 			'username' => $username,
 			'password' => $password,
@@ -38,7 +39,7 @@ class Login extends CI_Controller {
 		$user = $this->DataHandle->get('tbl_user', $where);
 		if($user->num_rows() > 0){
 			foreach($user->result() as $row){
-				if ($row->status != 1) {
+				if ($row->status != '1') {
 					redirect('home');	
 				}
 				else{
@@ -48,10 +49,27 @@ class Login extends CI_Controller {
 					$id_sekolah = $row->id_sekolah;				
 				}
 			}
+		
+			// GET DATA SEKOLAH
+			$where_ = array(
+				'id_sekolah' => $id_sekolah,
+				'status' => '1'
+			);
+			$sekolah = $this->DataHandle->get('tbl_sekolah', $where_);
+			foreach($sekolah->result() as $row){
+				if ($row->status != '1') {
+					redirect('home');	
+				}
+				else{
+					$nama_sekolah = $row->nama;			
+				}
+			}
+
 			$data_session = array(
 				'id_user' => $id_user,
 				'nama' => $nama,
 				'role_user' => $role_user,
+				'nama_sekolah' => $nama_sekolah,
 				'id_sekolah' => $id_sekolah
 			);
             $this->session->set_userdata($data_session);
@@ -75,7 +93,7 @@ class Login extends CI_Controller {
 	}
 	
 	public function logout(){
-		$session_items = array('id_user', 'nama', 'role_user');
+		$session_items = array('id_user', 'nama', 'role_user', 'nama_sekolah', 'id_sekolah');
 		$this->session->unset_userdata($session_items);
         $this->session->set_flashdata('msg', '
         <div class="alert alert-success alert-dismissable">
