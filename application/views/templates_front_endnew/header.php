@@ -3,9 +3,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Yayasan Mentari Ilmu Karawang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-  <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-  <meta name="author" content="freehtml5.co" />
+  <meta name="description" content="Situs Resmi Yayasan Mentari Ilmu Karawang, yaitu yayasan yang bergerak di bidang Pendidikan." />
+  <meta name="keywords" content="Mentari Ilmu, Yayasan, Yayasan Mentari Ilmu, Pendidikan, SMP, SMA, SD, Islam Terpadu, Sekolah Islam Terpadu, SD IT Karawang, SMP IT KARAWANG, SMA IT KARAWANG" />
+  <meta name="author" content="TitikKoma.Dev" />
 
     <!-- Facebook and Twitter integration -->
   <meta property="og:title" content=""/>
@@ -43,6 +43,7 @@
 
   <!-- Theme style  -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/front_end_new/css/style.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/plugins/images/logomentariilmu.png">
 
   <!-- Modernizr JS -->
   <script src="<?= base_url() ?>assets/front_end_new/js/modernizr-2.6.2.min.js"></script>
@@ -58,6 +59,20 @@
       position: fixed;
       top: 0;
       width: 100%;      
+    }
+    .responsive-map{
+      overflow:hidden;
+      padding-top:35%;
+      margin:0% 2% 0% 2%; 
+      position:relative;
+    }
+
+    .responsive-map iframe{
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      position:absolute;
     }
   </style>
   </head>
