@@ -274,15 +274,27 @@
 	</div>
 
     <div class="responsive-map">
+		<?php foreach ($data_sekolah->result() as $sekolah) : ?>
+		<?php
+		if ($sekolah->nama == "SMA IT Mentari Ilmu") {
+		echo '
 		<!-- SMA -->
-	    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5443952248866!2d107.27318111533671!3d-6.323412395423739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699d7636003fe5%3A0x64dec093541c0eff!2sSMA+IT+Mentari+Ilmu!5e0!3m2!1sid!2sid!4v1563720219010!5m2!1sid!2sid" width="700" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>		
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5443952248866!2d107.27318111533671!3d-6.323412395423739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699d7636003fe5%3A0x64dec093541c0eff!2sSMA+IT+Mentari+Ilmu!5e0!3m2!1sid!2sid!4v1563720219010!5m2!1sid!2sid" width="750" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>'; 
+		}	
 		
+		elseif ($sekolah->nama == "SMP IT Mentari Ilmu") {
+		echo '
 		<!-- SMP -->
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7038225515344!2d107.3055274153706!3d-6.302591563438091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6977e9f6f22701%3A0x26f4cef2bc9fa3d3!2sSMP+IT+Mentari+Ilmu!5e0!3m2!1sid!2sid!4v1565983388704!5m2!1sid!2sid" width="700" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7038225515344!2d107.3055274153706!3d-6.302591563438091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6977e9f6f22701%3A0x26f4cef2bc9fa3d3!2sSMP+IT+Mentari+Ilmu!5e0!3m2!1sid!2sid!4v1565983388704!5m2!1sid!2sid" width="750" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>'; }
 
+		elseif ($sekolah->nama == "SD IT Mentari Ilmu Karaba") {
+		echo '
 		<!--SD karaba -->
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.544877889294!2d107.27305941537077!3d-6.323349463637015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699d764bbe965b%3A0xab07b1c045abaec0!2sSDIT+Mentari+Ilmu!5e0!3m2!1sen!2sid!4v1566016114808!5m2!1sen!2sid" width="700" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.544877889294!2d107.27305941537077!3d-6.323349463637015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699d764bbe965b%3A0xab07b1c045abaec0!2sSDIT+Mentari+Ilmu!5e0!3m2!1sen!2sid!4v1566016114808!5m2!1sen!2sid" width="750" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>'; }
 
+		elseif ($sekolah->nama == "SD IT Mentari Ilmu Jatisari") {
+		echo '
 		<!-- SD Jatisari -->
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2092739313366!2d107.5243655153709!3d-6.366957364057169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e696dd2afc973d1%3A0x645b899e2da23472!2sMentari+Ilmu+Elementary+School!5e0!3m2!1sen!2sid!4v1566016041976!5m2!1sen!2sid" width="700" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2092739313366!2d107.5243655153709!3d-6.366957364057169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e696dd2afc973d1%3A0x645b899e2da23472!2sMentari+Ilmu+Elementary+School!5e0!3m2!1sen!2sid!4v1566016041976!5m2!1sen!2sid" width="750" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>'; } ?>
+		<?php endforeach; ?>
 	</div>
