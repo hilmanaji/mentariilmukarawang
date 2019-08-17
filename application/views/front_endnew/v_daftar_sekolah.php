@@ -16,7 +16,7 @@
 							<i class="icon-study"></i>
 						</span>
 						<div class="fh5co-contact-info">
-							<h3><a href="<?= base_url(); ?>home/<?= $row->link ?>"><?= $row->nama ?></a></h3>
+							<h3><a href="<?= base_url(); ?>home/mentariilmu/<?= $row->id_sekolah ?>"><?= $row->nama ?></a></h3>
 							<ul style="text-align: left">
 								<li class="address"><?= $row->alamat ?></li>
 								<li class="phone"><a href="tel://1234567920"><?= $row->kontak ?></a></li>

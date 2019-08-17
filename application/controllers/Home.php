@@ -58,22 +58,16 @@ class Home extends CI_Controller {
 		$this->template->front_endnew('front_endnew/v_faq');
 	}
 
-	public function sma_it()
+	public function MentariIlmu($id_sekolah = "")
 	{
+		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "id_sekolah = '$id_sekolah'");
 		$data['data_artikel'] = $this->DataHandle->get2lim6('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
 		$data['data_pengumuman'] = $this->DataHandle->get2lim6('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
-		$data['data_profile'] = $this->DataHandle->getAllWhere('tbl_profil', '*', "id_sekolah = '16'");
-		$data['data_kegiatan'] = $this->DataHandle->getAllWhere('tbl_kegiatan', '*', "id_sekolah = '16'");
-		$this->template->front_endnew('front_endnew/v_sma_it', $data);
+		$data['data_profile'] = $this->DataHandle->getAllWhere('tbl_profil', '*', "id_sekolah = '$id_sekolah'");
+		$data['data_kegiatan'] = $this->DataHandle->getAllWhere('tbl_kegiatan', '*', "id_sekolah = '$id_sekolah'");
+		$this->template->front_endnew('front_endnew/v_mentariilmu', $data);
 	}
 
-	public function smp_it()
-	{
-		$data['data_artikel'] = $this->DataHandle->get2lim6('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
-		$data['data_pengumuman'] = $this->DataHandle->get2lim6('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
-		$data['data_profile'] = $this->DataHandle->getAllWhere('tbl_profil', '*', "id_sekolah = '17'");
-		$data['data_kegiatan'] = $this->DataHandle->getAllWhere('tbl_kegiatan', '*', "id_sekolah = '17'");
-		$this->template->front_endnew('front_endnew/v_smp_it', $data);
-	}
+
 	// =============================== TEMPLATE BARU ==============================
 }
