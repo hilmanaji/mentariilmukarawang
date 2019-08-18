@@ -1331,6 +1331,9 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 25px;
   cursor: pointer;
   text-decoration: none;
+      overflow: hidden;
+      position: fixed;
+
 }
 .fh5co-nav-toggle.active i::before, .fh5co-nav-toggle.active i::after {
   background: #444;
@@ -1350,6 +1353,8 @@ h1, h2, h3, h4, h5, h6, figure {
   text-indent: -55px;
   background: #252525;
   transition: all .2s ease-out;
+  overflow: hidden;
+  position: fixed;
 }
 .fh5co-nav-toggle i::before, .fh5co-nav-toggle i::after {
   content: '';

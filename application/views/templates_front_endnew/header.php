@@ -55,8 +55,8 @@
   <style type="text/css">
     .fixed-top{
       overflow: hidden;
-      background-color: #fff;
       position: fixed;
+      background-color: #fff;
       top: 0;
       width: 100%;      
     }
