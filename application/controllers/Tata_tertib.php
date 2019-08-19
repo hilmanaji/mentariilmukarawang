@@ -27,7 +27,7 @@ class Tata_tertib extends CI_Controller {
 
     public function index()
     {   
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
         $data['data_tata_tertib'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_sekolah.id_sekolah, ".$this->nama_tabel.".* FROM tbl_tata_tertib INNER JOIN tbl_sekolah ON tbl_tata_tertib.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_tata_tertib.`status` = '1' ".$this->kondisi."");      
         $this->template->back_end('back_end/v_data_tatatertib', $data);
     }
@@ -35,7 +35,7 @@ class Tata_tertib extends CI_Controller {
     public function form_add()
     {
         $data['id_sekolah'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
         $this->template->back_end('back_end/v_add_tatatertib', $data);
     }
 
@@ -84,7 +84,7 @@ class Tata_tertib extends CI_Controller {
     }
 
     public function get_data($id_tata_tertib){
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'"); 
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
         $where = array(
             'id_tata_tertib' => $id_tata_tertib
          );

@@ -15,7 +15,7 @@ class Sekolah extends CI_Controller {
 
 	public function index()
 	{
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");		
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");		
         $this->template->back_end('back_end/v_data_sekolah', $data);
     }
 

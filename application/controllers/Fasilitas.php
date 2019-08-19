@@ -27,7 +27,7 @@ class Fasilitas extends CI_Controller {
 
 	public function index()
 	{
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");          
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
         $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1' ".$this->kondisi." ");		
         $this->template->back_end('back_end/v_data_fasilitas', $data);
     }
@@ -35,7 +35,7 @@ class Fasilitas extends CI_Controller {
     public function form_add()
     {
         $data['id_sekolah'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
         $this->template->back_end('back_end/v_add_fasilitas', $data);
     }
 
@@ -133,7 +133,7 @@ class Fasilitas extends CI_Controller {
 
     public function get_data($id_fasilitas){
         $data['id_sekolah_sess'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'"); 
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
         $where = array(
             'id_fasilitas' => $id_fasilitas
          );

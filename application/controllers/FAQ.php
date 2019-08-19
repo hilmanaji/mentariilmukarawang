@@ -28,7 +28,7 @@ class FAQ extends CI_Controller {
 	public function index()
 	{
         $data['id_sekolah'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");          
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
         $data['data_faq'] = $this->DataHandle->get_two('tbl_faq', 'tbl_sekolah','tbl_faq.*, tbl_sekolah.nama as nama_sekolah', 'tbl_sekolah.id_sekolah = tbl_faq.id_sekolah', "tbl_faq.status = '1' ".$this->kondisi."");		
         $this->template->back_end('back_end/v_data_faq', $data);
     }
@@ -83,7 +83,7 @@ class FAQ extends CI_Controller {
 
     public function get_data($id_faq){
         $data['id_sekolah_sess'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'"); 
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
         $where = array(
             'id_faq' => $id_faq
          );

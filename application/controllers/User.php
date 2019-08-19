@@ -15,7 +15,7 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");	        
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");	        
         $data['data_user'] = $this->DataHandle->get_two('tbl_user', 'tbl_sekolah', '`tbl_user`.*,`tbl_sekolah`.nama as nama_sekolah', 'tbl_user.id_sekolah = tbl_sekolah.id_sekolah', "tbl_user.status = '1' AND tbl_user.id_sekolah != '0'");
         $this->template->back_end('back_end/v_data_user', $data);
     }
@@ -115,7 +115,7 @@ class User extends CI_Controller {
             'id_user' => $id_user
          );
         $data['data_user'] = $this->DataHandle->getAllWhere('tbl_user', '*', $where);
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");	
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");	
         $this->template->back_end('back_end/v_edit_user', $data);
     }
 

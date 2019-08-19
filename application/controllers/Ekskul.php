@@ -28,7 +28,7 @@ class Ekskul extends CI_Controller {
 	public function index()
 	{
         $data['id_sekolah'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");          
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
         $data['data_ekskul'] = $this->DataHandle->get_two($this->nama_tabel, 'tbl_sekolah',''.$this->nama_tabel.'.*, tbl_sekolah.nama as nama_sekolah', 'tbl_sekolah.id_sekolah = '.$this->nama_tabel.'.id_sekolah', "".$this->nama_tabel.".status = '1' ".$this->kondisi."");		
         $this->template->back_end('back_end/v_data_ekskul', $data);
     }
@@ -36,7 +36,7 @@ class Ekskul extends CI_Controller {
     public function form_add()
     {
         $data['id_sekolah'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
         $this->template->back_end('back_end/v_add_ekskul', $data);
     }
 
@@ -136,7 +136,7 @@ class Ekskul extends CI_Controller {
 
     public function get_data($id_ekskul){
         $data['id_sekolah_sess'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'"); 
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
         $where = array(
             'id_ekskul' => $id_ekskul
          );
