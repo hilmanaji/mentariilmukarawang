@@ -60,7 +60,7 @@ class Login extends CI_Controller {
 				if ($row->status != '1') {
 					redirect('home');	
 				}
-				else if($row->id_sekolah === '0'){
+				else if($id_sekolah === '0'){
 					$nama_sekolah = $row->nama;
 				}
 				else{
