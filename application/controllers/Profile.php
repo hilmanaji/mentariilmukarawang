@@ -33,6 +33,13 @@ class Profile extends CI_Controller {
         $this->template->back_end('back_end/v_data_profile', $data);
     }
 
+    public function form_add()
+    {
+        $data['id_sekolah'] = $this->id_sekolah;
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1'");
+        $this->template->back_end('back_end/v_add_profile', $data);
+    }
+
     public function add()
     {
         $id_user = $this->session->userdata('id_user');

@@ -4,7 +4,7 @@
                     <!-- Left sidebar -->
                     <div class="col-md-12">
                         <div class="white-box">
-                                <a href="<?php echo base_url() ?>Tata_tertib"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
+                                <a href="<?php echo base_url() ?>Kegiatan"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
                             <div class="row">
                                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
                                     <form enctype="multipart/form-data" action="<?php echo base_url() ?>Kegiatan/add" method="post" class="form-horizontal row-fluid">
