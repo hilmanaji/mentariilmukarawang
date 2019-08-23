@@ -93,7 +93,10 @@ class Home extends CI_Controller {
 
 	public function faq()
 	{
-		$this->template->front_endnew('front_endnew/v_faq');
+		$data['data_faq'] = $this->DataHandle->get_two_o('tbl_faq', 'tbl_user', 'tbl_faq.*, tbl_user.username', 'tbl_faq.created_by = tbl_user.id_user', "tbl_faq.status = '1'", "tbl_faq.id_faq");
+		$data['data_artikel'] = $this->DataHandle->get2lim6('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
+		$data['data_pengumuman'] = $this->DataHandle->get2lim6('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
+		$this->template->front_endnew('front_endnew/v_faq', $data);
 	}
 
 	public function MentariIlmu($id_sekolah = "")
