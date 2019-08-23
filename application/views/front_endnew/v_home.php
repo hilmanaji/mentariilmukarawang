@@ -101,7 +101,7 @@
 						<div class="date text-center"><span><?= date('d', strtotime($row->created_at)) ?><br><?= date('M', strtotime($row->created_at)) ?>.</span></div>
 						<h3><a href="#"><?= $row->judul ?></a></h3>
 						<p><?= $limited_string ?></p>
-						<p><a href="#">Read More</a></p>
+						<p><a href="<?= base_url() ?>Home/detail_pengumuman/<?= $row->id_pengumuman ?>">Baca Selengkapnya</a></p>
 					</div>
 				</div>	
 				
@@ -113,7 +113,7 @@
 				<div class="col-md-4 animate-box">					
 				</div>
 				<div class="col-md-4 animate-box" style="text-align:center">
-					<a href="#">== Selengkapnya Pengumuman ==</a>
+					<a href="<?= base_url() ?>Home/all_pengumuman">== Selengkapnya Pengumuman ==</a>
 				</div>				
 				<div class="col-md-4 animate-box">					
 				</div>
@@ -137,7 +137,7 @@
 							<h3><a href="#"><?= $row->judul_artikel ?></a></h3>
 							<span class="posted_on"><?= date('d F Y', strtotime($row->created_at)) ?></span>
 							<span class="comment"><a ><?= 'by '.$row->username ?><i class="icon-speech-bubble"></i></a></span>
-							<p><?= $limited_string ?></p><a href="#">read more.</a>
+							<p><?= $limited_string ?></p><a href="<?= base_url() ?>Home/detail_artikel/<?= $row->id_artikel ?>">Baca Selengkapnya</a>
 						</div> 
 					</div>
 				</div>	
@@ -150,7 +150,7 @@
 				<div class="col-md-4 animate-box">					
 				</div>
 				<div class="col-md-4 animate-box" style="text-align:center">
-					<a href="#">== Selengkapnya Artikel ==</a>
+					<a href="<?= base_url() ?>Home/all_artikel">== Selengkapnya Artikel ==</a>
 				</div>				
 				<div class="col-md-4 animate-box">					
 				</div>

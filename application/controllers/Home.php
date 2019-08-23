@@ -53,6 +53,33 @@ class Home extends CI_Controller {
 		$this->template->front_endnew('front_endnew/v_about', $data);
 	}
 
+	public function all_pengumuman()
+	{
+		$data['data_pengumuman'] = $this->DataHandle->get_two_o('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
+		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
+		$this->template->front_endnew('front_endnew/v_all_pengumuman', $data);
+	}
+
+	public function detail_pengumuman($id_pengumuman)
+	{
+		$data['data_pengumuman_detail'] = $this->DataHandle->get_two_o('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1' AND tbl_pengumuman.id_pengumuman =".$id_pengumuman."", "tbl_pengumuman.id_pengumuman");
+		$data['data_pengumuman'] = $this->DataHandle->get_two_o('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
+		$this->template->front_endnew('front_endnew/v_detail_pengumuman', $data);
+	}
+
+	public function all_artikel()
+	{
+		$data['data_artikel'] = $this->DataHandle->get_two_o('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
+		$this->template->front_endnew('front_endnew/v_all_artikel', $data);
+	}
+
+	public function detail_artikel($id_artikel)
+	{
+		$data['data_artikel'] = $this->DataHandle->get_two_o('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
+		$data['data_artikel_detail'] = $this->DataHandle->get_two_o('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1' AND tbl_artikel.id_artikel = '".$id_artikel."'", "tbl_artikel.id_artikel");
+		$this->template->front_endnew('front_endnew/v_detail_artikel', $data);
+	}
+
 	public function sekolah()
 	{
 		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
@@ -72,9 +99,9 @@ class Home extends CI_Controller {
 	public function MentariIlmu($id_sekolah = "")
 	{
 		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "id_sekolah = '$id_sekolah'");
-		$data['data_artikel'] = $this->DataHandle->get2lim6('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
-		$data['data_pengumuman'] = $this->DataHandle->get2lim6('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
-		$data['data_profile'] = $this->DataHandle->getAllWhere('tbl_profil', '*', "id_sekolah = '$id_sekolah'");
+		$data['data_artikel'] = $this->DataHandle->get_two_o('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1' and tbl_artikel.id_sekolah = '$id_sekolah'", "tbl_artikel.id_artikel");
+		$data['data_pengumuman'] = $this->DataHandle->get_two_o('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
+		$data['data_profile'] = $this->DataHandle->getAllWhere('tbl_profil', '*', "id_sekolah = '$id_sekolah' AND status = 1");
 		$data['data_kegiatan'] = $this->DataHandle->getAllWhere('tbl_kegiatan', '*', "id_sekolah = '$id_sekolah'");
 		$this->template->front_endnew('front_endnew/v_mentariilmu', $data);
 	}
