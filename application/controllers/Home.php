@@ -28,6 +28,25 @@ class Home extends CI_Controller {
 		$this->template->front_endnew('front_endnew/v_home', $data);
 	}
 
+	public function input_pesan_tamu(){
+        $nama_tamu = $this->input->post('nama_tamu');
+        $kontak = $this->input->post('kontak');
+        $email = $this->input->post('email');
+        $pesan = $this->input->post('pesan');
+
+        $input_data = array(
+            'nama_tamu' => $nama_tamu,
+            'kontak' => $kontak,
+            'email' => $email,
+            'pesan' => $pesan,
+            'status' => 1
+         );
+
+        $this->DataHandle->insert('tbl_tamu', $input_data);
+        $this->email_sender($email, $nama_tamu);
+        redirect('Home/contact');
+	}
+
 	public function about_us()
 	{
 		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
@@ -58,6 +77,49 @@ class Home extends CI_Controller {
 		$data['data_profile'] = $this->DataHandle->getAllWhere('tbl_profil', '*', "id_sekolah = '$id_sekolah'");
 		$data['data_kegiatan'] = $this->DataHandle->getAllWhere('tbl_kegiatan', '*', "id_sekolah = '$id_sekolah'");
 		$this->template->front_endnew('front_endnew/v_mentariilmu', $data);
+	}
+
+	public function email_sender($email,$nama_tamu) {
+
+			$config = Array(
+			    'protocol' => 'smtp',
+			    'smtp_host' => 'smtp.gmail.com',
+			    'smtp_port' => 465,
+			    'smtp_user' => 'fazri.rramadhanh@gmail.com',
+			    'smtp_pass' => 'tarixjabrix123',
+			    'mailtype'  => 'html', 
+   				'smtp_crypto'=>'ssl',
+			    'charset'   => 'iso-8859-1'
+			);
+
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
+
+              $this->email->from('admin.mentariilmu@mentariilmu.sch.id','Admin Yayasan Mentari Ilmu - Karawang'); 
+              $this->email->to($email); 
+              $this->email->subject('Terimakasih Atas Kunjungannya (Yayasan Mentari Ilmu)');
+		    $mailContent = "
+					<hr>
+					<p>Hay <b>".$nama_tamu."</b>, Terimakasih telah  mengirimi kami pesan. Kunjungi langsung kami di :</p>
+					<p><b>Yayasan Mentari Ilmu Karawang</b></p>
+					<p>Alamat : <b>Jl. Perum Karaba Indah 1 Kp. Pintu Air Wadas Karawang Indonesia</b></p>
+					<p>Kontak : <b>(0267) 840333</b></p>
+					<p>E-mail : <b>smait.mentariilmu@gmail.com</b></p>
+					<hr>
+					<i>Terimakasih. Admin Yayasan Mentari Ilmu - Karawang</i> ";
+              $this->email->message($mailContent);
+
+        if($this->email->send()) {
+		        // $this->session->set_flashdata('msg', '
+		        // <div class="alert alert-success alert-dismissable">
+		        //     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+		        //     &times;</button>
+		        //     Berhasil...
+		        // </div>');  
+		} 
+		else {
+			show_error($this->email->print_debugger());
+		}
 	}
 
 
