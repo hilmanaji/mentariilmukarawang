@@ -8,8 +8,8 @@
 		   			<div class="row">
 			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
 			   				<div class="slider-text-inner">
-			   					<h1>The Roots of Education are Bitter, But the Fruit is Sweet</h1>
-									<h2>Brought to you by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
+			   					<h1>Tagline 1</h1>
+									<h2>Brought to you by <a href="http://freehtml5.co/" target="_blank"></a></h2>
 									<p><a class="btn btn-primary btn-lg" href="#">Start Learning Now!</a></p>
 			   				</div>
 			   			</div>
@@ -22,8 +22,8 @@
 		   			<div class="row">
 			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
 			   				<div class="slider-text-inner">
-			   					<h1>The Great Aim of Education is not Knowledge, But Action</h1>
-									<h2>Brought to you by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
+			   					<h1>Tagline 2</h1>
+									<h2>Brought to you by <a href="http://freehtml5.co/" target="_blank"></a></h2>
 									<p><a class="btn btn-primary btn-lg btn-learn" href="#">Start Learning Now!</a></p>
 			   				</div>
 			   			</div>
@@ -36,7 +36,7 @@
 		   			<div class="row">
 			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
 			   				<div class="slider-text-inner">
-			   					<h1>We Help You to Learn New Things</h1>
+			   					<h1>Tagline 3</h1>
 									<h2>Brought to you by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
 									<p><a class="btn btn-primary btn-lg btn-learn" href="#">Start Learning Now!</a></p>
 			   				</div>
@@ -51,7 +51,7 @@
 	<div id="fh5co-about">
 		<div class="container">
 			<div class="col-md-6 animate-box">
-				<span>Yayasan Mentari Ilmu - Karawang</span>
+				<span>Yayasan Pendidikan Mentari Ilmu - Karawang</span>
 				<h2>Selamat datang di Website Yayasan Mentari Ilmu</h2>
 				<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat cauctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per Mauris in erat justo.</p>
 				<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed.</p>
@@ -85,7 +85,7 @@
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>Pengumuman &amp; Artikel</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<p></p>
 				</div>
 			</div>
 			<div class="row">

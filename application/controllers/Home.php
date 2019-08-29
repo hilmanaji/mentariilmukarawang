@@ -106,6 +106,8 @@ class Home extends CI_Controller {
 		$data['data_pengumuman'] = $this->DataHandle->get_two_o('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
 		$data['data_profile'] = $this->DataHandle->getAllWhere('tbl_profil', '*', "id_sekolah = '$id_sekolah' AND status = 1");
 		$data['data_kegiatan'] = $this->DataHandle->getAllWhere('tbl_kegiatan', '*', "id_sekolah = '$id_sekolah'");
+		$data['data_ekskul'] = $this->DataHandle->getAllWhere('tbl_ekskul', '*', "id_sekolah = '$id_sekolah'");
+		$data['data_fasilitas'] = $this->DataHandle->getAllWhere('tbl_fasilitas', '*', "id_sekolah = '$id_sekolah'");
 		$this->template->front_endnew('front_endnew/v_mentariilmu', $data);
 	}
 

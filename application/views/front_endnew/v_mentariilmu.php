@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="col-md-6 animate-box">
 				<?php foreach ($data_sekolah->result() as $sekolah) : ?>
-				<span>Yayasan Mentari Ilmu - Karawang</span>
+				<span>Yayasan Pendidikan Mentari Ilmu - Karawang</span>
 				<h2>Selamat datang di Website <?= $sekolah->nama ?></h2>
 				<?php endforeach; ?>
 
@@ -64,7 +64,7 @@
                                 <h3><a href="#"><?= $row->judul_artikel ?></a></h3>
                                 <span class="posted_on"><?= date('d F Y', strtotime($row->created_at)) ?></span>
                                 <span class="comment"><a ><?= 'by '.$row->username ?><i class="icon-speech-bubble"></i></a></span>
-                                <p><?= $limited_string ?></p><a href="#">read more.</a>
+                                <p><?= $limited_string ?></p><a href="<?= base_url() ?>Home/detail_artikel/<?= $row->id_artikel ?>">Baca Selengkapnya</a>
                             </div> 
                         </div>
                     </div>	
@@ -106,7 +106,7 @@
                             <div class="date text-center"><span><?= date('d', strtotime($row->created_at)) ?><br><?= date('M', strtotime($row->created_at)) ?>.</span></div>
                             <h3><a href="#"><?= $row->judul ?></a></h3>
                             <p><?= $limited_string ?></p>
-                            <p><a href="#">Read More</a></p>
+                            <p><a href="<?= base_url() ?>Home/detail_pengumuman/<?= $row->id_pengumuman ?>">Baca Selengkapnya</a></p>
                         </div>
                     </div>	
                     
@@ -125,6 +125,7 @@
 			</div>
 		</div>  <!-- end contaner  -->
 	</div>
+
 	<div id="fh5co-gallery" class="fh5co-bg-section">  <!-- Start Galery -->
 		<div class="row text-center">
 			<h2><span>Gallery</span></h2>
@@ -145,133 +146,84 @@
 		</div>
 	</div>  <!-- End Galery -->
 
-    <div id="fh5co-course"> <!-- Start Kegiatan -->
+    <div id="fh5co-course"> <!-- Start Ekstrakulkuler -->
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-					<h2>Program Kegiatan Sekolah</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<h2>Kegiaatan Ekstrakulikuler</h2>
+					<p>Siswa diarahkan untuk mengikuti Ekstrakulikuler Wajib dan Pilihan sebagai berikut</p>
 				</div>
 			</div>
 			<div class="row">
-                <?php foreach ($data_kegiatan->result() as $kegiatan) : ?>
+				<?php foreach ($data_ekskul->result() as $ekskul) : ?>
                     <div class="col-md-6 animate-box">
                         <div class="course">
                             <a href="#" class="course-img" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-1.jpg);">
                             </a>
                             <div class="desc">
-                                <h3><a href="#"><?= $kegiatan->nama_kegiatan ?></a></h3>
-                                <p><?= $kegiatan->deskripsi_kegiatan ?></p>
+                                <h3><a href="#"><?= $ekskul->nama_ekskul ?></a></h3>
+                                <p><?= $ekskul->deskripsi_ekskul ?></p>
                                 <span><a href="#" class="btn btn-primary btn-sm btn-course">IKUT !</a></span>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
 				
-			</div> <!-- End Row Kegiatan -->
+			</div> <!-- End Row Ekstrakulkuler -->
 		</div>
-	</div> <!-- End Kegiatan -->
-
-    <div id="fh5co-course-categories">
+	</div> <!-- End Ekstrakulkuler -->
+	
+	<hr>
+	<!-- Start Kegiatan -->
+    <div id="fh5co-course-categories"> 
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-					<h2>Kegiaatan Ekstrakulikuler</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<h2>Program Kegiatan Sekolah</h2>
+					<p>Siswa diarahkan untuk mengikuti Kegiatan sebagai berikut</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3 col-sm-6 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-shop"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Business</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-heart4"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Health &amp; Psychology</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-banknote"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Accounting</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
+			<?php foreach ($data_kegiatan->result() as $kegiatan) : ?>
 				<div class="col-md-3 col-sm-6 text-center animate-box">
 					<div class="services">
 						<span class="icon">
 							<i class="icon-lab2"></i>
 						</span>
 						<div class="desc">
-							<h3><a href="#">Science &amp; Technology</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+							<h3><a href="#"><?= $kegiatan->nama_kegiatan ?></a></h3>
+							<p><?= $kegiatan->deskripsi_kegiatan ?></p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 col-sm-6 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-photo"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Art &amp; Media</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-home-outline"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Real Estate</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-bubble3"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Language</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 text-center animate-box">
-					<div class="services">
-						<span class="icon">
-							<i class="icon-world"></i>
-						</span>
-						<div class="desc">
-							<h3><a href="#">Web &amp; Programming</a></h3>
-							<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						</div>
-					</div>
-				</div>
+			<?php endforeach; ?>
 			</div>
 		</div>
 	</div>
+	<!-- End Kegiatan -->
+	<hr>
+	<div id="fh5co-gallery" class="fh5co-bg-section">  <!-- Start Galery -->
+		<div class="row text-center">
+			<h2><span>Fasilitas Pendidikan</span></h2>
+		</div>
+		<div class="row">
+			<?php foreach ($data_fasilitas->result() as $fasilitas) : ?>
+			<?php
+			if ($fasilitas->value == "") {
+					$gambar = '<a href="#" class="gallery" style="background-image: url('.base_url().'assets/front_end_new/images/project-3.jpg);"></a>';
+                }
+                else{
+                    $gambar = '<a href="#" class="gallery" style="background-image: url('.base_url().'assets/plugins/images/image/'.$fasilitas->value.');"></a>';
+				}
+			?>
+			<div class="col-md-3 col-padded">
+				<div><p style="text-align: center;"><?= $fasilitas->nama_fasilitas ?></p></div>
+				<?= $gambar ?>
+			</div>
+			<?php endforeach; ?>
+		</div>
+	</div>  <!-- End Galery -->
+	<hr>
 
     <div class="responsive-map">
 		<?php foreach ($data_sekolah->result() as $sekolah) : ?>
