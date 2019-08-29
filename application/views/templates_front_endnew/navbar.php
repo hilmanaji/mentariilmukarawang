@@ -30,7 +30,6 @@
                             <li><a href="<?= base_url() ?>Home/contact">Contact</a></li>
                             <li><a href="<?= base_url() ?>Home/faq">FAQ</a></li>
                             <li class="btn-cta"><a href="#"><span>Login</span></a></li>
-                            <li class="btn-cta"><a href="#"><span>Create a Course</span></a></li>
                         </ul>
                     </div>
                 </div>
