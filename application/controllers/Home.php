@@ -154,6 +154,14 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function tatatertib($id_sekolah = "")
+	{
+		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "id_sekolah = '$id_sekolah'");
+		$data['data_tatatertib'] = $this->DataHandle->getAllWhere('tbl_tata_tertib', '*', "id_sekolah = '$id_sekolah'");
+		$this->template->front_endnew('front_endnew/v_tatatertib', $data);
+	}
+
+
 
 	// =============================== TEMPLATE BARU ==============================
 }

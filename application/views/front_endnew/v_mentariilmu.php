@@ -192,7 +192,7 @@
 						</span>
 						<div class="desc">
 							<h3><a href="#"><?= $kegiatan->nama_kegiatan ?></a></h3>
-							<p><?= $kegiatan->deskripsi_kegiatan ?></p>
+							<p style="text-align: left;"><?= $kegiatan->deskripsi_kegiatan ?></p>
 						</div>
 					</div>
 				</div>
@@ -201,6 +201,7 @@
 		</div>
 	</div>
 	<!-- End Kegiatan -->
+
 	<hr>
 	<div id="fh5co-gallery" class="fh5co-bg-section">  <!-- Start Galery -->
 		<div class="row text-center">
@@ -223,8 +224,26 @@
 			<?php endforeach; ?>
 		</div>
 	</div>  <!-- End Galery -->
-	<hr>
 
+	<div id="fh5co-course-categories"> 
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>TATA TERTIB SEKOLAH</h2>
+					<a href="<?= base_url() ?>Home/tatatertib">Selengkapnya >></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<div id="fh5co-course-categories"> 
+		<div class="container">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/0Gs4hfiRPBk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	</div>
+
+	<hr>
     <div class="responsive-map">
 		<?php foreach ($data_sekolah->result() as $sekolah) : ?>
 		<?php
