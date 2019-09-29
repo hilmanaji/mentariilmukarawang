@@ -69,12 +69,12 @@
 			<div class="col-md-8 col-md-offset-2 animate-box">
 				<div class="date-counter text-center">
 					<h2>Visi</h2>
-					<p><strong>................................... ............. .......... ........ .!</strong></p>
+					<p><strong>Menjadi lembaga pendidikan terpadu yang mampu mewujudkan generasi berkualitas, berkapasitas global dan berkepribadian Islam. </strong></p>
 					<h4 style="color:white">Misi</h4>
-					<p>1. ..........................................</p>
-					<p>2. ..........................................</p>
-					<p>3. ..........................................</p>
-					<p>4. ..........................................</p>
+					<p>1. Mewujudkan generasi berkualitas yang cerdas, terampil, menguasai ilmu pengetahuan dan teknologi serta mampu menjadi agen-agen pembaharu</p>
+					<p>2. Mewujudkan generasi berkapasitas global yang mandiri, kompetitif dan bertanggung jawab yang siap sebagai pemimpin masa depan</p>
+					<p>3. Mewujudkan generasi berkepribadian Islam yang beraqidah salimah, berfikroh Islamiyah, beribadah sholihah dan berakhlakul karimah</p>
+					<p>4. Mengembangkan hubungan sinergis dan kerjasama di antara masyarakat sekolah (sekolah, keluarga, pemerintah, dan lingkungan masyarakat).</p>
 				</div>
 			</div>
 		</div>
