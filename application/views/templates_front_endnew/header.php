@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Yayasan Mentari Ilmu Karawang</title>
+  <title>Yayasan Pendidikan Mentari Ilmu Karawang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Situs Resmi Yayasan Mentari Ilmu Karawang, yaitu yayasan yang bergerak di bidang Pendidikan." />
   <meta name="keywords" content="Mentari Ilmu, Yayasan, Yayasan Mentari Ilmu, Pendidikan, SMP, SMA, SD, Islam Terpadu, Sekolah Islam Terpadu, SD IT Karawang, SMP IT KARAWANG, SMA IT KARAWANG" />
