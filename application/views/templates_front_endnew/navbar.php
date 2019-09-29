@@ -24,12 +24,34 @@
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li class="active"><a href="<?= base_url() ?>Home/">Home</a></li>
-                            <li><a href="<?= base_url() ?>Home/about_us">Tentang Kami</a></li>
-                            <li><a href="<?= base_url() ?>Home/sekolah">Sekolah</a></li>
-                            <li><a href="<?= base_url() ?>Home/contact">Contact</a></li>
-                            <li><a href="<?= base_url() ?>Home/faq">FAQ</a></li>
-                            <li class="btn-cta"><a href="#"><span>Login</span></a></li>
+                            <?php 
+                                $home = '';
+                                $tentang = '';
+                                $sekolah = '';
+                                $contact = '';
+                                $faq = '';
+                                if($this->uri->segment('2')==NULL){
+                                    $home = 'class="active"';
+                                }
+                                if($this->uri->segment('2')=='about_us'){
+                                    $tentang = 'class="active"';                                    
+                                } 
+                                if($this->uri->segment('2')=='sekolah' || $this->uri->segment('2')=='mentariilmu'){
+                                    $sekolah = 'class="active"';                                    
+                                } 
+                                if($this->uri->segment('2')=='faq'){
+                                    $faq = 'class="active"';                                    
+                                } 
+                                if($this->uri->segment('2')=='contact'){
+                                    $contact = 'class="active"';                                    
+                                } 
+                            ?>
+                            <li <?= $home ?>><a href="<?= base_url() ?>Home/">Home</a></li>                            
+                            <li <?= $tentang ?>><a href="<?= base_url() ?>Home/about_us">Tentang Kami</a></li>
+                            <li <?= $sekolah ?>><a href="<?= base_url() ?>Home/sekolah">Sekolah</a></li>
+                            <li <?= $contact ?>><a href="<?= base_url() ?>Home/contact">Contact</a></li>
+                            <li <?= $faq ?>><a href="<?= base_url() ?>Home/faq">FAQ</a></li>
+                            <!-- <li class="btn-cta"><a href="#"><span>Login</span></a></li> -->
                         </ul>
                     </div>
                 </div>
