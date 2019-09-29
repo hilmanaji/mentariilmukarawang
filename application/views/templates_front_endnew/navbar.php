@@ -19,10 +19,10 @@
         <div class="top-menu">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-2">
-                        <div id="fh5co-logo"><a href="<?= base_url() ?>Home"><i class="icon-study"></i>&nbsp;Mentari Ilmu<span></span></a></div>
+                    <div class="col-xs-7">
+                        <div id="fh5co-logo"><a href="<?= base_url() ?>Home"><i class="icon-study"></i>&nbsp;Yayasan Pendidikan Mentari Ilmu<span></span></a></div>
                     </div>
-                    <div class="col-xs-10 text-right menu-1">
+                    <div class="col-xs-5 text-right menu-1">
                         <ul>
                             <?php 
                                 $home = '';

@@ -9,6 +9,7 @@ class Home extends CI_Controller {
 		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
 		$data['data_artikel'] = $this->DataHandle->get2lim6('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
 		$data['data_pengumuman'] = $this->DataHandle->get2lim6('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
+		$data['data_galeri'] = $this->DataHandle->get2lim('tbl_galeri', 'tbl_user', 'tbl_galeri.*, tbl_user.username', 'tbl_galeri.created_by = tbl_user.id_user', "tbl_galeri.status = '1'", "tbl_galeri.id_galeri", '4');
 		$this->template->front_endnew('front_endnew/v_home', $data);
 	}
 
@@ -85,6 +86,9 @@ class Home extends CI_Controller {
 
 	public function MentariIlmu($id_sekolah = "")
 	{
+		$data['galeri_one'] = $this->DataHandle->get2lim('tbl_galeri', 'tbl_user', 'tbl_galeri.*, tbl_user.username', 'tbl_galeri.created_by = tbl_user.id_user', "tbl_galeri.status = '1' and tbl_galeri.id_sekolah = '$id_sekolah'", "tbl_galeri.id_galeri", '1');
+		$data['data_galeri'] = $this->DataHandle->get2lim('tbl_galeri', 'tbl_user', 'tbl_galeri.*, tbl_user.username', 'tbl_galeri.created_by = tbl_user.id_user', "tbl_galeri.status = '1' and tbl_galeri.id_sekolah = '$id_sekolah'", "tbl_galeri.id_galeri", '4');
+		$data['data_video'] = $this->DataHandle->get2lim('tbl_video', 'tbl_user', 'tbl_video.*, tbl_user.username', 'tbl_video.created_by = tbl_user.id_user', "tbl_video.status = '1' and tbl_video.id_sekolah = '$id_sekolah'", "tbl_video.id_video", '2');
 		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "id_sekolah = '$id_sekolah'");
 		$data['data_artikel'] = $this->DataHandle->get_two_o('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1' and tbl_artikel.id_sekolah = '$id_sekolah'", "tbl_artikel.id_artikel");
 		$data['data_pengumuman'] = $this->DataHandle->get_two_o('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");

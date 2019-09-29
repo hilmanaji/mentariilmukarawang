@@ -12,7 +12,12 @@
                 <?php endforeach; ?>
 			</div>
 			<div class="col-md-6">
-				<img class="img-responsive" src="<?= base_url(); ?>assets/front_end_new/images/img_bg_2.jpg" alt="Free HTML5 Bootstrap Template">
+				<?php 
+				foreach ($galeri_one->result() as $baris) { ?>
+				<img class="img-responsive" src="<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>" alt="Free HTML5 Bootstrap Template">
+				<?php 
+				}
+				?>
 			</div>
 		</div>
 	</div>
@@ -126,25 +131,21 @@
 		</div>  <!-- end contaner  -->
 	</div>
 
-	<div id="fh5co-gallery" class="fh5co-bg-section">  <!-- Start Galery -->
+	<div id="fh5co-gallery" class="fh5co-bg-section">
 		<div class="row text-center">
 			<h2><span>Gallery</span></h2>
 		</div>
 		<div class="row">
+			<?php 
+			foreach ($data_galeri->result() as $baris) { ?>
 			<div class="col-md-3 col-padded">
-				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-5.jpg);"></a>
+				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>);"></a>
 			</div>
-			<div class="col-md-3 col-padded">
-				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-2.jpg);"></a>
-			</div>
-			<div class="col-md-3 col-padded">
-				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-3.jpg);"></a>
-			</div>
-			<div class="col-md-3 col-padded">
-				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-4.jpg);"></a>
-			</div>
+			<?php 
+			}
+			?>
 		</div>
-	</div>  <!-- End Galery -->
+	</div>
 
     <div id="fh5co-course"> <!-- Start Ekstrakulkuler -->
 		<div class="container">
@@ -208,18 +209,16 @@
 			<h2><span>Fasilitas Pendidikan</span></h2>
 		</div>
 		<div class="row">
-			<?php foreach ($data_fasilitas->result() as $fasilitas) : ?>
-			<?php
+			<?php foreach ($data_fasilitas->result() as $fasilitas) : 
 			if ($fasilitas->value == "") {
 					$gambar = '<a href="#" class="gallery" style="background-image: url('.base_url().'assets/front_end_new/images/project-3.jpg);"></a>';
                 }
                 else{
                     $gambar = '<a href="#" class="gallery" style="background-image: url('.base_url().'assets/plugins/images/image/'.$fasilitas->value.');"></a>';
-				}
-			?>
+				}?>
 			<div class="col-md-3 col-padded">
-				<div><p style="text-align: center;"><?= $fasilitas->nama_fasilitas ?></p></div>
 				<?= $gambar ?>
+				<div><p style="text-align: center;"><?= $fasilitas->nama_fasilitas ?></p></div>
 			</div>
 			<?php endforeach; ?>
 		</div>
@@ -239,7 +238,16 @@
 	<hr>
 	<div id="fh5co-course-categories"> 
 		<div class="container">
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/0Gs4hfiRPBk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<div class="row animate-box">
+			<?php 
+				foreach ($data_video->result() as $baris) { ?>
+				<div class="col-md-6">
+					<iframe width="100%" height="300px" src="https://www.youtube.com/embed/<?= $baris->link ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			<?php
+				}
+			?>
+			</div>
 		</div>
 	</div>
 

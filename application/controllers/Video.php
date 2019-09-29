@@ -105,6 +105,7 @@ class Video extends CI_Controller {
         $edit_data = array(
             'id_sekolah' => $id_sekolah,
             'judul' => $judul,
+            'link' => $link,
             'deskripsi' => $deskripsi,
             'updated_by' => $id_user
          );

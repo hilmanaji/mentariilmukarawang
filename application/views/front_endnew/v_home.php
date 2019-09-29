@@ -2,43 +2,43 @@
 	<aside id="fh5co-hero">
 		<div class="flexslider">
 			<ul class="slides">
-		   	<li style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/img_bg_1.jpg);">
+		   	<li style="background-image: url(<?= base_url(); ?>assets/plugins/images/PB329091920196_2.jpeg);">
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="row">
 			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
 			   				<div class="slider-text-inner">
-			   					<h1>Tagline 1</h1>
-									<h2>Brought to you by <a href="http://freehtml5.co/" target="_blank"></a></h2>
-									<p><a class="btn btn-primary btn-lg" href="#">Start Learning Now!</a></p>
+			   					<h1>SMA IT Mentari Ilmu</h1>
+									<!-- <h2>Brought to you by <a href="http://freehtml5.co/" target="_blank"></a></h2> -->
+									<p><a class="btn btn-primary btn-lg" href="<?= base_url() ?>Home/sekolah">Lihat!</a></p>
 			   				</div>
 			   			</div>
 			   		</div>
 		   		</div>
 		   	</li>
-		   	<li style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/img_bg_2.jpg);">
+		   	<li style="background-image: url(<?= base_url(); ?>assets/plugins/images/PB329091920196_1.jpg);">
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="row">
 			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
 			   				<div class="slider-text-inner">
-			   					<h1>Tagline 2</h1>
-									<h2>Brought to you by <a href="http://freehtml5.co/" target="_blank"></a></h2>
-									<p><a class="btn btn-primary btn-lg btn-learn" href="#">Start Learning Now!</a></p>
+			   					<h1>SMP IT Mentari Ilmu</h1>
+									<!-- <h2>Brought to you by <a href="http://freehtml5.co/" target="_blank"></a></h2> -->
+									<p><a class="btn btn-primary btn-lg" href="<?= base_url() ?>Home/sekolah">Lihat!</a></p>
 			   				</div>
 			   			</div>
 			   		</div>
 		   		</div>
 		   	</li>
-		   	<li style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/img_bg_3.jpg);">
+		   	<li style="background-image: url(<?= base_url(); ?>assets/plugins/images/PB329091921779_1.JPG);">
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="row">
 			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
 			   				<div class="slider-text-inner">
-			   					<h1>Tagline 3</h1>
-									<h2>Brought to you by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
-									<p><a class="btn btn-primary btn-lg btn-learn" href="#">Start Learning Now!</a></p>
+			   					<h1>SD IT Mentari Ilmu</h1>
+									<!-- <h2>Brought to you by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2> -->
+									<p><a class="btn btn-primary btn-lg" href="<?= base_url() ?>Home/sekolah">Lihat!</a></p>
 			   				</div>
 			   			</div>
 			   		</div>
@@ -58,7 +58,7 @@
 				<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat cauctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per Mauris in erat justo.</p>
 			</div>
 			<div class="col-md-6">
-				<img class="img-responsive" src="<?= base_url(); ?>assets/front_end_new/images/img_bg_2.jpg" alt="Free HTML5 Bootstrap Template">
+				<img class="img-responsive" src="<?= base_url(); ?>assets/plugins/images/PB32909192924_1.JPG" alt="Free HTML5 Bootstrap Template">
 			</div>
 		</div>
 	</div>
@@ -162,17 +162,13 @@
 			<h2><span>Gallery</span></h2>
 		</div>
 		<div class="row">
+			<?php 
+			foreach ($data_galeri->result() as $baris) { ?>
 			<div class="col-md-3 col-padded">
-				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-5.jpg);"></a>
+				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>);"></a>
 			</div>
-			<div class="col-md-3 col-padded">
-				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-2.jpg);"></a>
-			</div>
-			<div class="col-md-3 col-padded">
-				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-3.jpg);"></a>
-			</div>
-			<div class="col-md-3 col-padded">
-				<a href="#" class="gallery" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-4.jpg);"></a>
-			</div>
+			<?php 
+			}
+			?>
 		</div>
 	</div>
