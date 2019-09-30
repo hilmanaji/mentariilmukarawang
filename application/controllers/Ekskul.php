@@ -59,7 +59,11 @@ class Ekskul extends CI_Controller {
 
             $this->upload->initialize($this->set_upload_options());
             if ($this->upload->do_upload()) {
-                $dataInfo = $this->upload->data();         
+                $dataInfo = $this->upload->data(); 
+                if ($dataInfo['file_size'] > 1024) {
+                    $this->resize($dataInfo['file_name']);
+
+                }             
                 // DATA INPUT EKSKUL
                 $inpute_ekskul = array(
                     'id_sekolah' => $id_sekolah,
@@ -256,12 +260,27 @@ class Ekskul extends CI_Controller {
     private function set_upload_options(){
         $config['upload_path'] = './assets/plugins/images/image';
         $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
-        $config['max_size'] = 2048;
-        $config['max_width'] = 1366;
-        $config['max_height'] = 1368;
+        $config['max_size'] = 0;
         $config['encrypt_name'] = TRUE;
         $config['overwrite']     = FALSE;
 
         return $config;        
+    }
+    private function resize($nama_file_baru){
+        $this->load->library('image_lib');
+
+        $conf['image_library']='gd2';
+        $conf['source_image']='./assets/plugins/images/image/'.$nama_file_baru;
+        $conf['create_thumb']= FALSE;
+        $conf['maintain_ratio']= TRUE;
+        $conf['quality']= '60%';
+        $conf['width']= 1200;
+        $conf['height']= 900;
+        $conf['new_image']= './assets/plugins/images/image/'.$nama_file_baru;
+
+        $this->image_lib->clear();
+        $this->image_lib->initialize($conf);
+        $this->image_lib->resize();
+
     }
 }

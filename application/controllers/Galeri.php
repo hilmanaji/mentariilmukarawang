@@ -239,7 +239,7 @@ class Galeri extends CI_Controller {
 
         redirect('Galeri'); 
         }
-    }    
+    }
 
     private function set_upload_options(){
         $config['upload_path'] = './assets/plugins/images/image';
