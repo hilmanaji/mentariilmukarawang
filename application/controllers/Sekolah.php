@@ -26,6 +26,10 @@ class Sekolah extends CI_Controller {
         $alamat = $this->input->post('alamat');
         $kontak = $this->input->post('kontak');
         $email = $this->input->post('email');        
+        $fb = $this->input->post('fb');        
+        $instagram = $this->input->post('instagram');
+        $twitter = $this->input->post('twitter');
+        $youtube = $this->input->post('youtube');
 
         // DATA INPUT SEKOLAH
         $input_data = array(
@@ -34,6 +38,10 @@ class Sekolah extends CI_Controller {
             'alamat' => $alamat,
             'kontak' => $kontak,
             'email' => $email,
+            'fb' => $fb,
+            'instagram' => $instagram,
+            'twitter' => $twitter,
+            'youtube' => $youtube,
             'created_by' => $id_user
          );
         $this->DataHandle->insert('tbl_sekolah', $input_data);
@@ -84,13 +92,21 @@ class Sekolah extends CI_Controller {
         $nama = $this->input->post('nama');
         $alamat = $this->input->post('alamat');
         $kontak = $this->input->post('kontak');
-        $email = $this->input->post('email');        
+        $email = $this->input->post('email');      
+        $fb = $this->input->post('fb');        
+        $instagram = $this->input->post('instagram');
+        $twitter = $this->input->post('twitter');
+        $youtube = $this->input->post('youtube');    
 
         $edit_data = array(
             'nama' => $nama,
             'alamat' => $alamat,
             'kontak' => $kontak,
             'email' => $email,
+            'fb' => $fb,
+            'instagram' => $instagram,
+            'twitter' => $twitter,
+            'youtube' => $youtube,
             'updated_by' => $id_user
          );
         $where = array(

@@ -13,23 +13,40 @@ class Home extends CI_Controller {
 		$this->template->front_endnew('front_endnew/v_home', $data);
 	}
 
-	public function input_pesan_tamu(){
-        $nama_tamu = $this->input->post('nama_tamu');
-        $kontak = $this->input->post('kontak');
-        $email = $this->input->post('email');
-        $pesan = $this->input->post('pesan');
+	public function input_pesan_tamu()
+	{
+        $nama_tamu = $this->input->post('nama_tamu', TRUE);
+        $kontak = $this->input->post('kontak', TRUE);
+        $email = $this->input->post('email', TRUE);
+        $pesan = $this->input->post('pesan', TRUE);
+        $ip_user = $this->get_ip_user();
 
         $input_data = array(
             'nama_tamu' => $nama_tamu,
             'kontak' => $kontak,
             'email' => $email,
             'pesan' => $pesan,
+            'ip_user' => $ip_user,
             'status' => 1
          );
 
         $this->DataHandle->insert('tbl_tamu', $input_data);
         $this->email_sender($email, $nama_tamu);
         redirect('Home/contact');
+	}
+
+	function get_ip_user()
+	{
+		if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+			//ip from share internet
+			$ip = $_SERVER['HTTP_CLIENT_IP'];
+		}elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+			//ip pass from proxy
+			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		}else{
+			$ip = $_SERVER['REMOTE_ADDR'];
+		}
+		return $ip;
 	}
 
 	public function about_us()
@@ -106,7 +123,7 @@ class Home extends CI_Controller {
 			    'smtp_host' => 'smtp.gmail.com',
 			    'smtp_port' => 465,
 			    'smtp_user' => 'fazri.rramadhanh@gmail.com',
-			    'smtp_pass' => 'tarixjabrix123',
+			    'smtp_pass' => 'tarixjabrixx789',
 			    'mailtype'  => 'html', 
    				'smtp_crypto'=>'ssl',
 			    'charset'   => 'iso-8859-1'

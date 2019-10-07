@@ -4,11 +4,11 @@
                     <!-- Left sidebar -->
                     <div class="col-md-12">
                         <div class="white-box">
-                                <a href="<?php echo base_url() ?>Galeri"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
+                                <a href="<?php echo base_url() ?>Berkas"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
                             <div class="row">
                                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
-                                    <form enctype="multipart/form-data" action="<?php echo base_url() ?>Galeri/add" method="post" class="form-horizontal row-fluid">
-                                        <h3 class="box-title">Tambah Galeri</h3>
+                                    <form enctype="multipart/form-data" action="<?php echo base_url() ?>Berkas/add" method="post" class="form-horizontal row-fluid">
+                                        <h3 class="box-title">Tambah File Download</h3>
                                      <?php 
                                      // Kondisi Admin Sekolah
                                      if($id_sekolah != '0'){ ?>   
@@ -35,14 +35,14 @@
                                      } 
                                      ?>  
                                         <div class="form-group">                     
-                                            <label for="exampleInputEmail1">Gambar</label>
+                                            <label for="exampleInputEmail1">File</label>
                                             <div class="fallback">
-                                                <input name="userfile" type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"/> 
+                                                <input name="userfile" type="file" accept=".pdf, .doc, .docx, .xls, .xlsx"/> 
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Deskripsi</label>
-                                            <input class="form-control" name="deskripsi" required oninvalid="this.setCustomValidity('Deskripsi tidak boleh kosong')" oninput="setCustomValidity('')"> 
+                                            <label for="exampleInputEmail1">Keterangan</label>
+                                            <input class="form-control" name="keterangan" required oninvalid="this.setCustomValidity('Keterangan tidak boleh kosong')" oninput="setCustomValidity('')"> 
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Simpan</button>

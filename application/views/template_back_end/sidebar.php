@@ -63,6 +63,7 @@
                                 <li> <a href="<?php echo base_url() ?>Pengumuman"><i class="icon-speech fa-fw"></i>Pengumuman</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Video"><i class="icon-social-youtube fa-fw"></i>Video</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Galeri"><i class="icon-picture fa-fw"></i>Galeri</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Berkas"><i class="icon-doc fa-fw"></i>File Download</a> </li>
 
                                 <?php }
                                 // Role User Super Admin
@@ -74,6 +75,7 @@
                                 <li> <a href="<?php echo base_url() ?>Pengumuman"><i class="icon-speech fa-fw"></i>Pengumuman</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Video"><i class="icon-social-youtube fa-fw"></i>Video</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Galeri"><i class="icon-picture fa-fw"></i>Galeri</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Berkas"><i class="icon-doc fa-fw"></i>File Download</a> </li>
                                  
                                 <?php } ?>
                             </ul>
