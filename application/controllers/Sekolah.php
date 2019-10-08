@@ -15,7 +15,16 @@ class Sekolah extends CI_Controller {
 
 	public function index()
 	{
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");		
+
+        if ($_SESSION['id_sekolah'] == '0') 
+        {
+            $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
+        }
+        else
+        {
+            $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0' AND id_sekolah = '".$_SESSION['id_sekolah']."'");
+        }
+
         $this->template->back_end('back_end/v_data_sekolah', $data);
     }
 

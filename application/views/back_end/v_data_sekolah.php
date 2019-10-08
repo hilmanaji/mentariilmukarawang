@@ -5,7 +5,12 @@
                             <!-- <p class="text-muted m-b-30">Master Data Sekolah</p> -->
                             <h3 class="box-title m-b-0">Master Data Sekolah</h3>
                             <br>
+                            <?php 
+                                if ($_SESSION['id_sekolah'] == '0') { ?>
                             <p style="text-align:right"><button data-toggle="modal" data-target="#myModalAdd" class="btn btn-success waves-effect waves-light"><i class="fa fa-plus m-l-5"></i> Data Sekolah</button></p>
+                            <?php
+                            }
+                            ?>
                             <div class="table-responsive">
                                 <table id="myTable" class="table table-striped display">
                                     <thead>
@@ -39,7 +44,14 @@
                                             <td>
                                                 <center>                                                
                                                     <a href="<?php echo base_url() ?>Sekolah/get_data/<?php echo $_sekolah->id_sekolah; ?>"><button class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button></a>
+
+                                                    
+                            <?php 
+                                if ($_SESSION['id_sekolah'] == '0') { ?>
                                                     <a href="<?php echo base_url() ?>Sekolah/delete/<?php echo $_sekolah->id_sekolah; ?>" onclick="javascript: return confirm('Yakin ingin menghapus data ini?')"><button class="btn btn-danger waves-effect waves-light" ><i class="fa fa-trash m-l-5"></i></button></a>
+                            <?php
+                            }
+                            ?>
                                                 </center>
                                             </td>
                                         </tr>

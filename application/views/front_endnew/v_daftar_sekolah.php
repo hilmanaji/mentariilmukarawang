@@ -21,10 +21,10 @@
 								<li class="address"><?= $row->alamat ?></li>
 								<li class="phone"><a href="tel://1234567920"><?= $row->kontak ?></a></li>
 								<li class="email"><a href="mailto:<?= $row->email ?>"><?= $row->email ?></a></li>
-								<li class="icon-facebook2"><a href="#"><?= $row->fb ?>-</a></li>
-								<li class="icon-instagram"><a href="#"><?= $row->instagram ?>-</a></li>
-								<li class="icon-twitter2"><a href="#"><?= $row->twitter ?>-</a></li>
-								<li class="icon-youtube"><a href="#"><?= $row->youtube ?>-</a></li>
+								<li class="icon-facebook2"><a href="<?= $row->fb ?>"><?= $row->fb ?>&nbsp;</a></li>
+								<li class="icon-instagram"><a href="<?= $row->instagram ?>"><?= $row->instagram ?>&nbsp;</a></li>
+								<li class="icon-twitter2"><a href="<?= $row->twitter ?>"><?= $row->twitter ?>&nbsp;</a></li>
+								<li class="icon-youtube"><a href="<?= $row->youtube ?>"><?= $row->youtube ?>&nbsp;</a></li>
 							</ul>
 						</div>
 					</div>
