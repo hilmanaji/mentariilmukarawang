@@ -58,10 +58,9 @@
                                 // Role User Admin Sekolah
                                 if ($this->session->userdata('role_user') === '2') { ?>
                                 <li> <a href="<?php echo base_url() ?>Fasilitas"><i class="icon-briefcase fa-fw"></i>Fasilitas</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Kegiatan"><i class="icon-bubbles fa-fw"></i>Kegiatan</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Program_unggulan"><i class="icon-bubbles fa-fw"></i>Program Unggulan</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Ekskul"><i class="icon-support fa-fw"></i>Ekstrakurikuler</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Artikel"><i class="icon-note fa-fw"></i>Artikel</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Pengumuman"><i class="icon-speech fa-fw"></i>Pengumuman</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Artikel"><i class="icon-speech fa-fw"></i>Artikel</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Video"><i class="icon-social-youtube fa-fw"></i>Video</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Galeri"><i class="icon-picture fa-fw"></i>Galeri</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Berkas"><i class="icon-doc fa-fw"></i>File Download</a> </li>
@@ -70,10 +69,9 @@
                                 // Role User Super Admin
                                 else if($this->session->userdata('role_user') === '1'){ ?>
                                 <li> <a href="<?php echo base_url() ?>Fasilitas"><i class="icon-briefcase fa-fw"></i>Fasilitas</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Kegiatan"><i class="icon-bubbles fa-fw"></i>Kegiatan</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Program_unggulan"><i class="icon-bubbles fa-fw"></i>Program Unggulan</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Ekskul"><i class="icon-support fa-fw"></i>Ekstrakurikuler</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Artikel"><i class="icon-note fa-fw"></i>Artikel</a> </li>
-                                <li> <a href="<?php echo base_url() ?>Pengumuman"><i class="icon-speech fa-fw"></i>Pengumuman</a> </li>
+                                <li> <a href="<?php echo base_url() ?>Artikel"><i class="icon-speech fa-fw"></i>Artikel</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Video"><i class="icon-social-youtube fa-fw"></i>Video</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Galeri"><i class="icon-picture fa-fw"></i>Galeri</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Berkas"><i class="icon-doc fa-fw"></i>File Download</a> </li>
