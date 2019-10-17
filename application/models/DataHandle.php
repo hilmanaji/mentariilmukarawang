@@ -127,10 +127,10 @@ class DataHandle extends CI_Model {
 		$this->db->join($tabel2, $where);
 		$this->db->join($tabel3, $where2);
 		$this->db->where($where3);
-		$this->db->order_by($order,'ASC');
+		$this->db->order_by($order,'DESC');
 		return $this->db->get();
 	}
-	
+
 	function get_three_o($tabel1, $tabel2, $tabel3, $field, $where, $where2, $where3, $where4, $order ){
 		$this->db->select($field);
 		$this->db->from($tabel1);

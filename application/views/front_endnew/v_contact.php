@@ -8,8 +8,8 @@
 			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
 			   				<div class="slider-text-inner">
 			   					<h1 class="heading-section">Kontak Kami</h1>
-									<h2>Yayasan <a href="<?= base_url() ?>Home">Mentari Ilmu - Karawang</a></h2>
-                                    <h2>Jl. Soka No. 25 Guro II 41315 Karawang</h2>
+									<h2><a href="<?= base_url() ?>Home"><?= $data_yayasan['nama'] ?></a></h2>
+                                    <h2><?= $data_yayasan['alamat'] ?> Karawang</h2>
 			   				</div>
 			   			</div>
 			   		</div>
@@ -28,10 +28,10 @@
 					<div class="fh5co-contact-info">
 						<h3>Hubungi Kami</h3>
 						<ul>
-							<li class="address">Jl. Perum Karaba Indah 1 Kp. Pintu Air Wadas<br> Karawang Indonesia</li>
-							<li class="phone"><a href="#">(0267) 840333</a></li>
-							<li class="email"><a href="#">smait.mentariilmu@gmail.com</a></li>
-							<li class="url"><a href="http://>mentariilmu.sch.id">mentariilmu.sch.id</a></li>
+							<li class="address"><?= $data_yayasan['alamat'] ?><br> Karawang Indonesia</li>
+							<li class="phone"><a href="#"><?= $data_yayasan['kontak'] ?></a></li>
+							<li class="email"><a href="#"><?= $data_yayasan['email'] ?></a></li>
+							<li class="url"><a target="_blank" href="http://>mentariilmu.sch.id">mentariilmu.sch.id</a></li>
 						</ul>
 					</div>
 

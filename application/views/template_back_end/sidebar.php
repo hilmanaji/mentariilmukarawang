@@ -38,7 +38,7 @@
                                 <?php }
                                 // Role User Super Admin
                                 else if($this->session->userdata('role_user') === '1'){ ?>
-                                <li><a href="<?php echo base_url() ?>Yayasan"><i class="icon-user fa-fw"></i>Data Yayasan</a></li>
+                                <li><a href="<?php echo base_url() ?>Yayasan"><i class="icon-target fa-fw"></i>Data Yayasan</a></li>
                                 <li><a href="<?php echo base_url() ?>Profil"><i class="icon-user fa-fw"></i>Data Profil</a></li>
                                 <li> <a href="<?php echo base_url() ?>Profile"><i class="icon-notebook fa-fw"></i>Profile Sekolah</a> </li>
                                 <li> <a href="<?php echo base_url() ?>User"><i class="icon-people fa-fw"></i>Data User</a> </li>

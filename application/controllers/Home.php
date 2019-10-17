@@ -90,7 +90,8 @@ class Home extends CI_Controller {
 
 	public function contact()
 	{
-		$this->template->front_endnew('front_endnew/v_contact');
+        $data['data_yayasan'] = $this->DataHandle->getAllWhere('tbl_yayasan', '*', "status = '1'")->row_array();
+		$this->template->front_endnew('front_endnew/v_contact', $data);
 	}
 
 	public function faq()
@@ -99,6 +100,20 @@ class Home extends CI_Controller {
 		$data['data_artikel'] = $this->DataHandle->get2lim6('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
 		$data['data_pengumuman'] = $this->DataHandle->get2lim6('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
 		$this->template->front_endnew('front_endnew/v_faq', $data);
+	}
+
+	public function download($nama_file = null)
+	{
+		if ($nama_file != null) 
+		{
+			$this->load->helper('download');			
+    		force_download('assets/plugins/file/'.$nama_file, null);
+
+		}
+		$data['data_file'] = $this->DataHandle->get_three('tbl_file', 'tbl_user', 'tbl_sekolah', 'tbl_file.*, tbl_user.username, tbl_sekolah.nama', 'tbl_file.created_by = tbl_user.id_user','tbl_file.id_sekolah = tbl_sekolah.id_sekolah', "tbl_file.status = '1'",  "tbl_file.id_file");
+		$data['data_artikel'] = $this->DataHandle->get2lim6('tbl_artikel', 'tbl_user', 'tbl_artikel.*, tbl_user.username', 'tbl_artikel.created_by = tbl_user.id_user', "tbl_artikel.status = '1'", "tbl_artikel.id_artikel");
+		$data['data_pengumuman'] = $this->DataHandle->get2lim6('tbl_pengumuman', 'tbl_user', 'tbl_pengumuman.*, tbl_user.username', 'tbl_pengumuman.created_by = tbl_user.id_user', "tbl_pengumuman.status = '1'", "tbl_pengumuman.id_pengumuman");
+		$this->template->front_endnew('front_endnew/v_download', $data);
 	}
 
 	public function MentariIlmu($id_sekolah = "")
@@ -164,6 +179,23 @@ class Home extends CI_Controller {
 		$data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "id_sekolah = '$id_sekolah'");
 		$data['data_tatatertib'] = $this->DataHandle->getAllWhere('tbl_tata_tertib', '*', "id_sekolah = '$id_sekolah'");
 		$this->template->front_endnew('front_endnew/v_tatatertib', $data);
+	}
+
+	public function file($id_file, $downloaded)
+	{
+        $file_download = $this->DataHandle->getAllWhere('tbl_file', '*', "status = '1' AND id_file = '".$id_file."'")->row_array();        
+        $downloaded = $downloaded+1;
+
+        $edit_data = array(
+        	'downloaded' => $downloaded
+         );
+        $where = array(
+            'id_file' => $id_file
+         );
+        // var_dump($downloaded);die;
+
+        $this->DataHandle->edit('tbl_file', $edit_data, $where);
+        redirect('Home/download/'.$file_download['value']);
 	}
 
 
