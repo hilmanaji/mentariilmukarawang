@@ -49,7 +49,7 @@ class Login extends CI_Controller {
 					$id_sekolah = $row->id_sekolah;				
 				}
 			}
-		
+
 			// GET DATA SEKOLAH
 			$where_ = array(
 				'id_sekolah' => $id_sekolah,

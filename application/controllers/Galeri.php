@@ -28,8 +28,15 @@ class Galeri extends CI_Controller {
 	public function index()
 	{
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
-        $data['data_galeri'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE ".$this->nama_tabel.".`status` = '1' ".$this->kondisi." ");		
+        $data['data_galeri'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE ".$this->nama_tabel.".`status` = '1' AND  ".$this->nama_tabel.".`tag_galeri` IS NULL ".$this->kondisi." ");		
         $this->template->back_end('back_end/v_data_galeri', $data);
+    }
+
+	public function slider()
+	{
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
+        $data['data_galeri'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE ".$this->nama_tabel.".`status` = '1' AND ".$this->nama_tabel.".`tag_galeri` = 'slider' ".$this->kondisi. " ");		
+        $this->template->back_end('back_end/v_data_slider', $data);
     }
 
     public function form_add()
@@ -37,6 +44,12 @@ class Galeri extends CI_Controller {
         $data['id_sekolah'] = $this->id_sekolah;
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
         $this->template->back_end('back_end/v_add_galeri', $data);
+    
+    }
+    public function form_add_slider()
+    {
+        $data['id_sekolah'] = $this->id_sekolah;
+        $this->template->back_end('back_end/v_add_slider', $data);
     }
 
     public function add(){
@@ -110,6 +123,83 @@ class Galeri extends CI_Controller {
                 <i class="fa fa-check m-l-5"></i> Data Berhasil Ditambahkan ... 
             </div>');  
             redirect('Galeri');
+        }    
+    }
+
+    public function add_slider(){
+        $this->load->library('upload'); //pemanggilan library upload
+        $id_user = $this->session->userdata('id_user');
+        $deskripsi = $this->input->post('deskripsi');
+        $id_sekolah = $this->input->post('id_sekolah');
+        $tag_galeri = $this->input->post('tag_galeri');
+    
+
+        // KONDISI GAMBAR ADA
+        if ($_FILES['userfile']['name'] != NULL) {
+            $dataInfo = array();
+            $files = $_FILES;
+            $_FILES['userfile']['name']= $files['userfile']['name'];
+            $_FILES['userfile']['type']= $files['userfile']['type'];
+            $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'];
+            $_FILES['userfile']['error']= $files['userfile']['error'];
+            $_FILES['userfile']['size']= $files['userfile']['size']; 
+
+            $this->upload->initialize($this->set_upload_options());
+            if ($this->upload->do_upload()) {
+                $dataInfo = $this->upload->data(); 
+                if ($dataInfo['file_size'] > 1024) {
+                    $this->resize($dataInfo['file_name']);
+
+                }        
+                // DATA INPUT SLIDER
+                $input_data = array(
+                    'id_sekolah' => "0",
+                    'deskripsi' => $deskripsi,
+                    'tag_galeri' => $tag_galeri,
+                    'status' => 1,
+                    'created_by' => $id_user,
+                    'value' => $dataInfo['file_name']
+                 );
+                $this->DataHandle->insert('tbl_galeri', $input_data);    
+  
+                $this->session->set_flashdata('msg', '
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    &times;</button>
+                    <i class="fa fa-check m-l-5"></i> Data Berhasil Ditambahkan ... 
+                </div>');  
+                redirect('Galeri/slider');   
+
+            }
+            else{
+                $this->session->set_flashdata('msg', '
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    &times;</button>
+                    <i class="fa fa-check m-l-5"></i> Gambar Bermasalah !!!!
+                </div>');  
+
+                redirect('Galeri/slider');
+            }
+            
+        }
+        // KONDISI GAMBAR KOSONG
+        else{
+            // DATA INPUT ARTIKEL
+            $input_data = array(
+                'id_sekolah' => "0",
+                'deskripsi' => $deskripsi,
+                'status' => 1,
+                'created_by' => $id_user
+             );
+            $this->DataHandle->insert('tbl_galeri', $input_data); 
+            $this->session->set_flashdata('msg', '
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;</button>
+                <i class="fa fa-check m-l-5"></i> Data Berhasil Ditambahkan ... 
+            </div>');  
+            redirect('Galeri/slider');
         }    
     }
 

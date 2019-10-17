@@ -44,6 +44,8 @@
                                 <li> <a href="<?php echo base_url() ?>User"><i class="icon-people fa-fw"></i>Data User</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Sekolah"><i class="icon-layers fa-fw"></i>Data Sekolah</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Tata_tertib"><i class="icon-map fa-fw"></i>Tata Tertib</a> </li>
+                                
+                                <li> <a href="<?php echo base_url() ?>Galeri/slider"><i class="icon-map fa-fw"></i>Galeri Beranda</a> </li>
                                 <!-- <li> <a href="<?php echo base_url() ?>FAQ"><i class="icon-question fa-fw"></i>Data FAQ</a> </li> -->
 
                                 <li> <a href="<?php echo base_url() ?>Tamu"><i class="icon-book-open fa-fw"></i>Buku Tamu</a> </li>
