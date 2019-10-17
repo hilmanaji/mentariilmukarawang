@@ -14,7 +14,7 @@
 			<div class="col-md-6">
 				<?php 
 				foreach ($galeri_one->result() as $baris) { ?>
-				<img class="img-responsive" src="<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>" alt="Free HTML5 Bootstrap Template">
+				<img class="img-responsive" src="<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>" alt="">
 				<?php 
 				}
 				?>
@@ -159,7 +159,7 @@
 				<?php foreach ($data_ekskul->result() as $ekskul) : ?>
                     <div class="col-md-6 animate-box">
                         <div class="course">
-                            <a href="#" class="course-img" style="background-image: url(<?= base_url(); ?>assets/front_end_new/images/project-1.jpg);">
+                            <a href="#" class="course-img" style="background-image: url(<?= base_url(); ?>assets/plugins/images/image/<?= $ekskul->value; ?>);">
                             </a>
                             <div class="desc">
                                 <h3><a href="#"><?= $ekskul->nama_ekskul ?></a></h3>
