@@ -32,18 +32,19 @@
                                 <li> <a href="<?php echo base_url() ?>Profile"><i class="icon-notebook fa-fw"></i>Profile Sekolah</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Tata_tertib"><i class="icon-map fa-fw"></i>Tata Tertib</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Sekolah"><i class="icon-layers fa-fw"></i>Data Sekolah</a> </li>
-                                <li> <a href="<?php echo base_url() ?>FAQ"><i class="icon-question fa-fw"></i>Data FAQ</a> </li>
+                                <!-- <li> <a href="<?php echo base_url() ?>FAQ"><i class="icon-question fa-fw"></i>Data FAQ</a> </li> -->
                                 <li> <a href="<?php echo base_url() ?>Tamu"><i class="icon-book-open fa-fw"></i>Buku Tamu</a> </li>
 
                                 <?php }
                                 // Role User Super Admin
                                 else if($this->session->userdata('role_user') === '1'){ ?>
+                                <li><a href="<?php echo base_url() ?>Yayasan"><i class="icon-user fa-fw"></i>Data Yayasan</a></li>
                                 <li><a href="<?php echo base_url() ?>Profil"><i class="icon-user fa-fw"></i>Data Profil</a></li>
                                 <li> <a href="<?php echo base_url() ?>Profile"><i class="icon-notebook fa-fw"></i>Profile Sekolah</a> </li>
                                 <li> <a href="<?php echo base_url() ?>User"><i class="icon-people fa-fw"></i>Data User</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Sekolah"><i class="icon-layers fa-fw"></i>Data Sekolah</a> </li>
                                 <li> <a href="<?php echo base_url() ?>Tata_tertib"><i class="icon-map fa-fw"></i>Tata Tertib</a> </li>
-                                <li> <a href="<?php echo base_url() ?>FAQ"><i class="icon-question fa-fw"></i>Data FAQ</a> </li>
+                                <!-- <li> <a href="<?php echo base_url() ?>FAQ"><i class="icon-question fa-fw"></i>Data FAQ</a> </li> -->
 
                                 <li> <a href="<?php echo base_url() ?>Tamu"><i class="icon-book-open fa-fw"></i>Buku Tamu</a> </li>
                                  
