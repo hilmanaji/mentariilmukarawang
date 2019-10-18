@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-right">
-                        <p class="site" style="color:#fff"><?= $data_yayasan['email'] ?></p>
+                        <p class="site" style="color:#fff">www.mentariilmukarawang.sch.id</p>
                         <p class="num" style="color:#fff">Phone : <?= $data_yayasan['kontak'] ?></p>
                         <ul class="fh5co-social">
                             <li><a href="https://www.facebook.com/<?= $data_yayasan['fb'] ?>" target="_blank"><i style="color:white" class="icon-facebook2"></i></a></li>

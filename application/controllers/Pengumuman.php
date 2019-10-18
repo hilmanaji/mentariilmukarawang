@@ -163,6 +163,10 @@ class Pengumuman extends CI_Controller {
                 // JIKA GAMBAR TIDAK ADA
                 if ($gambar_lama == "") {   
                     // DATA EDIT PENGUMUMAN
+                    if ($dataInfo['file_size'] > 1024) {
+                        $this->resize($dataInfo['file_name']);
+
+                    }             
                     $edit_data = array(
                         'isi_pengumuman' => $isi_pengumuman,
                         'judul' => $judul,
@@ -176,6 +180,10 @@ class Pengumuman extends CI_Controller {
                 }
                 // JIKA GAMBAR ADA
                 else{
+                    if ($dataInfo['file_size'] > 1024) {
+                        $this->resize($dataInfo['file_name']);
+
+                    }             
                     // DATA EDIT GALERI
                     $edit_data = array(
                         'isi_pengumuman' => $isi_pengumuman,

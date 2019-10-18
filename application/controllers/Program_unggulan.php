@@ -184,6 +184,10 @@ class Program_unggulan extends CI_Controller {
 
                 // JIKA GAMBAR TIDAK ADA
                 if ($gambar_lama == "") {
+                    if ($dataInfo['file_size'] > 1024) {
+                        $this->resize($dataInfo['file_name']);
+
+                    }             
                     // DATA EDIT ARTIKEL
                     $edit_data = array(
                         'id_sekolah' => $id_sekolah,
@@ -198,7 +202,12 @@ class Program_unggulan extends CI_Controller {
                     $this->DataHandle->edit($this->nama_tabel, $edit_data, $where); 
                 }
                 // JIKA GAMBAR ADA
-                else{            // DATA EDIT ARTIKEL
+                else{           
+                    if ($dataInfo['file_size'] > 1024) {
+                        $this->resize($dataInfo['file_name']);
+
+                    }              
+                    // DATA EDIT ARTIKEL
                     $edit_data = array(
                         'id_sekolah' => $id_sekolah,
                         'deskripsi' => $deskripsi,

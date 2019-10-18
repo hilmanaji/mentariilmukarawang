@@ -185,6 +185,10 @@ class Ekskul extends CI_Controller {
                 // JIKA GAMBAR TIDAK ADA
                 if ($gambar_lama == "") {
                     // DATA EDIT ARTIKEL
+                    if ($dataInfo['file_size'] > 1024) {
+                        $this->resize($dataInfo['file_name']);
+
+                    }        
                     $edit_data = array(
                         'id_sekolah' => $id_sekolah,
                         'deskripsi_ekskul' => $deskripsi_ekskul,
@@ -199,6 +203,10 @@ class Ekskul extends CI_Controller {
                 }
                 // JIKA GAMBAR ADA
                 else{            // DATA EDIT ARTIKEL
+                    if ($dataInfo['file_size'] > 1024) {
+                        $this->resize($dataInfo['file_name']);
+
+                    }        
                     $edit_data = array(
                         'id_sekolah' => $id_sekolah,
                         'deskripsi_ekskul' => $deskripsi_ekskul,

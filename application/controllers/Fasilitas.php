@@ -168,7 +168,11 @@ class Fasilitas extends CI_Controller {
                 $dataInfo = $this->upload->data(); 
 
                 // JIKA GAMBAR TIDAK ADA
-                if ($gambar_lama == "") {      
+                if ($gambar_lama == "") { 
+                    if ($dataInfo['file_size'] > 1024) {
+                        $this->resize($dataInfo['file_name']);
+
+                    }             
                     // DATA EDIT FASILITAS
                     $edit_data = array(
                         'id_sekolah' => $id_sekolah,
@@ -183,6 +187,10 @@ class Fasilitas extends CI_Controller {
                 }
                 // JIKA GAMBAR ADA
                 else{
+                    if ($dataInfo['file_size'] > 1024) {
+                        $this->resize($dataInfo['file_name']);
+
+                    }             
                     // DATA EDIT FASILITAS
                     $edit_data = array(
                         'id_sekolah' => $id_sekolah,
