@@ -12,6 +12,7 @@
                                             <th style="text-align:center">No.</th>
                                             <th style="text-align:center">Yayasan</th>
                                             <th style="text-align:center">Alamat</th>
+                                            <th style="text-align:center">Selayang Pandang</th>
                                             <th style="text-align:center">Kontak</th>
                                             <th style="text-align:center">Email</th>
                                             <th style="text-align:center">Facebook</th>
@@ -29,6 +30,7 @@
                                             <td><?php echo $no; ?></td>
                                             <td><?php echo $_yayasan->nama; ?></td>
                                             <td><?php echo $_yayasan->alamat; ?></td>
+                                            <td><?php echo $_yayasan->selayang_pandang; ?></td>
                                             <td><?php echo $_yayasan->kontak; ?></td>
                                             <td><?php echo $_yayasan->email; ?></td>
                                             <td><?php echo $_yayasan->fb; ?></td>

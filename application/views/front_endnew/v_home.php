@@ -1,4 +1,9 @@
+<?php
+    $ci =& get_instance();
+    $ci->load->model('DataHandle');
+    $data_yayasan = $ci->DataHandle->getAllWhere('tbl_yayasan', '*', "status = '1'")->row_array();
 
+?>
 	<aside id="fh5co-hero">
 		<div class="flexslider">
 			<ul class="slides">
@@ -31,9 +36,8 @@
 			<div class="col-md-6 animate-box">
 				<span>Yayasan Pendidikan Mentari Ilmu - Karawang</span>
 				<h2>Selamat datang di Website Yayasan Mentari Ilmu</h2>
-				<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat cauctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per Mauris in erat justo.</p>
-				<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed.</p>
-				<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat cauctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per Mauris in erat justo.</p>
+				<p><?= $data_yayasan['selayang_pandang'] ?><p>
+				<p></p>
 			</div>
 			<div class="col-md-6">
 				<img class="img-responsive" src="<?= base_url(); ?>assets/plugins/images/PB32909192924_1.JPG" alt="Free HTML5 Bootstrap Template">

@@ -3,6 +3,7 @@
         $id_yayasan = $_yayasan->id_yayasan;
         $nama = $_yayasan->nama;
         $alamat = $_yayasan->alamat;
+        $selayang_pandang = $_yayasan->selayang_pandang;
         $kontak = $_yayasan->kontak;
         $email = $_yayasan->email;
         $fb = $_yayasan->fb;
@@ -41,6 +42,16 @@
                                                 </div>
                                                 <div class="col-md-10">
                                                     <textarea class="form-control" name="alamat" required oninvalid="this.setCustomValidity('Alamat tidak boleh kosong')" style="resize:none;" rows="2"><?= $alamat ?></textarea>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-2">                                                    
+                                                    <label for="exampleInputEmail1">Selayang Pandang</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <textarea class="form-control" name="selayang_pandang" required oninvalid="this.setCustomValidity('Selayang tidak boleh kosong')" style="resize:none;" rows="2"><?= $selayang_pandang ?></textarea>
                                                 </div>                                                
                                             </div>
                                         </div>

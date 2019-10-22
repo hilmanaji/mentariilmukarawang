@@ -33,6 +33,7 @@ class Yayasan extends CI_Controller {
         $id_yayasan = $this->input->post('id_yayasan');
         $nama = $this->input->post('nama');
         $alamat = $this->input->post('alamat');
+        $selayang_pandang = $this->input->post('selayang_pandang');
         $kontak = $this->input->post('kontak');
         $email = $this->input->post('email');      
         $fb = $this->input->post('fb');        
@@ -43,6 +44,7 @@ class Yayasan extends CI_Controller {
         $edit_data = array(
             'nama' => $nama,
             'alamat' => $alamat,
+            'selayang_pandang' => $selayang_pandang,
             'kontak' => $kontak,
             'email' => $email,
             'fb' => $fb,
