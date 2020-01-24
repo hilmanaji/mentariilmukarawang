@@ -32,4 +32,12 @@ class template {
         $data['_footer'] = $this->_ci->load->view('templates_front_endnew/footer', $data, true);
         $this->_ci->load->view('templates_front_endnew/body.php', $data);
     }
+
+    function front_endnew2($template, $data = null) {
+        $data['_content'] = $this->_ci->load->view($template, $data, true);
+        $data['_head'] = $this->_ci->load->view('templates_front_endnew2/header', $data, true);
+        $data['_navbar'] = $this->_ci->load->view('templates_front_endnew2/navbar', $data, true);
+        $data['_footer'] = $this->_ci->load->view('templates_front_endnew2/footer', $data, true);
+        $this->_ci->load->view('templates_front_endnew2/body.php', $data);
+    }
 }
