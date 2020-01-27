@@ -51,7 +51,8 @@
           <h1><?= $data_yayasan['nama'] ?></h1>
           <p class="mb-3" style="text-align: justify;"><?= $data_yayasan['selayang_pandang'] ?></p>
         </div>
-        <div class="col-lg-5"> <img class="img-fluid d-block" src="https://static.pingendo.com/cover-moon.svg"> </div>
+        <div class="col-lg-5"> 
+          <img class="img-fluid d-block" style="width: auto;height: 400px;margin-top:50px" src="<?= base_url() ?>assets/plugins/images/logomentariilmu.png"> 
       </div>
     </div>
   </div>
