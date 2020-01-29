@@ -17,7 +17,7 @@
             <br>
             <small style='font-size:15px;'><i class='fa fa-calendar'></i> <?= date('d M Y', strtotime($row->created_at)) ?> | <i class='fa fa-user'></i> posted by <?= $row->username ?></small>
           </h1>
-          <p class="mb-3"><?= $row->isi ?></p>
+          <p class="mb-3" style="text-align: justify;"><?= $row->isi ?></p>
         </div>       
       <?php 
       endforeach;

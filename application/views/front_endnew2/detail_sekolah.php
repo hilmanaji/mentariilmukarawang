@@ -10,7 +10,7 @@
         endforeach;
         foreach ($data_profile->result() as $profile) :
         ?>
-          <p class="mb-3"><?= $profile->selayang_pandang ?></p>
+          <p class="mb-3" style="text-align: justify;"><?= $profile->selayang_pandang ?></p>
         <?php
         endforeach;
         ?>        
@@ -76,7 +76,7 @@
                 <div class="card"> <img class="card-img-top" id='<?= $no ?>' data-toggle="modal" data-target="#myModal"  src="<?= $gambar ?>" alt="Card image cap">
                   <div class="card-body">
                     <h4 class="card-title"><?= $ekskul->nama_ekskul ?></h4>
-                    <p class="card-text"><?= $ekskul->deskripsi_ekskul ?></p> 
+                    <p class="card-text" style="text-align: justify;"><?= $ekskul->deskripsi_ekskul ?></p> 
                     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                   </div>
                 </div>
@@ -196,7 +196,7 @@
             </div>
             <?php 
             foreach ($data_artikel->result() as $row) : 
-            $limited_string = subword($row->isi);
+            $limited_string = subword(strip_tags($row->isi));
             if ($row->value == "") {
                 $gambar = base_url().'assets/front_end_new/images/project-1.jpg';
             }
@@ -208,7 +208,7 @@
               <div class="card"> <img class="card-img-top" src="<?= $gambar ?>" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title"><?= $row->judul_artikel ?></h5>
-                  <p class="card-text"><?= $limited_string ?></p> <a href="<?= base_url('Home2/detail_artikel/'.$row->id_artikel) ?>" class="btn btn-primary">Selengkapnya</a>
+                  <p class="card-text" style="text-align: justify;"><?= $limited_string ?></p> <a href="<?= base_url('Home2/detail_artikel/'.$row->id_artikel) ?>" class="btn btn-primary">Selengkapnya</a>
                 </div>
               </div>
             </div>                      
@@ -244,7 +244,7 @@
             </div>
             <?php 
             foreach ($data_pengumuman->result() as $row) : 
-            $limited_string = subword($row->isi_pengumuman);
+            $limited_string = subword(strip_tags($row->isi_pengumuman));
             if ($row->value == "") {
                 $gambar = base_url().'assets/front_end_new/images/project-1.jpg';
             }
@@ -256,7 +256,7 @@
               <div class="card"> <img class="card-img-top" src="<?= $gambar ?>" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title"><?= $row->judul ?></h5>
-                  <p class="card-text"><?= $limited_string ?></p> <a href="<?= base_url('Home2/detail_pengumuman/'.$row->id_pengumuman) ?>" class="btn btn-primary">Selengkapnya</a>
+                  <p class="card-text" style="text-align: justify;"><?= $limited_string ?></p> <a href="<?= base_url('Home2/detail_pengumuman/'.$row->id_pengumuman) ?>" class="btn btn-primary">Selengkapnya</a>
                 </div>
               </div>
             </div>                      

@@ -105,7 +105,7 @@
           <div class="card"> <img class="card-img-top" src="<?= $gambar ?>" alt="Card image cap">
             <div class="card-body">
               <h4 class="card-title"><?= $row->judul_artikel ?></h4>
-              <p class="card-text"><?= $limited_string ?></p> <a href="<?= base_url('Home2/detail_artikel/'.$row->id_artikel) ?>" class="btn btn-primary">Selengkapnya</a>
+              <p class="card-text" style="text-align: justify;"><?= $limited_string ?></p> <a href="<?= base_url('Home2/detail_artikel/'.$row->id_artikel) ?>" class="btn btn-primary">Selengkapnya</a>
             </div>
           </div>
         </div>
