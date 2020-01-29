@@ -20,23 +20,32 @@
                                     <tbody>
                                     <?php
                                     $no=1;
-                                    foreach ($data_artikel->result() as $_artikel) { 
-                                        if ($_artikel->value == "") {
+                                    foreach ($data_artikel as $_artikel) { 
+                                        if ($_artikel['value'] == "") {
                                             $gambar = '--Tidak Ada Gambar--';
                                         }
                                         else{
-                                            $gambar = "<img src='".base_url()."assets/plugins/images/image/".$_artikel->value."' style='max-width:70%;max-height:70%;'>";
+                                            $gambar = "<img src='".base_url()."assets/plugins/images/image/".$_artikel['value']."' style='max-width:70%;max-height:70%;'>";
                                         }
                                         ?>
                                         <tr>
                                             <td style="text-align:center"><?php echo $no; ?></td>
-                                            <td><?php echo $_artikel->nama_sekolah; ?></td>
-                                            <td><?php echo $_artikel->judul_artikel; ?></td>
+                                            <?php 
+                                            if ($_artikel['id_sekolah'] == '0') : ?>
+                                            <td>Yayasan Mentari Ilmu Karawang</td>
+                                            <?php
+                                            else:
+                                            ?>
+                                            <td><?php echo $_artikel['nama_sekolah']; ?></td>                             
+                                            <?php
+                                            endif;
+                                            ?>
+                                            <td><?php echo $_artikel['judul_artikel']; ?></td>
                                             <td style="text-align:center"><a data-toggle="modal" data-target="#ModalGam-<?php echo $no ?>"><i class="fa fa-search m-l-5"></i></a></td>
                                             <td>
                                                 <center>                                                
-                                                    <a href="<?php echo base_url() ?>Artikel/get_data/<?php echo $_artikel->id_artikel; ?>"><button class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button></a>
-                                                    <a href="<?php echo base_url() ?>Artikel/delete/<?php echo $_artikel->id_artikel; ?>" onclick="javascript: return confirm('Yakin ingin menghapus data ini?')"><button class="btn btn-danger waves-effect waves-light" ><i class="fa fa-trash m-l-5"></i></button></a>
+                                                    <a href="<?php echo base_url() ?>Artikel/get_data/<?php echo $_artikel['id_artikel']; ?>/<?php echo $_artikel['id_sekolah']; ?>"><button class="btn btn-info waves-effect waves-light"><i class="fa fa-pencil m-l-5"></i></button></a>
+                                                    <a href="<?php echo base_url() ?>Artikel/delete/<?php echo $_artikel['id_artikel']; ?>" onclick="javascript: return confirm('Yakin ingin menghapus data ini?')"><button class="btn btn-danger waves-effect waves-light" ><i class="fa fa-trash m-l-5"></i></button></a>
                                                 </center>
                                             </td>
                                         </tr>
@@ -60,12 +69,12 @@
             <?php
             $no=1;
             // LOOPING MODAL ================================================
-            foreach ($data_artikel->result() as $_artikel) { 
-                if ($_artikel->value == "") {
+            foreach ($data_artikel as $_artikel) { 
+                if ($_artikel['value'] == "") {
                     $gambar = '--Tidak Ada Gambar--';
                 }
                 else{
-                    $gambar = "<img src='".base_url()."assets/plugins/images/image/".$_artikel->value."' style='max-width:70%;max-height:70%;'>";
+                    $gambar = "<img src='".base_url()."assets/plugins/images/image/".$_artikel['value']."' style='max-width:70%;max-height:70%;'>";
                 }
                 ?>
 

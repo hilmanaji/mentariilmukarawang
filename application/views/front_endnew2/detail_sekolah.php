@@ -18,7 +18,7 @@
         <div class="col-lg-6"> 
         <?php 
         foreach ($galeri_one->result() as $baris): ?>
-          <img class="img-fluid d-block" src="<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>"> 
+          <img class="img-fluid d-block mt-4" src="<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>"> 
         <?php
         ;endforeach
         ?>
@@ -47,6 +47,139 @@
       </div>
     </div>
   </div>
+
+
+
+    <?php 
+    $no = 1;
+    if($data_ekskul->num_rows() > 0):
+    ?>
+        <div class="py-2">
+          <div class="container">
+            <hr>
+          </div>
+        </div>
+        <div class="py-2">
+          <div class="container">
+            <div class="row">
+              <div class="text-center mx-auto col-md-12">
+                <h2 class="mb-3">Kegiatan Ekskul</h2>
+              </div>
+              <?php foreach ($data_ekskul->result() as $ekskul) : 
+                if($ekskul->value == '' || $ekskul->value == null):
+                  $gambar = base_url().'assets/front_end_new/images/project-3.jpg';
+                else:
+                  $gambar = base_url().'assets/plugins/images/image/'.$ekskul->value;
+                endif;
+                ?>
+              <div class="col-md-3 mb-4">
+                <div class="card"> <img class="card-img-top" id='<?= $no ?>' data-toggle="modal" data-target="#myModal"  src="<?= $gambar ?>" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title"><?= $ekskul->nama_ekskul ?></h4>
+                    <p class="card-text"><?= $ekskul->deskripsi_ekskul ?></p> 
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                  </div>
+                </div>
+              </div>
+            <?php $no++; endforeach; ?>
+            </div>
+          </div>
+        </div>
+    <?php
+    endif;
+    ?>
+
+    <?php 
+    if($data_fasilitas->num_rows() > 0):
+    ?>
+        <div class="py-2">
+          <div class="container">
+            <hr>
+          </div>
+        </div>
+        <div class="py-2">
+          <div class="container">
+            <div class="row">
+              <div class="text-center mx-auto col-md-12">
+                <h2 class="mb-3">Fasilitas Pendidikan</h2>
+              </div>
+              <?php 
+              foreach ($data_fasilitas->result() as $fasilitas) : 
+                if($fasilitas->value == '' || $fasilitas->value == null):
+                  $gambar = base_url().'assets/front_end_new/images/project-3.jpg';
+                else:
+                  $gambar = base_url().'assets/plugins/images/image/'.$fasilitas->value;
+                endif;
+                ?>
+              <div class="col-lg-3 col-md-6 p-3"> <img  id='<?= $no ?>' data-toggle="modal" data-target="#myModal"  class="img-fluid d-block" src="<?= $gambar ?>">
+                <h6 class="text-center mt-1"><?= $fasilitas->nama_fasilitas ?></h6>
+              </div>
+              <?php 
+              $no++;
+              endforeach;
+              ?>
+            </div>
+          </div>
+        </div>
+    <?php
+    endif;
+    ?>
+
+    <?php 
+    if($data_kegiatan->num_rows() > 0):
+    ?>
+        <div class="py-2">
+          <div class="container">
+            <hr>
+          </div>
+        </div>
+        <div class="py-2">
+          <div class="container">
+            <div class="row">
+              <div class="text-center mx-auto col-md-12">
+                <h2 class="mb-3">Program Kegiatan Sekolah</h2>
+              </div>
+              <?php foreach ($data_kegiatan->result() as $kegiatan) : ?>
+                <div class="col-lg-3 col-6 mb-4">
+                  <h4> <b><?= $kegiatan->nama_kegiatan ?></b> </h4>
+                  <?= $kegiatan->deskripsi_kegiatan ?>
+                </div>
+            <?php endforeach; ?>
+            </div>
+          </div>
+        </div>
+    <?php
+    endif;
+    ?>
+
+
+  
+    <div class="py-2">
+      <div class="container">
+        <hr>
+      </div>
+    </div>
+   <div class="py-2">
+    <div class="container">
+      <div class="row">
+        <div class="text-center mx-auto col-md-12">
+          <h2 class="mb-3">Galeri</h2>
+        </div>
+      </div>
+      <div class="row">
+
+      <?php 
+      $no++;
+      foreach ($data_galeri->result() as $baris): ?>
+        <div class="col-lg-3 col-md-6 p-3"> <img id='<?= $no ?>' data-toggle="modal" data-target="#myModal" class="img-fluid d-block" src="<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>"> </div>       
+      <?php 
+      $no++;
+      endforeach;
+      ?>
+      </div>
+    </div>
+  </div>
+
     <?php 
     if($data_artikel->num_rows() > 0):
     ?>
@@ -138,132 +271,6 @@
           </div>
         </div>
       </div>
-    <?php
-    endif;
-    ?>
-  
-    <div class="py-2">
-      <div class="container">
-        <hr>
-      </div>
-    </div>
-   <div class="py-2">
-    <div class="container">
-      <div class="row">
-        <div class="text-center mx-auto col-md-12">
-          <h2 class="mb-3">Galeri</h2>
-        </div>
-      </div>
-      <div class="row">
-
-      <?php 
-      $no = 1;
-      foreach ($data_galeri->result() as $baris): ?>
-        <div class="col-lg-3 col-md-6 p-3"> <img id='<?= $no ?>' data-toggle="modal" data-target="#myModal" class="img-fluid d-block" src="<?= base_url(); ?>assets/plugins/images/image/<?= $baris->value ?>"> </div>       
-      <?php 
-      $no++;
-      endforeach;
-      ?>
-      </div>
-    </div>
-  </div>
-
-    <?php 
-    if($data_ekskul->num_rows() > 0):
-    ?>
-        <div class="py-2">
-          <div class="container">
-            <hr>
-          </div>
-        </div>
-        <div class="py-2">
-          <div class="container">
-            <div class="row">
-              <div class="text-center mx-auto col-md-12">
-                <h2 class="mb-3">Kegiatan Ekskul</h2>
-              </div>
-              <?php foreach ($data_ekskul->result() as $ekskul) : 
-                if($ekskul->value == '' || $ekskul->value == null):
-                  $gambar = base_url().'assets/front_end_new/images/project-3.jpg';
-                else:
-                  $gambar = base_url().'assets/plugins/images/image/'.$ekskul->value;
-                endif;
-                ?>
-              <div class="col-md-3 mb-4">
-                <div class="card"> <img class="card-img-top" id='<?= $no ?>' data-toggle="modal" data-target="#myModal"  src="<?= $gambar ?>" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title"><?= $ekskul->nama_ekskul ?></h4>
-                    <p class="card-text"><?= $ekskul->deskripsi_ekskul ?></p> 
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                  </div>
-                </div>
-              </div>
-            <?php $no++; endforeach; ?>
-            </div>
-          </div>
-        </div>
-    <?php
-    endif;
-    ?>
-
-    <?php 
-    if($data_kegiatan->num_rows() > 0):
-    ?>
-        <div class="py-2">
-          <div class="container">
-            <hr>
-          </div>
-        </div>
-        <div class="py-2">
-          <div class="container">
-            <div class="row">
-              <div class="text-center mx-auto col-md-12">
-                <h2 class="mb-3">Program Kegiatan Sekolah</h2>
-              </div>
-              <?php foreach ($data_kegiatan->result() as $kegiatan) : ?>
-                <div class="col-lg-3 col-6 mb-4">
-                  <h4> <b><?= $kegiatan->nama_kegiatan ?></b> </h4>
-                  <?= $kegiatan->deskripsi_kegiatan ?>
-                </div>
-            <?php endforeach; ?>
-            </div>
-          </div>
-        </div>
-    <?php
-    endif;
-    ?>
-
-    <?php 
-    if($data_fasilitas->num_rows() > 0):
-    ?>
-        <div class="py-2">
-          <div class="container">
-            <hr>
-          </div>
-        </div>
-        <div class="py-2">
-          <div class="container">
-            <div class="row">
-              <div class="text-center mx-auto col-md-12">
-                <h2 class="mb-3">Fasilitas Pendidikan</h2>
-              </div>
-              <?php foreach ($data_fasilitas->result() as $fasilitas) : 
-                if($fasilitas->value == '' || $fasilitas->value == null):
-                  $gambar = base_url().'assets/front_end_new/images/project-3.jpg';
-                else:
-                  $gambar = base_url().'assets/plugins/images/image/'.$fasilitas->value;
-                endif;
-                ?>
-              <div class="col-lg-3 col-md-6 p-3"> <img  id='<?= $no ?>' data-toggle="modal" data-target="#myModal"  class="img-fluid d-block" src="<?= $gambar ?>">
-                <h6 class="text-center mt-1"><?= $fasilitas->nama_fasilitas ?></h6>
-              </div>
-              <?php 
-              $no++;
-              endforeach;
-              ?>
-            </div>
-          </div>
-        </div>
     <?php
     endif;
     ?>

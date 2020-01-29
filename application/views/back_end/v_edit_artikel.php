@@ -33,6 +33,10 @@
                                             <label for="exampleInputEmail1">Sekolah</label>
                                             <select class="form-control" name="id_sekolah">
                                     <?php                                     
+                                    if($id_sekolah == null){ ?>
+                                            <option value="0" selected>Yayasan Mentari Ilmu Karawang</option>
+                                    <?php
+                                    }
                                     foreach ($data_sekolah->result() as $_sekolah) { ?>
                                                 <option value="<?php echo $_sekolah->id_sekolah ?>" <?php if($_sekolah->id_sekolah == $id_sekolah){echo" selected";} ?>><?php echo $_sekolah->nama ?></option>
                                     <?php 

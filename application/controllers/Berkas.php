@@ -95,7 +95,7 @@ class Berkas extends CI_Controller {
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                     &times;</button>
-                    <i class="fa fa-check m-l-5"></i> Gambar Bermasalah !!!!
+                    <i class="fa fa-check m-l-5"></i> Berkas Bermasalah !!!!
                 </div>');  
 
                 redirect('Berkas');
@@ -107,7 +107,7 @@ class Berkas extends CI_Controller {
             // DATA INPUT ARTIKEL
             $input_data = array(
                 'id_sekolah' => $id_sekolah,
-                'deskripsi' => $deskripsi,
+                'keterangan' => $keterangan,
                 'status' => 1,
                 'created_by' => $id_user
              );

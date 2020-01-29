@@ -22,6 +22,7 @@
                                         <div class="form-group">                                 
                                                 <label for="exampleInputEmail1">Sekolah</label>
                                                 <select class="form-control" name="id_sekolah">
+                                                    <option value="0">Yayasan Mentari Ilmu Karawang</option>
                                         <?php                                     
                                         foreach ($data_sekolah->result() as $_sekolah) { ?>
                                                     <option value="<?php echo $_sekolah->id_sekolah ?>"><?php echo $_sekolah->nama ?></option>
