@@ -52,6 +52,7 @@ class Pengumuman extends CI_Controller {
                 $input_pengumuman = array(
                     'isi_pengumuman' => $isi_pengumuman,
                     'judul' => $judul,
+                    'value' => $dataInfo['file_name'],
                     'status' => 1,
                     'created_by' => $id_user
                  );
@@ -60,13 +61,14 @@ class Pengumuman extends CI_Controller {
 
                 // DATA INPUT GALERI
                 $input_galeri = array(
+                    'id_sekolah' => $this->session->userdata('id_sekolah'),
                     'value' => $dataInfo['file_name'],
-                    'id_ref' => $get_id_pengumuman,
-                    'ket' => 'Pengumuman',
+                    'deskripsi' => $judul,
+                    'tag_galeri' => 'slider',
                     'status' => 1,
                     'created_by' => $id_user
                  );    
-                $this->DataHandle->insert('tbl_galeri', $input_galeri);  
+                // $this->DataHandle->insert('tbl_galeri', $input_galeri);  
                 $this->session->set_flashdata('msg', '
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
