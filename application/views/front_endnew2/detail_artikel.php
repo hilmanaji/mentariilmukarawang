@@ -15,7 +15,7 @@
         <div class="px-md-5 d-flex flex-column justify-content-center col-md-7 order-1 order-md-2">
           <h1> <?= $row->judul_artikel ?>
             <br>
-            <small style='font-size:15px;'><i class='fa fa-calendar'></i> <?= date('d M Y', strtotime($row->created_at)) ?> | <i class='fa fa-user'></i> posted by <?= $row->username ?></small>
+            <small style='font-size:15px;'><i class='fa fa-calendar'></i> <?= date('d M Y', strtotime($row->created_at)) ?> | <i class='fa fa-user'></i> posted by <?= $row->username ?> | <i class='fa fa-eye'></i> Dilihat <?= $row->viewed ?></small>
           </h1>
           <p class="mb-3" style="text-align: justify;"><?= $row->isi ?></p>
         </div>       
