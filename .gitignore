@@ -3,7 +3,7 @@
 application/cache/*
 !application/cache/index.html
 
-application/assets/plugins/images/*
+application/assets/plugins/images/image/*
 application/logs/*
 !application/logs/index.html
 
