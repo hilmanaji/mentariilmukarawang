@@ -35,7 +35,6 @@ class Ekskul extends CI_Controller {
 
     public function form($id_ekskul = null)
     {
-        $data['id_sekolah_sess'] = $this->id_sekolah;
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
         $where = array(
             'id_ekskul' => $id_ekskul

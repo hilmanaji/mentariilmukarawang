@@ -16,7 +16,23 @@ class Pengumuman extends CI_Controller {
     public function index()
     {
         $data['data_pengumuman'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.value FROM  tbl_pengumuman WHERE tbl_pengumuman.`status` = '1' ORDER BY tbl_pengumuman.id_pengumuman DESC");      
-        $this->template->back_end('back_end/v_data_pengumuman', $data);
+        $this->template->back_end('back_end/pengumuman/index', $data);
+    }
+
+    public function form($id_pengumuman = null)
+    {
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
+        $where = array(
+            'id_pengumuman' => $id_pengumuman
+         );
+
+        $data['mode'] = $id_pengumuman == null ? 'add' : 'edit';
+        $data['datas'] = null;
+        if($data['mode'] == 'edit'){
+            $data['datas'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.value FROM  tbl_pengumuman WHERE tbl_pengumuman.`status` = '1' AND tbl_pengumuman.`id_pengumuman` = '".$id_pengumuman."'");
+
+        }
+        $this->template->back_end('back_end/pengumuman/form', $data);
     }
 
     public function form_add()
@@ -24,7 +40,7 @@ class Pengumuman extends CI_Controller {
         $this->template->back_end('back_end/v_add_pengumuman');
     }
 
-    public function add()
+    public function save()
     {
         $this->load->library('upload'); //pemanggilan library upload
         $id_user = $this->session->userdata('id_user');
@@ -131,15 +147,7 @@ class Pengumuman extends CI_Controller {
 
         redirect('Pengumuman');     
     }
-
-    public function get_data($id_pengumuman){
-        $where = array(
-            'id_pengumuman' => $id_pengumuman
-         );
-        $data['data_pengumuman'] = $this->DataHandle->other_query("SELECT tbl_pengumuman.id_pengumuman, tbl_pengumuman.judul, tbl_pengumuman.isi_pengumuman, tbl_pengumuman.value FROM  tbl_pengumuman WHERE tbl_pengumuman.`status` = '1' AND tbl_pengumuman.`id_pengumuman` = '".$id_pengumuman."'");
-        $this->template->back_end('back_end/v_edit_pengumuman', $data);
-    }
-
+    
     public function edit(){
         $this->load->library('upload'); //pemanggilan library upload
         $id_user = $this->session->userdata('id_user');
