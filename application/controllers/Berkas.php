@@ -28,8 +28,26 @@ class Berkas extends CI_Controller {
 	public function index()
 	{
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
-        $data['data_berkas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE ".$this->nama_tabel.".`status` = '1' ".$this->kondisi." ");		
-        $this->template->back_end('back_end/v_data_berkas', $data);
+        $data['datas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE ".$this->nama_tabel.".`status` = '1' ".$this->kondisi." ");		
+        $this->template->back_end('back_end/berkas/index', $data);
+    }
+    
+
+    public function form($id_file = null)
+    {
+        $data['id_sekolah_sess'] = $this->id_sekolah;
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
+        $where = array(
+            'id_file' => $id_file
+         );
+
+        $data['mode'] = $id_file == null ? 'add' : 'edit';
+        $data['datas'] = null;
+        if($data['mode'] == 'edit'){
+            $data['datas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, ".$this->nama_tabel.".id_file, tbl_sekolah.id_sekolah, ".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE ".$this->nama_tabel.".`status` = '1' AND ".$this->nama_tabel.".id_file ='".$id_file."'");
+
+        }
+        $this->template->back_end('back_end/berkas/form', $data);
     }
 
     public function form_add()
@@ -39,7 +57,7 @@ class Berkas extends CI_Controller {
         $this->template->back_end('back_end/v_add_berkas', $data);
     }
 
-    public function add(){
+    public function save(){
         $this->load->library('upload'); //pemanggilan library upload
         $id_user = $this->session->userdata('id_user');
         $keterangan = $this->input->post('keterangan');
