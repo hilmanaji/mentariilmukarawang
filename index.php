@@ -36,10 +36,12 @@
  * @filesource
  */
 
+define('APP_TITLE', 'Compro SMK Al Inayah Kutamukti');
 define('APP_NAME', 'Admin Panel');
 define('APP_OWNER', 'SMK Al Inayah Kutamukti');
 define('APP_CREATOR', 'CumLaudeDev.');
 define('YEAR_CREATED', '2026');
+define('VERSI_APPS', 'v.1.0.0');
 
 /*
  *---------------------------------------------------------------

@@ -28,18 +28,28 @@ class Fasilitas extends CI_Controller {
 	public function index()
 	{
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
-        $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1' ".$this->kondisi." ");		
-        $this->template->back_end('back_end/v_data_fasilitas', $data);
+        $data['datas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1' ".$this->kondisi." ");		
+        $this->template->back_end('back_end/fasilitas/index', $data);
     }
 
-    public function form_add()
+    public function form($id_fasilitas = null)
     {
-        $data['id_sekolah'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
-        $this->template->back_end('back_end/v_add_fasilitas', $data);
+        $data['id_sekolah_sess'] = $this->id_sekolah;
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
+        $where = array(
+            'id_fasilitas' => $id_fasilitas
+         );
+
+        $data['mode'] = $id_fasilitas == null ? 'add' : 'edit';
+        $data['datas'] = null;
+        if($data['mode'] == 'edit'){
+            $data['datas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_fasilitas.id_fasilitas, tbl_sekolah.id_sekolah, tbl_fasilitas.nama_fasilitas,  tbl_fasilitas.`status`, tbl_fasilitas.`value` FROM tbl_fasilitas INNER JOIN tbl_sekolah ON tbl_fasilitas.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1' AND tbl_fasilitas.id_fasilitas ='".$id_fasilitas."'");
+
+        }
+        $this->template->back_end('back_end/fasilitas/form', $data);
     }
 
-    public function add(){
+    public function save(){
         $this->load->library('upload'); //pemanggilan library upload
         $id_user = $this->session->userdata('id_user');
         $nama_fasilitas = $this->input->post('nama_fasilitas');
