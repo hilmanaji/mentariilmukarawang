@@ -38,7 +38,7 @@
     <section id="wrapper" class="login-register">
         <div class="login-box" data-sal="slide-right"
             data-sal-duration="300" data-sal-delay="100" data-sal-easing="ease-out-bounce" style="margin: 6% auto 0;">
-<?php echo $this->session->flashdata('msg'); ?>
+
             <div class="white-box">
                 <form class="form-horizontal form-material" id="loginform" method="post" action="<?php echo base_url() ?>Login/data_get">
                 <center>

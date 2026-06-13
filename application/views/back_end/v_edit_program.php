@@ -8,7 +8,7 @@
     }
 ?>
 
-       <?php echo $this->session->flashdata('msg'); ?>
+       
             
                 <div class="row">
                     <!-- Left sidebar -->

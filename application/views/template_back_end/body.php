@@ -18,6 +18,10 @@
         <!-- Page Content -->
         <div class="page-wrapper">
             <div class="container-fluid">
+            <?php 
+                echo $this->session->flashdata('msg');
+                $this->session->unset_userdata('msg');
+            ?>
             <?php echo $_content; ?>            
             <?= "Logged In As : Admin ".$this->session->userdata('nama_sekolah') ?>
             </div>
