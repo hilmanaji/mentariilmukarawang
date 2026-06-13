@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ekskul extends CI_Controller {
+class Ekskul_ extends CI_Controller {
 
     private $role_user, $id_sekolah, $kondisi;
     private $nama_tabel = 'tbl_ekskul';
@@ -27,34 +27,25 @@ class Ekskul extends CI_Controller {
 
 	public function index()
 	{
-        $data['title'] = 'Ekskul';
+        $data['id_sekolah'] = $this->id_sekolah;
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
-        $data['datas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_ekskul.`status` = '1' ".$this->kondisi." ");		
-        $this->template->back_end('back_end/ekskul/index', $data);
+        $data['data_ekskul'] = $this->DataHandle->get_two($this->nama_tabel, 'tbl_sekolah',''.$this->nama_tabel.'.*, tbl_sekolah.nama as nama_sekolah', 'tbl_sekolah.id_sekolah = '.$this->nama_tabel.'.id_sekolah', "".$this->nama_tabel.".status = '1' ".$this->kondisi."");		
+        $this->template->back_end('back_end/v_data_ekskul', $data);
     }
 
-    public function form($id_ekskul = null)
+    public function form_add()
     {
-        $data['id_sekolah_sess'] = $this->id_sekolah;
-        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'"); 
-        $where = array(
-            'id_ekskul' => $id_ekskul
-         );
-
-        $data['mode'] = $id_ekskul == null ? 'add' : 'edit';
-        $data['datas'] = null;
-        if($data['mode'] == 'edit'){
-            $data['datas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_ekskul.id_ekskul, tbl_sekolah.id_sekolah, tbl_ekskul.nama_ekskul, tbl_ekskul.deskripsi_ekskul,  tbl_ekskul.`status`, tbl_ekskul.`value` FROM tbl_ekskul INNER JOIN tbl_sekolah ON tbl_ekskul.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_ekskul.`status` = '1' AND tbl_ekskul.id_ekskul ='".$id_ekskul."'");
-
-        }
-        $this->template->back_end('back_end/ekskul/form', $data);
+        $data['id_sekolah'] = $this->id_sekolah;
+        $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");
+        $this->template->back_end('back_end/v_add_ekskul', $data);
     }
 
-    public function save(){
+    public function add(){
         $this->load->library('upload'); //pemanggilan library upload
         $id_user = $this->session->userdata('id_user');
-        $nama_ekskul = $this->input->post('nama_ekskul');
         $id_sekolah = $this->input->post('id_sekolah');
+        $nama_ekskul = $this->input->post('nama_ekskul');
+        $deskripsi_ekskul = $this->input->post('deskripsi_ekskul');
 
         // KONDISI GAMBAR ADA
         if ($_FILES['userfile']['name'] != NULL) {
@@ -73,16 +64,16 @@ class Ekskul extends CI_Controller {
                     $this->resize($dataInfo['file_name']);
 
                 }             
-                // DATA INPUT FASILITAS
-                $input_data = array(
+                // DATA INPUT EKSKUL
+                $inpute_ekskul = array(
                     'id_sekolah' => $id_sekolah,
                     'nama_ekskul' => $nama_ekskul,
+                    'deskripsi_ekskul' => $deskripsi_ekskul,
+                    'value' => $dataInfo['file_name'],
                     'status' => 1,
-                    'created_by' => $id_user,
-                    'value' => $dataInfo['file_name']
+                    'created_by' => $id_user
                  );
-                $this->DataHandle->insert('tbl_ekskul', $input_data);    
-  
+                $this->DataHandle->insert($this->nama_tabel, $inpute_ekskul);    
                 $this->session->set_flashdata('msg', '
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
@@ -105,15 +96,16 @@ class Ekskul extends CI_Controller {
             
         }
         // KONDISI GAMBAR KOSONG
-        else{
-            // DATA INPUT ARTIKEL
-            $input_data = array(
+        else{ 
+            // DATA INPUT EKSKUL
+            $input_ekskul = array(
                 'id_sekolah' => $id_sekolah,
                 'nama_ekskul' => $nama_ekskul,
+                'deskripsi_ekskul' => $deskripsi_ekskul,
                 'status' => 1,
                 'created_by' => $id_user
              );
-            $this->DataHandle->insert('tbl_ekskul', $input_data); 
+            $this->DataHandle->insert($this->nama_tabel, $input_ekskul);  
             $this->session->set_flashdata('msg', '
             <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
@@ -121,7 +113,7 @@ class Ekskul extends CI_Controller {
                 <i class="fa fa-check m-l-5"></i> Data Berhasil Ditambahkan ... 
             </div>');  
             redirect('Ekskul');   
-        }    
+        }      
     }
 
     public function delete($id_ekskul)
@@ -134,7 +126,7 @@ class Ekskul extends CI_Controller {
         $where = array(
             'id_ekskul' => $id_ekskul
          );
-        $this->DataHandle->edit('tbl_ekskul', $data, $where);
+        $this->DataHandle->edit($this->nama_tabel, $data, $where);
 
         $this->session->set_flashdata('msg', '
         <div class="alert alert-warning alert-dismissable">
@@ -152,16 +144,17 @@ class Ekskul extends CI_Controller {
         $where = array(
             'id_ekskul' => $id_ekskul
          );
-        $data['data_fasilitas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah, tbl_ekskul.id_ekskul, tbl_sekolah.id_sekolah, tbl_ekskul.nama_ekskul, tbl_ekskul.deskripsi_ekskul,  tbl_ekskul.`status`, tbl_ekskul.`value` FROM tbl_ekskul INNER JOIN tbl_sekolah ON tbl_ekskul.id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_ekskul.`status` = '1' AND tbl_ekskul.id_ekskul ='".$id_ekskul."'");
-        $this->template->back_end('back_end/v_edit_fasilitas', $data);
+        $data['data_ekskul'] = $this->DataHandle->getAllWhere($this->nama_tabel, '*', $where);
+        $this->template->back_end('back_end/v_edit_ekskul', $data);
     }
 
     public function edit(){
         $this->load->library('upload'); //pemanggilan library upload
         $id_user = $this->session->userdata('id_user');
+        $id_sekolah = $this->input->post('id_sekolah');
+        $id_ekskul = $this->input->post('id_ekskul'); 
+        $deskripsi_ekskul = $this->input->post('deskripsi_ekskul');
         $nama_ekskul = $this->input->post('nama_ekskul');
-        $id_sekolah = $this->input->post('id_sekolah'); 
-        $id_ekskul = $this->input->post('id_ekskul');
 
         // KONDISI GAMBAR ADA
         if ($_FILES['userfile']['name'] != NULL) {
@@ -176,17 +169,29 @@ class Ekskul extends CI_Controller {
 
             $this->upload->initialize($this->set_upload_options());
             if ($this->upload->do_upload()) {
-                $dataInfo = $this->upload->data(); 
+                $dataInfo = $this->upload->data();         
+                // DATA EDIT ARTIKEL
+                $edit_data = array(
+                    'id_sekolah' => $id_sekolah,
+                    'deskripsi_ekskul' => $deskripsi_ekskul,
+                    'nama_ekskul' => $nama_ekskul,
+                    'updated_by' => $id_user
+                 );
+                $where = array(
+                    'id_ekskul' => $id_ekskul
+                 );
+                $this->DataHandle->edit($this->nama_tabel, $edit_data, $where);    
 
                 // JIKA GAMBAR TIDAK ADA
-                if ($gambar_lama == "") { 
+                if ($gambar_lama == "") {
+                    // DATA EDIT ARTIKEL
                     if ($dataInfo['file_size'] > 1024) {
                         $this->resize($dataInfo['file_name']);
 
-                    }             
-                    // DATA EDIT FASILITAS
+                    }        
                     $edit_data = array(
                         'id_sekolah' => $id_sekolah,
+                        'deskripsi_ekskul' => $deskripsi_ekskul,
                         'value' => $dataInfo['file_name'],
                         'nama_ekskul' => $nama_ekskul,
                         'updated_by' => $id_user
@@ -194,25 +199,26 @@ class Ekskul extends CI_Controller {
                     $where = array(
                         'id_ekskul' => $id_ekskul
                      );
-                    $this->DataHandle->edit('tbl_ekskul', $edit_data, $where);
+                    $this->DataHandle->edit($this->nama_tabel, $edit_data, $where);
                 }
                 // JIKA GAMBAR ADA
-                else{
+                else{            // DATA EDIT ARTIKEL
                     if ($dataInfo['file_size'] > 1024) {
                         $this->resize($dataInfo['file_name']);
 
-                    }             
-                    // DATA EDIT FASILITAS
+                    }        
                     $edit_data = array(
                         'id_sekolah' => $id_sekolah,
-                        'value' => $dataInfo['file_name'],
+                        'deskripsi_ekskul' => $deskripsi_ekskul,
                         'nama_ekskul' => $nama_ekskul,
+                        'value' => $dataInfo['file_name'],
                         'updated_by' => $id_user
                      );
                     $where = array(
                         'id_ekskul' => $id_ekskul
                      );
-                    $this->DataHandle->edit('tbl_ekskul', $edit_data, $where);
+                    $this->DataHandle->edit($this->nama_tabel, $edit_data, $where);
+                    unlink('./assets/plugins/images/image/'.$gambar_lama);
                 }   
                 // HAPUS GAMBAR LAMA   
                 $this->session->set_flashdata('msg', '
@@ -232,33 +238,32 @@ class Ekskul extends CI_Controller {
                     <i class="fa fa-check m-l-5"></i> Gambar Bermasalah !!!!
                 </div>');  
 
-                redirect('Ekskul'); 
+                redirect('Ekskul');
             }
             
         }
         // KONDISI GAMBAR KOSONG
         else{
-            // DATA EDIT Ekskul
-        $edit_data = array(
-            'id_sekolah' => $id_sekolah,
-            'nama_ekskul' => $nama_ekskul,
-            'updated_by' => $id_user
-         );
-        $where = array(
-            'id_ekskul' => $id_ekskul
-         );
-        $this->DataHandle->edit('tbl_ekskul', $edit_data, $where);
-
-        $this->session->set_flashdata('msg', '
-        <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-            &times;</button>
-            <i class="fa fa-check m-l-5"></i> Data Berhasil Diperbaharui ... 
-        </div>');  
-
-        redirect('Ekskul'); 
+            // DATA EDIT ARTIKEL
+            $edit_data = array(
+                'id_sekolah' => $id_sekolah,
+                'deskripsi_ekskul' => $deskripsi_ekskul,
+                'nama_ekskul' => $nama_ekskul,
+                'updated_by' => $id_user
+             );
+            $where = array(
+                'id_ekskul' => $id_ekskul
+             );
+            $this->DataHandle->edit($this->nama_tabel, $edit_data, $where);
+            $this->session->set_flashdata('msg', '
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;</button>
+                <i class="fa fa-check m-l-5"></i> Data Berhasil Perbaharui ... 
+            </div>');  
+            redirect('Ekskul');   
         }
-    }    
+    }
 
     private function set_upload_options(){
         $config['upload_path'] = './assets/plugins/images/image';
