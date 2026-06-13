@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/plugins/images/logo_s.png">
-    <title>Admin Panel - Yayasan Mentari Ilmu</title>
+    <title><?= APP_NAME ?> - <?= APP_OWNER ?></title>
     <!-- ===== Bootstrap CSS ===== -->
     <link href="<?php echo base_url() ?>assets/default/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- ===== Plugin CSS ===== -->
@@ -19,7 +19,7 @@
     <!-- ===== Custom CSS ===== -->
     <link href="<?php echo base_url() ?>assets/default/css/style.css" rel="stylesheet">
     <!-- ===== Color CSS ===== -->
-    <link href="<?php echo base_url() ?>assets/default/css/colors/green-dark.css" id="theme" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/default/css/colors/black-dark.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

@@ -1,3 +1,3 @@
             <footer class="footer t-a-c">
-                © 2019 TitikKoma.Dev - Yayasan Mentari Ilmu Karawang
+                © <?= YEAR_CREATED ?> <?= APP_CREATOR ?> - <?= APP_OWNER ?> Karawang
             </footer>
