@@ -27,6 +27,7 @@ class Fasilitas extends CI_Controller {
 
 	public function index()
 	{
+        $data['title'] = 'Fasilitas';
         $data['data_sekolah'] = $this->DataHandle->getAllWhere('tbl_sekolah', '*', "status = '1' AND id_sekolah != '0'");          
         $data['datas'] = $this->DataHandle->other_query("SELECT tbl_sekolah.nama as nama_sekolah,".$this->nama_tabel.".* FROM ".$this->nama_tabel." INNER JOIN tbl_sekolah ON ".$this->nama_tabel.".id_sekolah = tbl_sekolah.id_sekolah WHERE tbl_fasilitas.`status` = '1' ".$this->kondisi." ");		
         $this->template->back_end('back_end/fasilitas/index', $data);

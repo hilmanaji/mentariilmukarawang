@@ -122,7 +122,7 @@
                 <div>
                     <div class="page-title">
                         <i class="fa fa-building"></i>
-                        Master Data Fasilitas
+                        Master Data <?= $title ?>
                     </div>
 
                     <div class="page-subtitle">
@@ -130,10 +130,10 @@
                     </div>
                 </div>
 
-                <a href="<?= base_url('Fasilitas/form') ?>">
+                <a href="<?= base_url($title.'/form') ?>">
                     <button class="btn btn-success btn-add">
                         <i class="fa fa-plus"></i>
-                        Tambah Fasilitas
+                        Tambah <?= $title ?>
                     </button>
                 </a>
 
@@ -141,7 +141,7 @@
 
             <div class="stats-card">
                 <h2 class="text-white"><?= $datas->num_rows(); ?></h2>
-                <small>Total Fasilitas Terdaftar</small>
+                <small>Total <?= $title ?> Terdaftar</small>
             </div>
 
             <div class="visible-xs">
@@ -176,12 +176,12 @@
 
                             <hr>
 
-                            <a href="<?= base_url('Fasilitas/form/' . $row->id_fasilitas) ?>"
+                            <a href="<?= base_url($title.'/form/' . $row->id_fasilitas) ?>"
                                 class="btn btn-info btn-block">
                                 Edit
                             </a>
 
-                            <a href="<?= base_url('Fasilitas/delete/' . $row->id_fasilitas) ?>"
+                            <a href="<?= base_url($title.'/delete/' . $row->id_fasilitas) ?>"
                                 class="btn btn-danger btn-block"
                                 onclick="return confirm('Hapus data?')">
                                 Hapus
@@ -232,13 +232,13 @@
 
                                 <div class="fasilitas-action">
 
-                                    <a href="<?= base_url('Fasilitas/form/' . $row->id_fasilitas) ?>"
+                                    <a href="<?= base_url($title.'/form/' . $row->id_fasilitas) ?>"
                                         class="btn btn-info">
                                         <i class="fa fa-pencil"></i>
                                         Edit
                                     </a>
 
-                                    <a href="<?= base_url('Fasilitas/delete/' . $row->id_fasilitas) ?>"
+                                    <a href="<?= base_url($title.'/delete/' . $row->id_fasilitas) ?>"
                                         onclick="return confirm('Yakin ingin menghapus data ini?')"
                                         class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
